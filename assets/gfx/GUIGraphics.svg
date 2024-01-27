@@ -11,6 +11,7 @@
    sodipodi:docname="GUIGraphics.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -24,9 +25,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="3.3638608"
-     inkscape:cx="127.97795"
-     inkscape:cy="10.256072"
+     inkscape:zoom="1.6819304"
+     inkscape:cx="259.52322"
+     inkscape:cy="223.25537"
      inkscape:window-width="1920"
      inkscape:window-height="1111"
      inkscape:window-x="1911"
@@ -34,7 +35,47 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs418" />
+     id="defs418">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect12621"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,8.9958333,0,1 @ F,0,0,1,0,8.9958333,0,1 @ F,0,0,1,0,8.9958333,0,1 @ F,0,0,1,0,8.9958333,0,1"
+       unit="px"
+       method="auto"
+       mode="F"
+       radius="34"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient11767">
+      <stop
+         style="stop-color:#7d929f;stop-opacity:1;"
+         offset="0"
+         id="stop11763" />
+      <stop
+         style="stop-color:#e5e5e5;stop-opacity:1;"
+         offset="1"
+         id="stop11765" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient11767"
+       id="linearGradient11769"
+       x1="39.799259"
+       y1="60.328125"
+       x2="39.720604"
+       y2="27.371822"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.8329562,0,0,2.125664,11.366788,-14.737967)" />
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
@@ -44,7 +85,10 @@
        id="path598"
        cx="3.7360964"
        cy="3.5197961"
-       r="3.0675316" />
+       r="3.0675316"
+       inkscape:export-filename="buttons\green_btn.png"
+       inkscape:export-xdpi="621.02051"
+       inkscape:export-ydpi="621.02051" />
     <g
        id="g2451"
        transform="translate(-9.4624703,-1.2637402)"
@@ -65,32 +109,47 @@
        id="path598-2"
        cx="10.480734"
        cy="3.5591233"
-       r="3.0675316" />
+       r="3.0675316"
+       inkscape:export-filename="buttons\red_btn.png"
+       inkscape:export-xdpi="621.02051"
+       inkscape:export-ydpi="621.02051" />
     <circle
        style="fill:#666666;stroke-width:0.272;stroke-linecap:round;stop-color:#000000"
        id="path598-2-5"
        cx="36.790806"
        cy="4.0044417"
-       r="3.0675316" />
+       r="3.0675316"
+       inkscape:export-filename="buttons\smilie.png"
+       inkscape:export-xdpi="621.02039"
+       inkscape:export-ydpi="621.02039" />
     <circle
        style="fill:#666666;stroke-width:0.272;stroke-linecap:round;stop-color:#000000"
        id="path598-2-5-0"
        cx="43.60392"
        cy="4.0183458"
-       r="3.0675316" />
+       r="3.0675316"
+       inkscape:export-filename="buttons\nine.png"
+       inkscape:export-xdpi="621.02039"
+       inkscape:export-ydpi="621.02039" />
     <circle
        style="fill:#666666;stroke-width:0.272;stroke-linecap:round;stop-color:#000000"
        id="path598-2-5-0-1"
        cx="50.437302"
        cy="4.2080245"
-       r="3.0675316" />
+       r="3.0675316"
+       inkscape:export-filename="buttons\two.png"
+       inkscape:export-xdpi="621.02039"
+       inkscape:export-ydpi="621.02039" />
     <ellipse
        style="fill:#666666;stroke-width:0.287609;stroke-linecap:round;stop-color:#000000"
        id="path598-2-9"
        cx="19.305017"
        cy="3.5787868"
        rx="3.8878858"
-       ry="2.7060194" />
+       ry="2.7060194"
+       inkscape:export-filename="buttons\lambda.png"
+       inkscape:export-xdpi="489.98352"
+       inkscape:export-ydpi="489.98352" />
     <text
        xml:space="preserve"
        style="font-size:5.51644px;font-family:'Agency FB';-inkscape-font-specification:'Agency FB';fill:#ffffff;fill-opacity:1;stroke:#f0f0f0;stroke-width:1.47163;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
@@ -120,7 +179,10 @@
        cx="28.392603"
        cy="3.7263553"
        rx="3.8878858"
-       ry="2.7060194" />
+       ry="2.7060194"
+       inkscape:export-filename="buttons\H.png"
+       inkscape:export-xdpi="489.98358"
+       inkscape:export-ydpi="489.98358" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.78466px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.54318;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
@@ -180,7 +242,10 @@
        id="path598-2-5-0-1-7"
        cx="58.231258"
        cy="4.1156764"
-       r="3.0675316" />
+       r="3.0675316"
+       inkscape:export-filename="buttons\power.png"
+       inkscape:export-xdpi="621.02039"
+       inkscape:export-ydpi="621.02039" />
     <path
        style="fill:none;fill-opacity:1;stroke:#f0f0f0;stroke-width:0.695332;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
        d="m 58.256627,2.160544 c -0.03649,0.3747696 -0.02283,0.7535692 -0.02283,1.1300391 0,0.087511 0,0.1750227 0,0.2625343 0,0.022581 0.0057,0.05704 0,0.079902 -0.0081,0.032472 -0.0114,0.047042 -0.0114,0.079902"
@@ -189,5 +254,22 @@
        style="fill:none;fill-opacity:1;stroke:#f0f0f0;stroke-width:0.695332;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
        d="m 57.240735,2.8796597 c -0.133682,0.04456 -0.153087,0.040494 -0.285366,0.1598035 -0.139848,0.1261377 -0.269623,0.2631317 -0.399508,0.3995089 -0.02257,0.023701 -0.04291,0.050395 -0.05707,0.079902 -0.119943,0.2498813 -0.159805,0.5252886 -0.159805,0.7990175 0,0.034244 -0.0051,0.068866 0,0.1027308 0.02743,0.1828216 0.121412,0.3594405 0.216876,0.5136542 0.05884,0.095044 0.12917,0.2269664 0.205462,0.3196069 0.02682,0.066759 0.09388,0.096677 0.136976,0.1483891 0.0621,0.074529 0.117867,0.1554313 0.182631,0.2282905 0.01974,0.02221 0.03462,0.049025 0.05707,0.068487 0.03509,0.030417 0.0761,0.053268 0.114146,0.079902 0.03805,0.026634 0.07294,0.058474 0.114146,0.079902 0.181311,0.094281 0.427897,0.1447165 0.627798,0.1598034 0.178322,0.013458 0.357655,0 0.536483,0 0.06849,0 0.138306,0.013432 0.205462,0 0.05397,-0.010793 0.151987,-0.075993 0.205461,-0.1027309 0.06872,-0.034359 0.268766,-0.1097017 0.353852,-0.1826324 0.01043,-0.00893 0.01312,-0.024544 0.02283,-0.034244 0.06661,-0.066612 0.135258,-0.1312329 0.205461,-0.1940473 0.07443,-0.066594 0.156245,-0.1248819 0.228292,-0.194047 0.06178,-0.059306 0.156993,-0.2226667 0.194048,-0.296778 0.03487,-0.069737 0.179414,-0.383135 0.194047,-0.467996 0.01034,-0.059992 0,-0.1217551 0,-0.1826327 0,-0.060877 0.0062,-0.122078 0,-0.1826324 -0.0053,-0.050493 -0.01911,-0.099937 -0.03424,-0.1483891 C 60.097987,4.0075027 60.012417,3.756589 59.96881,3.7015068 59.842068,3.5414152 59.666271,3.4215201 59.512227,3.290583 59.425157,3.2165749 59.344984,3.1372349 59.249692,3.0737067"
        id="path10915" />
+    <path
+       style="fill:url(#linearGradient11769);fill-opacity:1;stroke:#f5f5f5;stroke-width:2.423;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="rect11761"
+       width="104.27296"
+       height="74.735443"
+       x="42.219288"
+       y="21.375801"
+       inkscape:path-effect="#path-effect12621"
+       d="m 51.215121,21.375801 h 86.281289 a 8.9958333,8.9958333 45 0 1 8.99583,8.995833 v 56.743777 a 8.9958333,8.9958333 135 0 1 -8.99583,8.995833 H 51.215121 A 8.9958333,8.9958333 45 0 1 42.219288,87.115411 V 30.371634 a 8.9958333,8.9958333 135 0 1 8.995833,-8.995833 z"
+       sodipodi:type="rect" />
+    <rect
+       style="fill:#525252;fill-opacity:1;stroke:none;stroke-width:3.11696;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="rect12792"
+       width="89.321297"
+       height="45.828609"
+       x="49.695118"
+       y="27.665203" />
   </g>
 </svg>
