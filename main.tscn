@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://s5f8sfj3v8bg"]
+
+[ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
+[ext_resource type="Script" path="res://GameSelect.gd" id="1_ocg6g"]
+
+[node name="Main" type="Node2D"]
+
+[node name="OpeningMenu" type="Node2D" parent="."]
+
+[node name="GameSelect" type="Node2D" parent="."]
+script = ExtResource("1_ocg6g")
+
+[node name="GameName" type="RichTextLabel" parent="GameSelect"]
+offset_left = 412.0
+offset_top = 371.0
+offset_right = 657.0
+offset_bottom = 429.0
+text = "<Game Name>"
+
+[node name="BtnNextGame" type="Button" parent="GameSelect"]
+offset_left = 651.0
+offset_top = 303.0
+offset_right = 746.0
+offset_bottom = 334.0
+text = "Next Game"
+
+[node name="BtnPrevGame" type="Button" parent="GameSelect"]
+offset_left = 212.0
+offset_top = 290.0
+offset_right = 337.0
+offset_bottom = 321.0
+text = "Previous Game"
+
+[node name="GameLoader" type="Node2D" parent="."]
+script = ExtResource("1_0isc4")

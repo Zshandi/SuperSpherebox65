@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0pbkub12bfbv"]
+
+[ext_resource type="Script" path="res://games/main/game_1/Game1.gd" id="1_qycj3"]
+
+[node name="Game1" type="Node2D"]
+script = ExtResource("1_qycj3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 461.0
+offset_top = 217.0
+offset_right = 589.0
+offset_bottom = 245.0
+text = "Game 1 Is Here"
