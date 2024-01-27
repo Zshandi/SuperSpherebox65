@@ -58,5 +58,7 @@ func generate_instance_data(random_seed:int) -> GameInstanceData:
 	
 	game_instance.game_name = game_name
 	game_instance.game_image = image
+	game_instance.random_seed = random_seed
+	game_instance.game_scene = game_scene
 	
 	return game_instance
