@@ -4,6 +4,8 @@ class_name GameSelect
 @onready
 var game_loader:GameLoader = $"../GameLoader"
 
+var current_position:Vector2i = Vector2i.ZERO
+
 var current_selection:Game
 
 func _ready():

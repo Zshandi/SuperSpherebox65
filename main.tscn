@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://s5f8sfj3v8bg"]
+[gd_scene load_steps=6 format=3 uid="uid://s5f8sfj3v8bg"]
 
 [ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
+[ext_resource type="Script" path="res://Main.gd" id="1_a0i0y"]
 [ext_resource type="Script" path="res://GameSelect.gd" id="1_ocg6g"]
+[ext_resource type="Script" path="res://GameData.gd" id="4_ry3gs"]
+[ext_resource type="PackedScene" uid="uid://d0pbkub12bfbv" path="res://games/main/game_1/shoot_em_up.tscn" id="6_fxxvc"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_a0i0y")
 
 [node name="OpeningMenu" type="Node2D" parent="."]
 
@@ -33,3 +37,11 @@ text = "Previous Game"
 
 [node name="GameLoader" type="Node2D" parent="."]
 script = ExtResource("1_0isc4")
+
+[node name="GameData" type="Node" parent="."]
+
+[node name="ShootEmUp" type="Node" parent="GameData"]
+script = ExtResource("4_ry3gs")
+possible_names_1 = Array[String](["Shoot", "Fire", "Attack", "Clobber", "Beat", "Blaster"])
+possible_names_2 = Array[String](["Monster", "Kittens", "Alien", "Bugs"])
+game_scene = ExtResource("6_fxxvc")

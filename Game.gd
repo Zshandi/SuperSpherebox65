@@ -8,6 +8,9 @@ var game_name:String
 
 func game_init(random_seed):
 	game_name
+	
+func get_name_combinations() -> Array[String]:
+	return []
 
 func game_start():
 	pass
