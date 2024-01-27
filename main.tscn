@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://s5f8sfj3v8bg"]
+[gd_scene load_steps=12 format=3 uid="uid://s5f8sfj3v8bg"]
 
 [ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
 [ext_resource type="Script" path="res://Main.gd" id="1_a0i0y"]
 [ext_resource type="Script" path="res://GameSelect.gd" id="1_ocg6g"]
+[ext_resource type="Texture2D" uid="uid://bn0mm86c4rp3q" path="res://assets/gfx/menu/right.png" id="3_ls4l2"]
+[ext_resource type="Texture2D" uid="uid://c7h7xx3v1rx4w" path="res://assets/gfx/menu/left.png" id="4_ga05i"]
 [ext_resource type="Script" path="res://GameData.gd" id="4_ry3gs"]
+[ext_resource type="Texture2D" uid="uid://bnaii5ptvexx1" path="res://assets/gfx/menu/up.png" id="5_4sae1"]
+[ext_resource type="Texture2D" uid="uid://jeynvysbjlpy" path="res://assets/gfx/menu/down.png" id="6_ekhxs"]
 [ext_resource type="PackedScene" uid="uid://d0pbkub12bfbv" path="res://games/ShootEmUp/shoot_em_up.tscn" id="6_fxxvc"]
+[ext_resource type="Texture2D" uid="uid://brs2volvr1y3x" path="res://assets/gfx/menu/GameSelectWindow.png" id="7_8d2qh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0d8u"]
+font_size = 70
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0i0y")
@@ -14,26 +22,53 @@ script = ExtResource("1_a0i0y")
 [node name="GameSelect" type="Node2D" parent="."]
 script = ExtResource("1_ocg6g")
 
-[node name="GameName" type="RichTextLabel" parent="GameSelect"]
-offset_left = 412.0
-offset_top = 371.0
-offset_right = 657.0
-offset_bottom = 429.0
+[node name="RightButton" type="TextureButton" parent="GameSelect"]
+offset_left = 1534.0
+offset_top = 479.0
+offset_right = 1709.0
+offset_bottom = 654.0
+texture_normal = ExtResource("3_ls4l2")
+
+[node name="LeftButton" type="TextureButton" parent="GameSelect"]
+offset_left = 179.0
+offset_top = 435.0
+offset_right = 354.0
+offset_bottom = 610.0
+texture_normal = ExtResource("4_ga05i")
+
+[node name="UpButton" type="TextureButton" parent="GameSelect"]
+offset_left = 929.0
+offset_top = -4.0
+offset_right = 1104.0
+offset_bottom = 171.0
+texture_normal = ExtResource("5_4sae1")
+
+[node name="DownButton" type="TextureButton" parent="GameSelect"]
+offset_left = 900.0
+offset_top = 892.0
+offset_right = 1075.0
+offset_bottom = 1067.0
+texture_normal = ExtResource("6_ekhxs")
+
+[node name="GameSelectWindow" type="TextureButton" parent="GameSelect"]
+offset_left = 514.0
+offset_top = 163.0
+offset_right = 1514.0
+offset_bottom = 886.0
+texture_normal = ExtResource("7_8d2qh")
+
+[node name="GameName" type="Label" parent="GameSelect/GameSelectWindow"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 521.0
+offset_right = 894.0
+offset_bottom = 709.0
 text = "<Game Name>"
+label_settings = SubResource("LabelSettings_o0d8u")
+horizontal_alignment = 1
 
-[node name="BtnNextGame" type="Button" parent="GameSelect"]
-offset_left = 651.0
-offset_top = 303.0
-offset_right = 746.0
-offset_bottom = 334.0
-text = "Next Game"
-
-[node name="BtnPrevGame" type="Button" parent="GameSelect"]
-offset_left = 212.0
-offset_top = 290.0
-offset_right = 337.0
-offset_bottom = 321.0
-text = "Previous Game"
+[node name="Sprite2D" type="Sprite2D" parent="GameSelect/GameSelectWindow"]
+position = Vector2(82, 70)
 
 [node name="GameLoader" type="Node2D" parent="."]
 script = ExtResource("1_0isc4")
