@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://do5qtvu81avic"]
+[gd_scene load_steps=17 format=3 uid="uid://do5qtvu81avic"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/enemy.gd" id="1_f38ed"]
 [ext_resource type="Texture2D" uid="uid://b41lvt4px5bv6" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack1.png" id="2_c4cj8"]
@@ -6,7 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://b5ti321pgpj32" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack3.png" id="4_ip1vn"]
 [ext_resource type="Texture2D" uid="uid://cvegljkigdjm8" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack4.png" id="5_tl0lr"]
 [ext_resource type="Texture2D" uid="uid://brp3alfepomci" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack5.png" id="6_xgvay"]
+[ext_resource type="AudioStream" uid="uid://bwcrkl47hgmvu" path="res://games/ShootEmUp/sounds/enemy_dead_01.wav" id="7_uavnb"]
 [ext_resource type="Texture2D" uid="uid://h7do8ca1wwsn" path="res://assets/gfx/ShootEmUp/particles/explosion00.png" id="7_wyex1"]
+[ext_resource type="AudioStream" uid="uid://cxxvgtbmm6ms0" path="res://games/ShootEmUp/sounds/enemy_dead_20.wav" id="8_6a4v4"]
+[ext_resource type="AudioStream" uid="uid://neidlwtyfiiv" path="res://games/ShootEmUp/sounds/enemy_dead_33.wav" id="9_e544v"]
+[ext_resource type="AudioStream" uid="uid://uhs68aqv7i60" path="res://games/ShootEmUp/sounds/Fart Sound Effect #3.wav" id="10_dq67l"]
+[ext_resource type="AudioStream" uid="uid://df7nqqs4iey8c" path="res://games/ShootEmUp/sounds/vgdeathsound.wav" id="11_0i6q0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a03b"]
 radius = 46.0
@@ -34,6 +39,7 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_f38ed")
 enemy_sprites = Array[Texture2D]([ExtResource("2_c4cj8"), ExtResource("3_2n4dl"), ExtResource("4_ip1vn"), ExtResource("5_tl0lr"), ExtResource("6_xgvay")])
+death_sounds = Array[AudioStreamWAV]([ExtResource("7_uavnb"), ExtResource("8_6a4v4"), ExtResource("9_e544v"), ExtResource("10_dq67l"), ExtResource("11_0i6q0")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_c4cj8")

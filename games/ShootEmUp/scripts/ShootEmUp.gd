@@ -9,6 +9,7 @@ const ONE_UP_SCORE = 5000
 var music_arr: Array[AudioStreamWAV] = []
 
 @onready var background_music = $BackgroundMusic
+@onready var enemy_spawner = $EnemySpawner
 
 func _ready():
 	background_music.stream = music_arr.pick_random()

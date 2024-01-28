@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0pbkub12bfbv"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/ShootEmUp.gd" id="1_lvec5"]
-[ext_resource type="PackedScene" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
+[ext_resource type="PackedScene" uid="uid://btjju6ilduuli" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
 [ext_resource type="AudioStream" uid="uid://xyjve58nfprt" path="res://games/ShootEmUp/music/Juhani Junkala [Retro Game Music Pack] Level 1.wav" id="2_kcdpw"]
-[ext_resource type="PackedScene" path="res://games/ShootEmUp/Player.tscn" id="3_bfqhm"]
+[ext_resource type="PackedScene" uid="uid://qitjuelqnbtd" path="res://games/ShootEmUp/Player.tscn" id="3_bfqhm"]
 [ext_resource type="AudioStream" uid="uid://c0ynkqiaknmf5" path="res://games/ShootEmUp/music/Juhani Junkala [Retro Game Music Pack] Level 2.wav" id="3_oiaq2"]
 [ext_resource type="AudioStream" uid="uid://qc8o6vwdo17f" path="res://games/ShootEmUp/music/Juhani Junkala [Retro Game Music Pack] Level 3.wav" id="4_d5mlj"]
 [ext_resource type="AudioStream" uid="uid://b50r83rdkgb6k" path="res://games/ShootEmUp/music/Juhani Junkala [Retro Game Music Pack] Title Screen.wav" id="5_pdi6d"]
-[ext_resource type="PackedScene" path="res://games/ShootEmUp/enemy_spawner.tscn" id="8_11fcr"]
+[ext_resource type="PackedScene" uid="uid://bi0s2icmk42qg" path="res://games/ShootEmUp/enemy_spawner.tscn" id="8_11fcr"]
 
 [node name="Game1" type="Node2D"]
 script = ExtResource("1_lvec5")
