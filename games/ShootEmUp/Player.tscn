@@ -1,15 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://qitjuelqnbtd"]
+[gd_scene load_steps=8 format=3 uid="uid://qitjuelqnbtd"]
 
+[ext_resource type="Script" path="res://games/ShootEmUp/scripts/Player.gd" id="1_jg1pr"]
 [ext_resource type="Texture2D" uid="uid://cbmshywfdhnie" path="res://assets/gfx/ShootEmUp/player/playerShip1_blue.png" id="1_uaigg"]
+[ext_resource type="Texture2D" uid="uid://m18pt3tkofw0" path="res://assets/gfx/ShootEmUp/player/playerShip1_green.png" id="3_haxbn"]
+[ext_resource type="Texture2D" uid="uid://c6jtkdsntcb8r" path="res://assets/gfx/ShootEmUp/player/playerShip1_orange.png" id="4_5f1nk"]
+[ext_resource type="Texture2D" uid="uid://ch7uxofdku4nb" path="res://assets/gfx/ShootEmUp/player/playerShip1_red.png" id="5_n40t0"]
+[ext_resource type="Texture2D" uid="uid://gu3la34o3o6g" path="res://assets/gfx/ShootEmUp/player/character_femalePerson_climb0.png" id="6_5s0hn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b75rk"]
 radius = 25.0
 height = 80.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_jg1pr")
+player_sprite_arr = Array[Texture2D]([ExtResource("1_uaigg"), ExtResource("3_haxbn"), ExtResource("4_5f1nk"), ExtResource("5_n40t0"), ExtResource("6_5s0hn")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_uaigg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_b75rk")
+
+[node name="LaserContainer" type="Node" parent="."]

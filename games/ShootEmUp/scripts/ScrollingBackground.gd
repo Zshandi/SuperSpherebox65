@@ -8,8 +8,8 @@ var front_images: Array[Texture2D] = []
 
 @onready var back_sprite = $BackLayer/Sprite2D
 @onready var front_sprite = $FrontLayer/Sprite2D
-@onready var scroll_speed_back = Vector2(10,10)
-@onready var scroll_speed_front = Vector2(30,30)
+var scroll_speed_back
+var scroll_speed_front
 
 func _ready():
 	# choose the front and back images
@@ -19,6 +19,16 @@ func _ready():
 	# modulate the colors
 	back_sprite.modulate = Color(randf(), randf(), randf(), randf())
 	front_sprite.modulate = Color(randf(), randf(), randf(), randf())
+	
+	# randomize the scroll speed
+	var back_speed = randi_range(0,100)
+	var front_speed = randi_range(back_speed, 200)
+	scroll_speed_back = Vector2(
+		back_speed * (1 if randi() % 2 == 0 else -1),
+		back_speed * (1 if randi() % 2 == 0 else -1)
+		)
+	scroll_speed_front = Vector2(front_speed, front_speed)
+	
 
 
 func _process(delta):

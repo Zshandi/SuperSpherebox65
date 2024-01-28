@@ -2,7 +2,6 @@ extends Game
 
 @onready var score:int = 0
 @onready var lives:int = 3
-@onready var health:int = 3
 
 const ONE_UP_SCORE = 5000
 
