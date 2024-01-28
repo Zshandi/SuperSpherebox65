@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://s5f8sfj3v8bg"]
+[gd_scene load_steps=46 format=3 uid="uid://s5f8sfj3v8bg"]
 
 [ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
 [ext_resource type="Script" path="res://Main.gd" id="1_a0i0y"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bsyr54gir4np7" path="res://games/EightBall/thumbnails/front/front_9.png" id="38_jdplm"]
 [ext_resource type="Texture2D" uid="uid://dr4g5wiolwh0e" path="res://games/EightBall/thumbnails/front/front_10.png" id="39_hsep0"]
 [ext_resource type="AudioStream" uid="uid://b5xjkmgtaaliu" path="res://assets/music/Circus Theme Song - Boosted.wav" id="41_68xfp"]
+[ext_resource type="AudioStream" uid="uid://mq1fkvqe04tm" path="res://assets/music/Menu_Navigate_00.wav" id="42_xy017"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0d8u"]
 font = ExtResource("10_xafrm")
@@ -188,7 +189,8 @@ stream = ExtResource("41_68xfp")
 
 [node name="Sounds" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds"]
+[node name="move" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("42_xy017")
 
 [connection signal="pressed" from="GameSelect/RightButton" to="GameSelect" method="_on_button_right_pressed"]
 [connection signal="pressed" from="GameSelect/LeftButton" to="GameSelect" method="_on_button_left_pressed"]

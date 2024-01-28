@@ -7,6 +7,9 @@ var main:Main = $".."
 @onready
 var game_loader:GameLoader = $"../GameLoader"
 
+@onready
+var move_sound:AudioStreamPlayer = $"../Sounds/move"
+
 var current_position:Vector2i = Vector2i.ZERO
 
 var current_game_data:GameInstanceData
@@ -40,8 +43,10 @@ func _on_button_select_pressed():
 	play_current_selection()
 
 func move_selection(direction:Vector2i):
+	move_sound.play()
 	current_position += direction
 	sync_game_info()
+	
 
 func sync_game_info():
 	current_game_data = main.get_game_instance_data_for(current_position)
