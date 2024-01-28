@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://s5f8sfj3v8bg"]
+[gd_scene load_steps=14 format=3 uid="uid://s5f8sfj3v8bg"]
 
 [ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
 [ext_resource type="Script" path="res://Main.gd" id="1_a0i0y"]
 [ext_resource type="Script" path="res://GameSelect.gd" id="1_ocg6g"]
+[ext_resource type="Texture2D" uid="uid://bkmmc3kupsjxv" path="res://assets/gfx/menu/background_brown.png" id="3_cakvg"]
 [ext_resource type="Texture2D" uid="uid://bn0mm86c4rp3q" path="res://assets/gfx/menu/right.png" id="3_ls4l2"]
 [ext_resource type="Texture2D" uid="uid://c7h7xx3v1rx4w" path="res://assets/gfx/menu/left.png" id="4_ga05i"]
 [ext_resource type="Script" path="res://GameData.gd" id="4_ry3gs"]
@@ -10,12 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://jeynvysbjlpy" path="res://assets/gfx/menu/down.png" id="6_ekhxs"]
 [ext_resource type="PackedScene" uid="uid://d0pbkub12bfbv" path="res://games/ShootEmUp/shoot_em_up.tscn" id="6_fxxvc"]
 [ext_resource type="Texture2D" uid="uid://du5eas0oht3" path="res://assets/gfx/menu/GameSelectWindow.png" id="7_8d2qh"]
+[ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="11_a7jyk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0d8u"]
 font_size = 70
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0i0y")
+
+[node name="ScrollingBackground" parent="." instance=ExtResource("11_a7jyk")]
+background = ExtResource("3_cakvg")
 
 [node name="OpeningMenu" type="Node2D" parent="."]
 
@@ -82,8 +87,8 @@ script = ExtResource("1_0isc4")
 
 [node name="ShootEmUp" type="Node" parent="GameData"]
 script = ExtResource("4_ry3gs")
-possible_names_1 = Array[String](["Shoot", "Fire", "Attack", "Clobber", "Beat", "Blaster"])
-possible_names_2 = Array[String](["Monster", "Kittens", "Alien", "Bugs"])
+possible_names_1 = Array[String](["Shoot", "Fire", "Attack", "Clobber", "Beat", "Blaster", "Destroy", "Kill", "Beat Up", "Ravage", "Mutilate", "Comb", "Feed", "Kick"])
+possible_names_2 = Array[String](["Monster", "Kittens", "Alien", "Bugs", "Animals", "Zshandi", "Babies", "The Government", "Puppies", "Llamas", "Fish", "Trevor"])
 game_scene = ExtResource("6_fxxvc")
 
 [connection signal="pressed" from="GameSelect/RightButton" to="GameSelect" method="_on_button_right_pressed"]

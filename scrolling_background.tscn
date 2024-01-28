@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgsyv55s3of86"]
+
+[ext_resource type="Script" path="res://IntroBackground.gd" id="1_a6gux"]
+[ext_resource type="Texture2D" uid="uid://bvxrpcqtppsiq" path="res://assets/gfx/menu/background_blue.png" id="2_hyngp"]
+
+[node name="ScrollingBackground" type="ParallaxBackground"]
+script = ExtResource("1_a6gux")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1280, 1280)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("2_hyngp")
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 1280)
