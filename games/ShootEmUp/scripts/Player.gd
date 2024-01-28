@@ -38,7 +38,6 @@ func _check_for_movement(delta):
 	velocity = Vector2(0,0)
 	# move left
 	if Input.is_action_pressed("left"):
-		print("Going Left")
 		velocity.x -= speed
 	elif Input.is_action_pressed("right"):
 		velocity.x += speed
