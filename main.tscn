@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://s5f8sfj3v8bg"]
+[gd_scene load_steps=44 format=3 uid="uid://s5f8sfj3v8bg"]
 
 [ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
 [ext_resource type="Script" path="res://Main.gd" id="1_a0i0y"]
@@ -10,11 +10,36 @@
 [ext_resource type="Texture2D" uid="uid://bnaii5ptvexx1" path="res://assets/gfx/menu/up.png" id="5_4sae1"]
 [ext_resource type="Texture2D" uid="uid://jeynvysbjlpy" path="res://assets/gfx/menu/down.png" id="6_ekhxs"]
 [ext_resource type="PackedScene" uid="uid://d0pbkub12bfbv" path="res://games/ShootEmUp/shoot_em_up.tscn" id="6_fxxvc"]
-[ext_resource type="Texture2D" uid="uid://du5eas0oht3" path="res://assets/gfx/menu/GameSelectWindow.png" id="7_8d2qh"]
+[ext_resource type="Texture2D" uid="uid://brs2volvr1y3x" path="res://assets/gfx/menu/GameSelectWindow.png" id="7_8d2qh"]
 [ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="10_xafrm"]
-[ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="11_a7jyk"]
+[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="11_a7jyk"]
 [ext_resource type="Script" path="res://PauseMenu.gd" id="11_uu1qh"]
 [ext_resource type="PackedScene" uid="uid://clykvm5ylgwgx" path="res://games/EightBall/eight_ball.tscn" id="13_c8rpl"]
+[ext_resource type="Texture2D" uid="uid://100ur72uprr6" path="res://games/ShootEmUp/thumbnails/back/ocean.png" id="14_glcdi"]
+[ext_resource type="Texture2D" uid="uid://d232rk7tuilnt" path="res://games/ShootEmUp/thumbnails/back/space.png" id="15_nicrg"]
+[ext_resource type="Texture2D" uid="uid://bd31gnkq0texc" path="res://games/ShootEmUp/thumbnails/back/space2.png" id="16_4tv0w"]
+[ext_resource type="Texture2D" uid="uid://yv3f8do77sox" path="res://games/ShootEmUp/thumbnails/back/space3.png" id="17_lx6h5"]
+[ext_resource type="Texture2D" uid="uid://dxpruulkkwas7" path="res://games/ShootEmUp/thumbnails/back/space4.png" id="18_qqbbq"]
+[ext_resource type="Texture2D" uid="uid://p1ccw85s3q14" path="res://games/ShootEmUp/thumbnails/front/climber.png" id="19_bndk6"]
+[ext_resource type="Texture2D" uid="uid://dcdin4nyibtb7" path="res://games/ShootEmUp/thumbnails/front/enemy_1.png" id="20_iaqj8"]
+[ext_resource type="Texture2D" uid="uid://di7pgk42lxmrv" path="res://games/ShootEmUp/thumbnails/front/enemy_2.png" id="21_ixy2j"]
+[ext_resource type="Texture2D" uid="uid://c8ryrlctvw27" path="res://games/ShootEmUp/thumbnails/front/enemy_3.png" id="22_ou32y"]
+[ext_resource type="Texture2D" uid="uid://cnl24n83d5uf8" path="res://games/ShootEmUp/thumbnails/front/enemy_4.png" id="23_ucodm"]
+[ext_resource type="Texture2D" uid="uid://csp5dqcrs0gxk" path="res://games/ShootEmUp/thumbnails/front/player.png" id="24_35nqf"]
+[ext_resource type="Texture2D" uid="uid://bq1t0vbl002n1" path="res://games/EightBall/thumbnails/back/back_1.png" id="26_gqg58"]
+[ext_resource type="Texture2D" uid="uid://dwjexu8f7ao8y" path="res://games/EightBall/thumbnails/back/back_2.png" id="27_4re20"]
+[ext_resource type="Texture2D" uid="uid://bsy4uoi53i0u3" path="res://games/EightBall/thumbnails/back/back_3.png" id="28_xonkw"]
+[ext_resource type="Texture2D" uid="uid://bo503dhm5a08h" path="res://games/EightBall/thumbnails/back/back_4.png" id="29_x5fhn"]
+[ext_resource type="Texture2D" uid="uid://41l2qvoykljc" path="res://games/EightBall/thumbnails/front/front_1.png" id="30_xbw8d"]
+[ext_resource type="Texture2D" uid="uid://c55rc2s71eqpk" path="res://games/EightBall/thumbnails/front/front_2.png" id="31_1jbpx"]
+[ext_resource type="Texture2D" uid="uid://cucovwi0fgexd" path="res://games/EightBall/thumbnails/front/front_3.png" id="32_xsgmw"]
+[ext_resource type="Texture2D" uid="uid://coqcmlq5rve3r" path="res://games/EightBall/thumbnails/front/front_4.png" id="33_kxnu4"]
+[ext_resource type="Texture2D" uid="uid://c5urc2ifdcpg5" path="res://games/EightBall/thumbnails/front/front_5.png" id="34_4fw24"]
+[ext_resource type="Texture2D" uid="uid://cdfc8bptlkgb1" path="res://games/EightBall/thumbnails/front/front_6.png" id="35_03fk4"]
+[ext_resource type="Texture2D" uid="uid://cqbiywk1knke1" path="res://games/EightBall/thumbnails/front/front_7.png" id="36_tpy00"]
+[ext_resource type="Texture2D" uid="uid://b61ta84bu2yql" path="res://games/EightBall/thumbnails/front/front_8.png" id="37_cqc00"]
+[ext_resource type="Texture2D" uid="uid://dp7vsngdv6pmy" path="res://games/EightBall/thumbnails/front/front_9.png" id="38_jdplm"]
+[ext_resource type="Texture2D" uid="uid://c0v6pc8y2so3y" path="res://games/EightBall/thumbnails/front/front_10.png" id="39_hsep0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0d8u"]
 font = ExtResource("10_xafrm")
@@ -91,7 +116,12 @@ label_settings = SubResource("LabelSettings_o0d8u")
 horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="GameSelect/GameSelectWindow"]
-position = Vector2(82, 70)
+position = Vector2(500.061, 284.518)
+texture = ExtResource("15_nicrg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="GameSelect/GameSelectWindow"]
+position = Vector2(500.061, 284.518)
+texture = ExtResource("15_nicrg")
 
 [node name="GameLoader" type="Node2D" parent="."]
 process_mode = 1
@@ -140,12 +170,16 @@ text = "Exit Game
 script = ExtResource("4_ry3gs")
 possible_names_1 = Array[String](["Shoot", "Fire", "Attack", "Clobber", "Beat", "Blaster", "Destroy", "Kill", "Beat Up", "Ravage", "Mutilate", "Comb", "Feed", "Kick"])
 possible_names_2 = Array[String](["Monster", "Kittens", "Alien", "Bugs", "Animals", "Zshandi", "Babies", "The Government", "Puppies", "Llamas", "Fish", "Trevor"])
+possible_game_images = Array[Texture2D]([ExtResource("14_glcdi"), ExtResource("15_nicrg"), ExtResource("16_4tv0w"), ExtResource("17_lx6h5"), ExtResource("18_qqbbq")])
+possible_game_images_2 = Array[Texture2D]([ExtResource("19_bndk6"), ExtResource("20_iaqj8"), ExtResource("21_ixy2j"), ExtResource("22_ou32y"), ExtResource("23_ucodm"), ExtResource("24_35nqf")])
 game_scene = ExtResource("6_fxxvc")
 
 [node name="EightBall" type="Node" parent="GameData"]
 script = ExtResource("4_ry3gs")
 possible_names_1 = Array[String](["Eight", "Nine", "Fortune", "Super", "Magic", "Incredible", "Amazing", "Mystical"])
 possible_names_2 = Array[String](["Ball", "Cube", "Thing", "Object", "Toy", "Knick Knack"])
+possible_game_images = Array[Texture2D]([ExtResource("26_gqg58"), ExtResource("27_4re20"), ExtResource("28_xonkw"), ExtResource("29_x5fhn")])
+possible_game_images_2 = Array[Texture2D]([ExtResource("30_xbw8d"), ExtResource("31_1jbpx"), ExtResource("32_xsgmw"), ExtResource("33_kxnu4"), ExtResource("34_4fw24"), ExtResource("35_03fk4"), ExtResource("36_tpy00"), ExtResource("37_cqc00"), ExtResource("38_jdplm"), ExtResource("39_hsep0")])
 game_scene = ExtResource("13_c8rpl")
 
 [connection signal="pressed" from="GameSelect/RightButton" to="GameSelect" method="_on_button_right_pressed"]

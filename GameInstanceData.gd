@@ -12,6 +12,9 @@ var misc_data:Dictionary = {}
 var game_name:String
 
 var game_image:Texture2D
+var game_image_2:Texture2D
+var game_image_color:Color
+var game_image_color_2:Color
 
 var game_scene:PackedScene
 

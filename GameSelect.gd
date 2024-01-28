@@ -47,6 +47,9 @@ func sync_game_info():
 	current_game_data = main.get_game_instance_data_for(current_position)
 	$GameSelectWindow/GameName.text = current_game_data.game_name
 	$GameSelectWindow/Sprite2D.texture = current_game_data.game_image
+	$GameSelectWindow/Sprite2D.modulate = current_game_data.game_image_color
+	$GameSelectWindow/Sprite2D2.texture = current_game_data.game_image_2
+	$GameSelectWindow/Sprite2D2.modulate = current_game_data.game_image_color_2
 
 func play_current_selection():
 	game_loader.load_game(current_game_data)
