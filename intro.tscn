@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm5lbxgejs5rt"]
+[gd_scene load_steps=8 format=3 uid="uid://dm5lbxgejs5rt"]
 
-[ext_resource type="Texture2D" uid="uid://c7gjrbetupi4a" path="res://assets/gfx/game console.png" id="1_2spia"]
+[ext_resource type="Texture2D" uid="uid://wdtwwvms1mky" path="res://assets/gfx/game console.png" id="1_2spia"]
 [ext_resource type="Script" path="res://intro.gd" id="1_v5x65"]
-[ext_resource type="Texture2D" uid="uid://dsi2bthf168c8" path="res://assets/gfx/contoller.png" id="2_055fi"]
+[ext_resource type="Texture2D" uid="uid://cj30fwqry7o7v" path="res://assets/gfx/contoller.png" id="2_055fi"]
 [ext_resource type="Texture2D" uid="uid://bvxrpcqtppsiq" path="res://assets/gfx/menu/background_blue.png" id="2_kmyr6"]
-[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="4_h2hmm"]
+[ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="4_h2hmm"]
+[ext_resource type="AudioStream" uid="uid://78hn71gglsjd" path="res://assets/music/Pickup_03.wav" id="6_borgq"]
+[ext_resource type="AudioStream" uid="uid://5yegm5doxrri" path="res://assets/music/Jingle_Achievement_00.wav" id="7_5qigg"]
 
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_v5x65")
@@ -28,3 +30,11 @@ offset_top = -17.0
 offset_right = 1625.0
 offset_bottom = 926.0
 color = Color(1, 1, 1, 0)
+
+[node name="ShowControllerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_borgq")
+volume_db = -14.054
+
+[node name="FadeOutSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5qigg")
+volume_db = -7.495

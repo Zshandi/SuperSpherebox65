@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bnaii5ptvexx1" path="res://assets/gfx/menu/up.png" id="5_4sae1"]
 [ext_resource type="Texture2D" uid="uid://jeynvysbjlpy" path="res://assets/gfx/menu/down.png" id="6_ekhxs"]
 [ext_resource type="PackedScene" uid="uid://d0pbkub12bfbv" path="res://games/ShootEmUp/shoot_em_up.tscn" id="6_fxxvc"]
-[ext_resource type="Texture2D" uid="uid://brs2volvr1y3x" path="res://assets/gfx/menu/GameSelectWindow.png" id="7_8d2qh"]
-[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="11_a7jyk"]
+[ext_resource type="Texture2D" uid="uid://du5eas0oht3" path="res://assets/gfx/menu/GameSelectWindow.png" id="7_8d2qh"]
+[ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="11_a7jyk"]
 [ext_resource type="PackedScene" uid="uid://clykvm5ylgwgx" path="res://games/EightBall/eight_ball.tscn" id="13_c8rpl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0d8u"]
