@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://s5f8sfj3v8bg"]
+[gd_scene load_steps=18 format=3 uid="uid://s5f8sfj3v8bg"]
 
 [ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
 [ext_resource type="Script" path="res://Main.gd" id="1_a0i0y"]
@@ -12,18 +12,24 @@
 [ext_resource type="PackedScene" uid="uid://d0pbkub12bfbv" path="res://games/ShootEmUp/shoot_em_up.tscn" id="6_fxxvc"]
 [ext_resource type="Texture2D" uid="uid://brs2volvr1y3x" path="res://assets/gfx/menu/GameSelectWindow.png" id="7_8d2qh"]
 [ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="11_a7jyk"]
+[ext_resource type="Script" path="res://PauseMenu.gd" id="11_uu1qh"]
 [ext_resource type="PackedScene" uid="uid://clykvm5ylgwgx" path="res://games/EightBall/eight_ball.tscn" id="13_c8rpl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0d8u"]
 font_size = 70
+
+[sub_resource type="QuadMesh" id="QuadMesh_17vmu"]
+size = Vector2(1600, 900)
+center_offset = Vector3(800, 450, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tstpv"]
+font_size = 80
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0i0y")
 
 [node name="ScrollingBackground" parent="." instance=ExtResource("11_a7jyk")]
 background = ExtResource("3_cakvg")
-
-[node name="OpeningMenu" type="Node2D" parent="."]
 
 [node name="GameSelect" type="Node2D" parent="."]
 script = ExtResource("1_ocg6g")
@@ -83,6 +89,41 @@ position = Vector2(82, 70)
 
 [node name="GameLoader" type="Node2D" parent="."]
 script = ExtResource("1_0isc4")
+
+[node name="PauseMenu" type="Node2D" parent="."]
+process_mode = 2
+visible = false
+script = ExtResource("11_uu1qh")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="PauseMenu"]
+modulate = Color(0.227451, 0.227451, 0.227451, 0.854902)
+mesh = SubResource("QuadMesh_17vmu")
+
+[node name="PauseText" type="Label" parent="PauseMenu"]
+offset_left = 551.0
+offset_top = 127.0
+offset_right = 1079.0
+offset_bottom = 237.0
+text = "Game Paused"
+label_settings = SubResource("LabelSettings_tstpv")
+
+[node name="ResumeButton" type="Button" parent="PauseMenu"]
+offset_left = 602.0
+offset_top = 337.0
+offset_right = 1036.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 60
+text = "Resume
+"
+
+[node name="ExitButton" type="Button" parent="PauseMenu"]
+offset_left = 602.0
+offset_top = 494.0
+offset_right = 1036.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 60
+text = "Exit Game
+"
 
 [node name="GameData" type="Node" parent="."]
 

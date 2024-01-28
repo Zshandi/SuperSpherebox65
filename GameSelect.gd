@@ -59,4 +59,5 @@ func close_menu():
 
 func open_menu():
 	show()
+	$"../ScrollingBackground".show()
 	process_mode = Node.PROCESS_MODE_INHERIT
