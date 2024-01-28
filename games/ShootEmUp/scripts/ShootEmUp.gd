@@ -1,7 +1,7 @@
 extends Game
 
-@onready var score:int = 0
-@onready var lives:int = 3
+var score:int = 0
+var lives:int = 3
 
 const ONE_UP_SCORE = 5000
 
@@ -14,6 +14,15 @@ var music_arr: Array[AudioStreamWAV] = []
 func _ready():
 	background_music.stream = music_arr.pick_random()
 	background_music.play()
+	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
+
+func _on_enemy_spawned(enemy):
+	print("connecting")
+	enemy.connect("enemy_died", _on_enemy_died)
+
+func _on_enemy_died(score_to_add):
+	score += score_to_add
+	print("Score: " + str(score))
 
 func _process(delta):
 	pass
