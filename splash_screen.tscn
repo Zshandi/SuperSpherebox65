@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceiw4iwnac05p"]
+[gd_scene load_steps=9 format=3 uid="uid://ceiw4iwnac05p"]
 
 [ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="1_w7po1"]
 [ext_resource type="Texture2D" uid="uid://bkmmc3kupsjxv" path="res://assets/gfx/menu/background_brown.png" id="2_7gjeh"]
 [ext_resource type="Texture2D" uid="uid://dn67ixocup0nw" path="res://assets/gfx/SuperSphereboxLogo.png" id="3_rgcgq"]
 [ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="4_mbnaq"]
+[ext_resource type="Script" path="res://PressButton.gd" id="5_52chv"]
 [ext_resource type="Texture2D" uid="uid://8m6j00xpjcu4" path="res://assets/gfx/buttons/green_btn.png" id="5_blvxm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7li0m"]
@@ -22,9 +23,9 @@ background = ExtResource("2_7gjeh")
 
 [node name="Panel" type="Panel" parent="Node"]
 offset_left = 511.0
-offset_top = 15.0
+offset_top = 48.0
 offset_right = 1133.0
-offset_bottom = 646.0
+offset_bottom = 679.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7li0m")
 
 [node name="Logo" type="Sprite2D" parent="Node/Panel"]
@@ -32,15 +33,16 @@ position = Vector2(313.213, 303.554)
 scale = Vector2(0.459574, 0.459574)
 texture = ExtResource("3_rgcgq")
 
-[node name="Label" type="Label" parent="Node"]
-offset_left = 632.0
-offset_top = 765.0
-offset_right = 832.0
-offset_bottom = 845.0
+[node name="PressButton" type="Label" parent="Node"]
+offset_left = 656.0
+offset_top = 753.0
+offset_right = 856.0
+offset_bottom = 833.0
 text = "Press"
 label_settings = SubResource("LabelSettings_l6tp0")
+script = ExtResource("5_52chv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node/Label"]
-position = Vector2(284, 41)
-scale = Vector2(0.753333, 0.753333)
+[node name="Sprite2D" type="Sprite2D" parent="Node/PressButton"]
+position = Vector2(262, 45)
+scale = Vector2(0.596667, 0.596667)
 texture = ExtResource("5_blvxm")
