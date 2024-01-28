@@ -35,6 +35,8 @@ script = ExtResource("1_a0i0y")
 [node name="ScrollingBackground" parent="." instance=ExtResource("11_a7jyk")]
 background = ExtResource("3_cakvg")
 
+[node name="OpeningMenu" type="Node2D" parent="."]
+
 [node name="GameSelect" type="Node2D" parent="."]
 script = ExtResource("1_ocg6g")
 
