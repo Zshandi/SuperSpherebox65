@@ -4,7 +4,6 @@ class_name Main
 var player_name := ""
 
 var loaded_instance_data:Dictionary = {}
-@onready var menu_music: AudioStreamPlayer = $MenuMusic
 
 func get_seed_for(menu_pos:Vector2i) -> int:
 	var seed_string := player_name + "-" + str(menu_pos.x) + "-" + str(menu_pos.y)
@@ -39,7 +38,6 @@ func _ready():
 		player_name = "Player"
 	
 	print_debug("player_name: ", player_name)
-	menu_music.play()
 
 func _process(delta):
 	if $GameLoader.current_game != null:

@@ -197,5 +197,6 @@ stream = ExtResource("42_xy017")
 [connection signal="pressed" from="GameSelect/UpButton" to="GameSelect" method="_on_button_up_pressed"]
 [connection signal="pressed" from="GameSelect/DownButton" to="GameSelect" method="_on_button_down_pressed"]
 [connection signal="pressed" from="GameSelect/GameSelectWindow" to="GameSelect" method="_on_button_select_pressed"]
+[connection signal="start_menu_music" from="GameLoader" to="GameSelect" method="_on_game_loader_start_menu_music"]
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu" method="toggle_pause"]
 [connection signal="pressed" from="PauseMenu/ExitButton" to="PauseMenu" method="quit_game"]

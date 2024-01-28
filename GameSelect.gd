@@ -14,8 +14,11 @@ var current_position:Vector2i = Vector2i.ZERO
 
 var current_game_data:GameInstanceData
 
+@onready var menu_music: AudioStreamPlayer = $"../MenuMusic"
+
 func _ready():
 	sync_game_info()
+	menu_music.play()
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_right"):
@@ -59,6 +62,7 @@ func sync_game_info():
 func play_current_selection():
 	game_loader.load_game(current_game_data)
 	close_menu()
+	menu_music.stop()
 
 func close_menu():
 	hide()
@@ -69,3 +73,7 @@ func open_menu():
 	show()
 	$"../ScrollingBackground".show()
 	process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func _on_game_loader_start_menu_music():
+	menu_music.play()
