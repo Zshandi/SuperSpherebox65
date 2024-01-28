@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="eight_ball_gfx.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.0334082"
+     inkscape:cx="242.94188"
+     inkscape:cy="119.25791"
+     inkscape:window-width="2560"
+     inkscape:window-height="1007"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#290304;stroke:none;stroke-width:0.401;fill-opacity:1"
+       id="path1"
+       cx="60.816914"
+       cy="29.07435"
+       r="22.817844" />
+    <circle
+       style="fill:#f6fefe;fill-opacity:1;stroke:none;stroke-width:0.253859"
+       id="path1-9"
+       cx="60.953655"
+       cy="25.121006"
+       r="14.445168" />
+    <text
+       xml:space="preserve"
+       style="font-size:20.1967px;line-height:1.25;font-family:DFGothic-EB;-inkscape-font-specification:DFGothic-EB;stroke-width:0.504917"
+       x="54.778496"
+       y="30.844765"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Comic Sans MS';-inkscape-font-specification:'Comic Sans MS';stroke-width:0.504917"
+         x="54.778496"
+         y="30.844765">8</tspan></text>
+  </g>
+</svg>
