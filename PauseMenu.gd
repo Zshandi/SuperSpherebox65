@@ -6,12 +6,16 @@ var game_loader:GameLoader = $"../GameLoader"
 @onready
 var game_select:GameSelect = $"../GameSelect"
 
-func _process(delta):
-	pass
+func toggle_pause():
+	if !get_tree().paused:
+		get_tree().paused = true
+		show()
+	else:
+		get_tree().paused = false
+		hide()
+	
 
 func quit_game():
 	game_loader.unload_current_game()
 	game_select.open_menu()
-	hide()
-	get_tree().paused = false
-	
+	toggle_pause()
