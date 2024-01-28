@@ -99,6 +99,7 @@ script = ExtResource("1_0isc4")
 
 [node name="PauseMenu" type="Node2D" parent="."]
 process_mode = 2
+visible = false
 script = ExtResource("11_uu1qh")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="PauseMenu"]
