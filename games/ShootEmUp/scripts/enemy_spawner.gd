@@ -14,7 +14,7 @@ func _ready():
 	var enemy_sprites = enemy_instantiation.enemy_sprites
 	var enemy_death_sounds = enemy_instantiation.death_sounds
 	enemy_sprite = enemy_sprites.pick_random()
-	enemy_modulation = Color(randf(), randf(), randf(), 1)
+	enemy_modulation = Main.random_color()
 	enemy_death_sound = enemy_death_sounds.pick_random()
 	
 func _process(delta):

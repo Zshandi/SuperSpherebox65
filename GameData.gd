@@ -35,9 +35,9 @@ func generate_instance_data(random_seed:int) -> GameInstanceData:
 	var name2_index := get_random_index(random_generator, possible_names_2)
 	var sequel_index := get_random_index(random_generator, possible_name_sequels)
 	
-	var name1 := possible_names_1[name1_index]
-	var name2 := possible_names_2[name2_index]
-	var sequel := possible_name_sequels[sequel_index]
+	var name1:String = Main.pick_random(possible_names_1, random_generator)
+	var name2:String = Main.pick_random(possible_names_2, random_generator)
+	var sequel:String = Main.pick_random(possible_name_sequels, random_generator)
 	
 	var is_sequel := random_generator.randf() <= name_sequel_chance
 	var is_swapped := random_generator.randf() <= name_swap_chance
@@ -52,9 +52,7 @@ func generate_instance_data(random_seed:int) -> GameInstanceData:
 		game_name += " " + sequel
 	
 	var image_index := get_random_index(random_generator, possible_game_images)
-	var image:Texture2D
-	if possible_game_images.size() > 0:
-		image = possible_game_images[image_index]
+	var image:Texture2D = Main.pick_random(possible_game_images, random_generator)
 	
 	var game_instance := GameInstanceData.new()
 	
