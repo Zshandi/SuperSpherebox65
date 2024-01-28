@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bi0s2icmk42qg"]
 
-[ext_resource type="Script" path="res://games/ShootEmUp/enemy_spawner.gd" id="1_jluxf"]
+[ext_resource type="Script" path="res://games/ShootEmUp/scripts/enemy_spawner.gd" id="1_1b502"]
 
 [node name="EnemySpawner" type="Node"]
-script = ExtResource("1_jluxf")
+script = ExtResource("1_1b502")
 
 [node name="SpawnPositions" type="Node" parent="."]
 

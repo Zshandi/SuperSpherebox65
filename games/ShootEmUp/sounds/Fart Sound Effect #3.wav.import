@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://uhs68aqv7i60"
+path="res://.godot/imported/Fart Sound Effect #3.wav-c9147263c0960c97fa99d9dd6f976d2b.sample"
+
+[deps]
+
+source_file="res://games/ShootEmUp/sounds/Fart Sound Effect #3.wav"
+dest_files=["res://.godot/imported/Fart Sound Effect #3.wav-c9147263c0960c97fa99d9dd6f976d2b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

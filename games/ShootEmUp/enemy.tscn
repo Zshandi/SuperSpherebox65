@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=3 uid="uid://do5qtvu81avic"]
+
+[ext_resource type="Script" path="res://games/ShootEmUp/scripts/enemy.gd" id="1_f38ed"]
+[ext_resource type="Texture2D" uid="uid://b41lvt4px5bv6" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack1.png" id="2_c4cj8"]
+[ext_resource type="Texture2D" uid="uid://c5c0euk06dx8s" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack2.png" id="3_2n4dl"]
+[ext_resource type="Texture2D" uid="uid://b5ti321pgpj32" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack3.png" id="4_ip1vn"]
+[ext_resource type="Texture2D" uid="uid://cvegljkigdjm8" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack4.png" id="5_tl0lr"]
+[ext_resource type="Texture2D" uid="uid://brp3alfepomci" path="res://assets/gfx/ShootEmUp/enemy/enemyBlack5.png" id="6_xgvay"]
+[ext_resource type="Texture2D" uid="uid://h7do8ca1wwsn" path="res://assets/gfx/ShootEmUp/particles/explosion00.png" id="7_wyex1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a03b"]
+radius = 46.0
+height = 98.0
+
+[sub_resource type="Gradient" id="Gradient_kyno8"]
+offsets = PackedFloat32Array(0, 0.551887, 0.976415)
+colors = PackedColorArray(1, 1, 1, 0.0117647, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dgyr0"]
+gradient = SubResource("Gradient_kyno8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v05hv"]
+particle_flag_disable_z = true
+linear_accel_max = 56.72
+tangential_accel_min = -67.16
+tangential_accel_max = 10.45
+scale_min = 0.1
+scale_max = 0.2
+color = Color(1, 1, 1, 0.466667)
+color_ramp = SubResource("GradientTexture1D_dgyr0")
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_f38ed")
+enemy_sprites = Array[Texture2D]([ExtResource("2_c4cj8"), ExtResource("3_2n4dl"), ExtResource("4_ip1vn"), ExtResource("5_tl0lr"), ExtResource("6_xgvay")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_c4cj8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("CapsuleShape2D_1a03b")
+
+[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
+amount = 7
+process_material = SubResource("ParticleProcessMaterial_v05hv")
+texture = ExtResource("7_wyex1")
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
