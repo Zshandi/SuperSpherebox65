@@ -1,13 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0pbkub12bfbv"]
+[gd_scene load_steps=3 format=3 uid="uid://d0pbkub12bfbv"]
 
-[ext_resource type="Script" path="res://games/ShootEmUp/ShootEmUp.gd" id="1_exr3d"]
+[ext_resource type="Script" path="res://games/ShootEmUp/scripts/ShootEmUp.gd" id="1_lvec5"]
+[ext_resource type="PackedScene" uid="uid://btjju6ilduuli" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
 
 [node name="Game1" type="Node2D"]
-script = ExtResource("1_exr3d")
+script = ExtResource("1_lvec5")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 461.0
-offset_top = 217.0
-offset_right = 589.0
-offset_bottom = 245.0
-text = "Game 1 Is Here"
+[node name="ScrollingBackground" parent="." instance=ExtResource("2_ghebx")]

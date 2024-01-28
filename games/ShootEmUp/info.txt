@@ -1,0 +1,7 @@
+Shoot Em Up
+-------------
+
+Graphics
+-----------
+back layer - 300 x 300
+front layer - 600 x 600
