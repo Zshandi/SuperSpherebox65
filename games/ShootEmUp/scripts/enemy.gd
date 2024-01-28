@@ -9,6 +9,7 @@ var death_sounds: Array[AudioStreamWAV] = []
 @onready var enemy_sprite = $Sprite2D
 @onready var explosion = $ExplosionParticles
 @onready var death_audio = $DeathAudio
+var dead = false
 
 func _ready():
 	enemy_sprite.texture = enemy_sprites.pick_random()
@@ -18,11 +19,13 @@ func _ready():
 
 
 func _on_area_entered(area):
-	area.queue_free()
-	die()
+	if not dead:
+		area.queue_free()
+		die()
 
 func die():
-	explosion.emitting = true 
+	dead = true
+	explosion.emitting = true
 	death_audio.play()
 	enemy_sprite.hide()
 	await get_tree().create_timer(.5).timeout
