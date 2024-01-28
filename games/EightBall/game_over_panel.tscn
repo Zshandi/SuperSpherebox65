@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://sup41n3fxc46"]
+
+[ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="1_5pfjq"]
+[ext_resource type="Script" path="res://games/EightBall/game_over_panel.gd" id="1_oxji8"]
+[ext_resource type="Texture2D" uid="uid://8m6j00xpjcu4" path="res://assets/gfx/buttons/green_btn.png" id="2_3ebn1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwqxo"]
+bg_color = Color(0.843137, 0.47451, 0.517647, 0.870588)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_q1lyu"]
+font = ExtResource("1_5pfjq")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_vec6l"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_by05f"]
+font_size = 32
+
+[node name="GameOverPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oxji8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -262.0
+offset_right = 434.0
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cwqxo")
+
+[node name="heading" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = -224.0
+offset_right = 252.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You're Fortune"
+label_settings = SubResource("LabelSettings_q1lyu")
+
+[node name="fortune" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -22.5
+offset_right = 22.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "<Fortune goes here>"
+label_settings = SubResource("LabelSettings_vec6l")
+
+[node name="restart" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = 184.0
+offset_right = 92.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+label_settings = SubResource("LabelSettings_by05f")
+
+[node name="GreenBtn" type="Sprite2D" parent="Panel/restart"]
+position = Vector2(-31.5, 22)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_3ebn1")
