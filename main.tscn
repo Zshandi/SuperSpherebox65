@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://s5f8sfj3v8bg"]
+[gd_scene load_steps=15 format=3 uid="uid://s5f8sfj3v8bg"]
 
 [ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
 [ext_resource type="Script" path="res://Main.gd" id="1_a0i0y"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d0pbkub12bfbv" path="res://games/ShootEmUp/shoot_em_up.tscn" id="6_fxxvc"]
 [ext_resource type="Texture2D" uid="uid://du5eas0oht3" path="res://assets/gfx/menu/GameSelectWindow.png" id="7_8d2qh"]
 [ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="11_a7jyk"]
+[ext_resource type="PackedScene" uid="uid://clykvm5ylgwgx" path="res://games/EightBall/eight_ball.tscn" id="13_c8rpl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0d8u"]
 font_size = 70
@@ -90,6 +91,12 @@ script = ExtResource("4_ry3gs")
 possible_names_1 = Array[String](["Shoot", "Fire", "Attack", "Clobber", "Beat", "Blaster", "Destroy", "Kill", "Beat Up", "Ravage", "Mutilate", "Comb", "Feed", "Kick"])
 possible_names_2 = Array[String](["Monster", "Kittens", "Alien", "Bugs", "Animals", "Zshandi", "Babies", "The Government", "Puppies", "Llamas", "Fish", "Trevor"])
 game_scene = ExtResource("6_fxxvc")
+
+[node name="EightBall" type="Node" parent="GameData"]
+script = ExtResource("4_ry3gs")
+possible_names_1 = Array[String](["Eight"])
+possible_names_2 = Array[String](["Ball"])
+game_scene = ExtResource("13_c8rpl")
 
 [connection signal="pressed" from="GameSelect/RightButton" to="GameSelect" method="_on_button_right_pressed"]
 [connection signal="pressed" from="GameSelect/LeftButton" to="GameSelect" method="_on_button_left_pressed"]
