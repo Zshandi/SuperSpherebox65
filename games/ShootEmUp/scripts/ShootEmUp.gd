@@ -10,6 +10,7 @@ var music_arr: Array[AudioStreamWAV] = []
 
 @onready var background_music = $BackgroundMusic
 @onready var enemy_spawner = $EnemySpawner
+@onready var hud = $HUD
 
 func _ready():
 	background_music.stream = music_arr.pick_random()
@@ -23,6 +24,7 @@ func _on_enemy_spawned(enemy):
 func _on_enemy_died(score_to_add):
 	score += score_to_add
 	print("Score: " + str(score))
+	hud.update_score(score)
 
 func _process(delta):
 	pass
