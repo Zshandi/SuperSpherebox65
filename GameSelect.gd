@@ -50,4 +50,13 @@ func sync_game_info():
 
 func play_current_selection():
 	game_loader.load_game(current_game_data)
+	close_menu()
+
+func close_menu():
 	hide()
+	$"../ScrollingBackground".hide()
+	process_mode = Node.PROCESS_MODE_DISABLED
+
+func open_menu():
+	show()
+	process_mode = Node.PROCESS_MODE_INHERIT

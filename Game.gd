@@ -6,10 +6,8 @@ var high_score:int = 0
 
 var game_instance_data:GameInstanceData
 
-var random_generator:RandomNumberGenerator
-
 func game_init():
-	random_generator = game_instance_data.get_new_random_generator()
+	seed(game_instance_data.random_seed)
 
 func game_start():
 	pass

@@ -17,8 +17,8 @@ func _ready():
 	front_sprite.texture = front_images.pick_random()
 	
 	# modulate the colors
-	back_sprite.modulate = Color(randf(), randf(), randf(), randf())
-	front_sprite.modulate = Color(randf(), randf(), randf(), randf())
+	back_sprite.modulate = Main.random_color_a()
+	front_sprite.modulate = Main.random_color_a()
 	
 	# randomize the scroll speed
 	var back_speed = randi_range(0,100)

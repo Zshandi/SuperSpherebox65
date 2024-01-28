@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cng0yecsy2d3y"]
+[gd_scene load_steps=6 format=3 uid="uid://dm5lbxgejs5rt"]
 
-[ext_resource type="Texture2D" uid="uid://wdtwwvms1mky" path="res://assets/gfx/game console.png" id="1_2spia"]
+[ext_resource type="Texture2D" uid="uid://c7gjrbetupi4a" path="res://assets/gfx/game console.png" id="1_2spia"]
 [ext_resource type="Script" path="res://intro.gd" id="1_v5x65"]
-[ext_resource type="Texture2D" uid="uid://cj30fwqry7o7v" path="res://assets/gfx/contoller.png" id="2_055fi"]
+[ext_resource type="Texture2D" uid="uid://dsi2bthf168c8" path="res://assets/gfx/contoller.png" id="2_055fi"]
 [ext_resource type="Texture2D" uid="uid://bvxrpcqtppsiq" path="res://assets/gfx/menu/background_blue.png" id="2_kmyr6"]
-[ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="4_h2hmm"]
+[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="4_h2hmm"]
 
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_v5x65")
