@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi0s2icmk42qg"]
+
+[ext_resource type="Script" path="res://games/ShootEmUp/enemy_spawner.gd" id="1_jluxf"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_jluxf")
+
+[node name="SpawnPositions" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(167, 105)
+gizmo_extents = 29.3
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(338, 105)
+gizmo_extents = 29.3
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(502, 105)
+gizmo_extents = 29.3
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(659.3, 105)
+gizmo_extents = 29.3
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(830.3, 105)
+gizmo_extents = 29.3
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1010, 105)
+gizmo_extents = 29.3
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1188.3, 104.3)
+gizmo_extents = 29.3
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1359.3, 104.3)
+gizmo_extents = 29.3
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(218.3, 371)
+gizmo_extents = 29.3
+
+[node name="Marker2D10" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(389.3, 371)
+gizmo_extents = 29.3
+
+[node name="Marker2D11" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(553.3, 371)
+gizmo_extents = 29.3
+
+[node name="Marker2D12" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(710.6, 371)
+gizmo_extents = 29.3
+
+[node name="Marker2D13" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(881.6, 371)
+gizmo_extents = 29.3
+
+[node name="Marker2D14" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1061.3, 371)
+gizmo_extents = 29.3
+
+[node name="Marker2D15" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1239.6, 370.3)
+gizmo_extents = 29.3
+
+[node name="Marker2D16" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1410.6, 370.3)
+gizmo_extents = 29.3
+
+[node name="Marker2D17" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(107.3, 244)
+gizmo_extents = 29.3
+
+[node name="Marker2D18" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(278.3, 244)
+gizmo_extents = 29.3
+
+[node name="Marker2D19" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(442.3, 244)
+gizmo_extents = 29.3
+
+[node name="Marker2D20" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(599.6, 244)
+gizmo_extents = 29.3
+
+[node name="Marker2D21" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(770.6, 244)
+gizmo_extents = 29.3
+
+[node name="Marker2D22" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(950.3, 244)
+gizmo_extents = 29.3
+
+[node name="Marker2D23" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1128.6, 243.3)
+gizmo_extents = 29.3
+
+[node name="Marker2D24" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1299.6, 243.3)
+gizmo_extents = 29.3
