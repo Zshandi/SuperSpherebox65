@@ -5,6 +5,9 @@ var health: int = 3
 @export
 var player_sprite_arr: Array[Texture2D] = []
 
+@export
+var shoot_audio_arr: Array[AudioStreamWAV] = []
+
 @onready var player_sprite = $Sprite2D
 
 var speed: int = 300
@@ -13,11 +16,15 @@ var fire_speed: int = 20
 var laser = preload("res://games/ShootEmUp/Laser.tscn")
 @onready var laser_container = $LaserContainer
 
+
+@onready var shoot_audio = $ShootAudio
+
 func _ready():
 	player_sprite.texture = player_sprite_arr.pick_random()
 	player_sprite.modulate = Color(randf(),randf(),randf(),1)
 	speed = randi_range(100,600)
 	fire_speed = randi_range(1,30)
+	shoot_audio.stream = shoot_audio_arr.pick_random()
 
 func _process(delta):
 	if Input.is_action_just_pressed("six"):
@@ -49,4 +56,6 @@ func _fire_laser():
 	var laser_instantiation = laser.instantiate()
 	laser_instantiation.fire_speed = fire_speed
 	laser_instantiation.global_position = global_position
+	laser_instantiation.global_position.y -= 100
 	laser_container.add_child(laser_instantiation)
+	shoot_audio.play()

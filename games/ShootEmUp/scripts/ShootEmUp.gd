@@ -5,7 +5,14 @@ extends Game
 
 const ONE_UP_SCORE = 5000
 
+@export
+var music_arr: Array[AudioStreamWAV] = []
 
+@onready var background_music = $BackgroundMusic
+
+func _ready():
+	background_music.stream = music_arr.pick_random()
+	background_music.play()
 
 func _process(delta):
 	pass

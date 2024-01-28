@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://qitjuelqnbtd"]
+[gd_scene load_steps=12 format=3 uid="uid://qitjuelqnbtd"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/Player.gd" id="1_jg1pr"]
 [ext_resource type="Texture2D" uid="uid://cbmshywfdhnie" path="res://assets/gfx/ShootEmUp/player/playerShip1_blue.png" id="1_uaigg"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c6jtkdsntcb8r" path="res://assets/gfx/ShootEmUp/player/playerShip1_orange.png" id="4_5f1nk"]
 [ext_resource type="Texture2D" uid="uid://ch7uxofdku4nb" path="res://assets/gfx/ShootEmUp/player/playerShip1_red.png" id="5_n40t0"]
 [ext_resource type="Texture2D" uid="uid://gu3la34o3o6g" path="res://assets/gfx/ShootEmUp/player/character_femalePerson_climb0.png" id="6_5s0hn"]
+[ext_resource type="AudioStream" uid="uid://cub1cykg15isg" path="res://games/ShootEmUp/sounds/laser3.wav" id="7_emha6"]
+[ext_resource type="AudioStream" uid="uid://tt15rxglxlir" path="res://games/ShootEmUp/sounds/laser1.wav" id="8_66uny"]
+[ext_resource type="AudioStream" uid="uid://xqo7pgkyhjja" path="res://games/ShootEmUp/sounds/laser12.wav" id="9_hqjju"]
+[ext_resource type="AudioStream" uid="uid://bwumtx2jylg0e" path="res://games/ShootEmUp/sounds/laser13.wav" id="10_6t3cn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b75rk"]
 radius = 25.0
@@ -14,6 +18,7 @@ height = 80.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jg1pr")
 player_sprite_arr = Array[Texture2D]([ExtResource("1_uaigg"), ExtResource("3_haxbn"), ExtResource("4_5f1nk"), ExtResource("5_n40t0"), ExtResource("6_5s0hn")])
+shoot_audio_arr = Array[AudioStreamWAV]([ExtResource("7_emha6"), ExtResource("8_66uny"), ExtResource("9_hqjju"), ExtResource("10_6t3cn")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_uaigg")
@@ -22,3 +27,6 @@ texture = ExtResource("1_uaigg")
 shape = SubResource("CapsuleShape2D_b75rk")
 
 [node name="LaserContainer" type="Node" parent="."]
+
+[node name="ShootAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -7.083
