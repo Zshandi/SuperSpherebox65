@@ -13,10 +13,10 @@ var possible_names_2:Array[String] = []
 var possible_name_sequels:Array[String] = ["2", "3", "13", "65", "42", "II", "III", "IV", "XI", "Plus", "Extra", "Deluxe"]
 
 @export
-var name_sequel_chance := 0.2
+var name_sequel_chance := 0.4
 
 @export
-var name_swap_chance := 0.3
+var name_swap_chance := 0.4
 
 @export
 var possible_game_images:Array[Texture2D] = []
@@ -52,7 +52,9 @@ func generate_instance_data(random_seed:int) -> GameInstanceData:
 		game_name += " " + sequel
 	
 	var image_index := get_random_index(random_generator, possible_game_images)
-	var image := possible_game_images[image_index]
+	var image:Texture2D
+	if possible_game_images.size() > 0:
+		image = possible_game_images[image_index]
 	
 	var game_instance := GameInstanceData.new()
 	

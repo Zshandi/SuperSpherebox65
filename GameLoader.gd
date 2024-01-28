@@ -9,9 +9,11 @@ func unload_current_game():
 		current_game.queue_free()
 		current_game = null
 
-func load_game(gameScene):
+func load_game(game_instance_data):
 	unload_current_game()
 	
-	current_game = gameScene
+	current_game = game_instance_data.game_scene.instantiate()
+	current_game.game_instance_data = game_instance_data
+	current_game.game_init()
 	add_child(current_game)
 	current_game.game_start()

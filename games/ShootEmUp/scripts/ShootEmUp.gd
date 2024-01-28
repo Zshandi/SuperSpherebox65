@@ -17,14 +17,14 @@ func _ready():
 func _process(delta):
 	pass
 
-func game_randomize(seed):
-	pass
+func game_init():
+	super.game_init()
 
 func game_start():
-	$RichTextLabel.text = "Started"
+	super.game_start()
 
 func game_pause():
-	pass
+	super.game_pause()
 
 func game_exit():
-	pass
+	super.game_exit()

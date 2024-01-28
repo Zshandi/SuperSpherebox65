@@ -1,6 +1,14 @@
 extends RefCounted
 class_name GameInstanceData
 
+# These values can be used by the Game to persist data
+
+var high_score:int = 0
+
+var misc_data:Dictionary = {}
+
+# These values shouldn't be changed after creation
+
 var game_name:String
 
 var game_image:Texture2D
