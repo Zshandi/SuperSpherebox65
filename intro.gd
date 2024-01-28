@@ -21,7 +21,7 @@ func _ready():
 		1
 	)
 	intro_sound.play()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	fade_out_sound.play()
 	fade_out.show()
 	tween = create_tween()
