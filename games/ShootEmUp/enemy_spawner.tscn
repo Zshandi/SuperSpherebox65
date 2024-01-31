@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi0s2icmk42qg"]
+[gd_scene load_steps=2 format=3 uid="uid://doo6uwi2fw4b3"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/enemy_spawner.gd" id="1_1b502"]
 

@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c0ynkqiaknmf5" path="res://games/ShootEmUp/music/Juhani Junkala [Retro Game Music Pack] Level 2.wav" id="3_oiaq2"]
 [ext_resource type="AudioStream" uid="uid://qc8o6vwdo17f" path="res://games/ShootEmUp/music/Juhani Junkala [Retro Game Music Pack] Level 3.wav" id="4_d5mlj"]
 [ext_resource type="AudioStream" uid="uid://b50r83rdkgb6k" path="res://games/ShootEmUp/music/Juhani Junkala [Retro Game Music Pack] Title Screen.wav" id="5_pdi6d"]
-[ext_resource type="PackedScene" path="res://games/ShootEmUp/enemy_spawner.tscn" id="8_11fcr"]
+[ext_resource type="PackedScene" uid="uid://doo6uwi2fw4b3" path="res://games/ShootEmUp/enemy_spawner.tscn" id="8_11fcr"]
 [ext_resource type="PackedScene" path="res://games/ShootEmUp/hud.tscn" id="9_63q6s"]
 
 [node name="Game1" type="Node2D"]
