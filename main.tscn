@@ -132,6 +132,7 @@ script = ExtResource("1_0isc4")
 [node name="PauseMenu" type="Node2D" parent="."]
 process_mode = 2
 visible = false
+z_index = 999
 script = ExtResource("11_uu1qh")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="PauseMenu"]
@@ -151,6 +152,8 @@ offset_left = 602.0
 offset_top = 337.0
 offset_right = 1036.0
 offset_bottom = 439.0
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
 theme_override_fonts/font = ExtResource("10_xafrm")
 theme_override_font_sizes/font_size = 60
 text = "Resume
@@ -161,6 +164,8 @@ offset_left = 602.0
 offset_top = 494.0
 offset_right = 1036.0
 offset_bottom = 596.0
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
 theme_override_fonts/font = ExtResource("10_xafrm")
 theme_override_font_sizes/font_size = 60
 text = "Exit Game

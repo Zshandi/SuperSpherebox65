@@ -9,6 +9,7 @@ var game_select:GameSelect = $"../GameSelect"
 func toggle_pause():
 	if !get_tree().paused:
 		get_tree().paused = true
+		$ResumeButton.grab_focus()
 		show()
 	else:
 		get_tree().paused = false
