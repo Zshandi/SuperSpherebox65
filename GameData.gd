@@ -1,4 +1,4 @@
-extends Node
+extends Resource 
 class_name GameData
 
 # Game Global values
@@ -32,21 +32,22 @@ func get_random_index(random_generator:RandomNumberGenerator, array:Array) -> in
 func generate_instance_data(random_seed:int) -> GameInstanceData:
 	seed(random_seed)
 	
-	var name1:String = possible_names_1.pick_random()
-	var name2:String = possible_names_2.pick_random()
-	var sequel:String = possible_name_sequels.pick_random()
+	var name1 = possible_names_1.pick_random()
+	var name2 = possible_names_2.pick_random()
+	var sequel = possible_name_sequels.pick_random()
 	
 	var is_sequel := randf() <= name_sequel_chance
 	var is_swapped := randf() <= name_swap_chance
 	
 	var game_name := ""
-	if is_swapped:
-		game_name = name2 + " " + name1
-	else:
-		game_name = name1 + " " + name2
-	
-	if is_sequel:
-		game_name += " " + sequel
+	if name1 != null && name2 != null:
+		if is_swapped:
+			game_name = name2 + " " + name1
+		else:
+			game_name = name1 + " " + name2
+		
+		if is_sequel && sequel != null:
+			game_name += " " + sequel
 	
 	var image:Texture2D = possible_game_images.pick_random()
 	var image_2:Texture2D = possible_game_images_2.pick_random()
