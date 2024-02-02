@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="GameData" load_steps=14 format=3 uid="uid://ckoslc5535w3l"]
+
+[ext_resource type="Script" path="res://GameData.gd" id="1_4p7gv"]
+[ext_resource type="PackedScene" uid="uid://d0pbkub12bfbv" path="res://games/ShootEmUp/shoot_em_up.tscn" id="1_w3sdb"]
+[ext_resource type="Texture2D" uid="uid://100ur72uprr6" path="res://games/ShootEmUp/thumbnails/back/ocean.png" id="2_pkla6"]
+[ext_resource type="Texture2D" uid="uid://bd31gnkq0texc" path="res://games/ShootEmUp/thumbnails/back/space2.png" id="3_tkkyf"]
+[ext_resource type="Texture2D" uid="uid://yv3f8do77sox" path="res://games/ShootEmUp/thumbnails/back/space3.png" id="4_aose4"]
+[ext_resource type="Texture2D" uid="uid://dxpruulkkwas7" path="res://games/ShootEmUp/thumbnails/back/space4.png" id="5_ppfpf"]
+[ext_resource type="Texture2D" uid="uid://d232rk7tuilnt" path="res://games/ShootEmUp/thumbnails/back/space.png" id="6_d5djw"]
+[ext_resource type="Texture2D" uid="uid://p1ccw85s3q14" path="res://games/ShootEmUp/thumbnails/front/climber.png" id="7_pnek8"]
+[ext_resource type="Texture2D" uid="uid://dcdin4nyibtb7" path="res://games/ShootEmUp/thumbnails/front/enemy_1.png" id="8_56l80"]
+[ext_resource type="Texture2D" uid="uid://di7pgk42lxmrv" path="res://games/ShootEmUp/thumbnails/front/enemy_2.png" id="9_yy710"]
+[ext_resource type="Texture2D" uid="uid://c8ryrlctvw27" path="res://games/ShootEmUp/thumbnails/front/enemy_3.png" id="10_f6jhj"]
+[ext_resource type="Texture2D" uid="uid://cnl24n83d5uf8" path="res://games/ShootEmUp/thumbnails/front/enemy_4.png" id="11_4c5oy"]
+[ext_resource type="Texture2D" uid="uid://csp5dqcrs0gxk" path="res://games/ShootEmUp/thumbnails/front/player.png" id="12_feeh7"]
+
+[resource]
+script = ExtResource("1_4p7gv")
+possible_names_1 = Array[String](["Shoot", "Fire", "Attack", "Clobber", "Beat", "Blaster", "Destroy", "Kill", "Beat Up", "Ravage", "Mutilate", "Comb", "Feed", "Kick"])
+possible_names_2 = Array[String](["Monster", "Kittens", "Alien", "Bugs", "Animals", "Zshandi", "Babies", "The Government", "Puppies", "Llamas", "Fish", "Trevor"])
+possible_name_sequels = Array[String](["2", "3", "13", "65", "42", "II", "III", "IV", "XI", "Plus", "Extra", "Deluxe"])
+name_sequel_chance = 0.4
+name_swap_chance = 0.4
+possible_game_images = Array[Texture2D]([ExtResource("2_pkla6"), ExtResource("3_tkkyf"), ExtResource("4_aose4"), ExtResource("5_ppfpf"), ExtResource("6_d5djw")])
+possible_game_images_2 = Array[Texture2D]([ExtResource("7_pnek8"), ExtResource("8_56l80"), ExtResource("9_yy710"), ExtResource("10_f6jhj"), ExtResource("11_4c5oy"), ExtResource("12_feeh7")])
+game_scene = ExtResource("1_w3sdb")
