@@ -43,7 +43,7 @@ func _init():
 	
 	print_debug("player_name: ", player_name)
 	
-	var dir := DirAccess.open("/")
+	var dir := DirAccess.open(games_path)
 	
 	for subdir in dir.get_directories():
 		dir.change_dir(games_path)
