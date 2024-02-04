@@ -25,8 +25,8 @@ var laser = preload("res://games/ShootEmUp/Laser.tscn")
 @onready var invulnerable_timer = %InvulnerableTimer
 
 func _ready():
-	player_sprite.texture = player_sprite_arr.pick_random()
-	player_sprite.modulate = Main.random_color()
+	#player_sprite.texture = player_sprite_arr.pick_random()
+	#player_sprite.modulate = Main.random_color()
 	speed = randi_range(100,600)
 	fire_speed = randi_range(50,5000)
 	shoot_audio.stream = shoot_audio_arr.pick_random()
