@@ -6,12 +6,16 @@ signal player_died
 
 var health: int = 3
 var is_invulnerable: bool = false
+var is_dead: bool = false
 
 @export
 var player_sprite_arr: Array[Texture2D] = []
 
 @export
 var shoot_audio_arr: Array[AudioStreamWAV] = []
+
+@export
+var hurt_audio_arr: Array[AudioStreamWAV] = []
 
 @onready var player_sprite = $Sprite2D
 
@@ -23,13 +27,10 @@ var laser = preload("res://games/ShootEmUp/Laser.tscn")
 @onready var shoot_audio = $ShootAudio
 @onready var invulnerable_timer = %InvulnerableTimer
 @onready var animation_player = %AnimationPlayer
+@onready var hurt_audio = %HurtAudio
+@onready var death_audio = %DeathAudio
 
 func _ready():
-	#player_sprite.texture = player_sprite_arr.pick_random()
-	#player_sprite.modulate = Main.random_color()
-	speed = randi_range(100,600)
-	fire_speed = randi_range(50,5000)
-	shoot_audio.stream = shoot_audio_arr.pick_random()
 	invulnerable_timer.connect("timeout", _on_invulnerable_timeout)
 	_set_invulnerable()
 	
@@ -53,8 +54,6 @@ func _on_invulnerable_timeout():
 	
 func take_damage():
 	if not is_invulnerable:
-		animation_player.set_assigned_animation("damage")
-		animation_player.play()
 		health -= 1
 		emit_signal("player_take_damage", health)
 		if health <= 0:
@@ -62,11 +61,17 @@ func take_damage():
 		else:
 			_set_invulnerable()
 			_hurt_animation()
+			hurt_audio.play()
 
 func _hurt_animation():
-	pass
+	animation_player.set_assigned_animation("damage")
+	animation_player.play()
 
 func die():
+	is_dead = true
+	hide()
+	death_audio.play()
+	await get_tree().create_timer(2).timeout
 	emit_signal("player_died")
 	queue_free()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://qitjuelqnbtd"]
+[gd_scene load_steps=19 format=3 uid="uid://qitjuelqnbtd"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/Player.gd" id="1_jg1pr"]
 [ext_resource type="Texture2D" uid="uid://cbmshywfdhnie" path="res://assets/gfx/ShootEmUp/player/playerShip1_blue.png" id="1_uaigg"]
@@ -10,6 +10,11 @@
 [ext_resource type="AudioStream" uid="uid://tt15rxglxlir" path="res://games/ShootEmUp/sounds/laser1.wav" id="8_66uny"]
 [ext_resource type="AudioStream" uid="uid://xqo7pgkyhjja" path="res://games/ShootEmUp/sounds/laser12.wav" id="9_hqjju"]
 [ext_resource type="AudioStream" uid="uid://bwumtx2jylg0e" path="res://games/ShootEmUp/sounds/laser13.wav" id="10_6t3cn"]
+[ext_resource type="AudioStream" uid="uid://bwcrkl47hgmvu" path="res://games/ShootEmUp/sounds/enemy_dead_01.wav" id="11_4tkl0"]
+[ext_resource type="AudioStream" uid="uid://cxxvgtbmm6ms0" path="res://games/ShootEmUp/sounds/enemy_dead_20.wav" id="12_requ6"]
+[ext_resource type="AudioStream" uid="uid://neidlwtyfiiv" path="res://games/ShootEmUp/sounds/enemy_dead_33.wav" id="13_dxe4b"]
+[ext_resource type="AudioStream" uid="uid://uhs68aqv7i60" path="res://games/ShootEmUp/sounds/Fart Sound Effect #3.wav" id="14_6sru2"]
+[ext_resource type="AudioStream" uid="uid://df7nqqs4iey8c" path="res://games/ShootEmUp/sounds/vgdeathsound.wav" id="15_tklfe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b75rk"]
 radius = 25.0
@@ -52,6 +57,7 @@ _data = {
 script = ExtResource("1_jg1pr")
 player_sprite_arr = Array[Texture2D]([ExtResource("1_uaigg"), ExtResource("3_haxbn"), ExtResource("4_5f1nk"), ExtResource("5_n40t0"), ExtResource("6_5s0hn")])
 shoot_audio_arr = Array[AudioStreamWAV]([ExtResource("7_emha6"), ExtResource("8_66uny"), ExtResource("9_hqjju"), ExtResource("10_6t3cn")])
+hurt_audio_arr = Array[AudioStreamWAV]([ExtResource("11_4tkl0"), ExtResource("12_requ6"), ExtResource("13_dxe4b"), ExtResource("14_6sru2"), ExtResource("15_tklfe")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_uaigg")
@@ -73,3 +79,11 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_28fmc")
 }
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -6.559
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -5.622
