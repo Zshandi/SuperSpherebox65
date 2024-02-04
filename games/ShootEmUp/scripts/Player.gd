@@ -15,8 +15,6 @@ var fire_speed: int = 20
 
 var laser = preload("res://games/ShootEmUp/Laser.tscn")
 @onready var laser_container = $LaserContainer
-
-
 @onready var shoot_audio = $ShootAudio
 
 func _ready():

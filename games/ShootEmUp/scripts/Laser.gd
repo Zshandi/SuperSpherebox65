@@ -6,7 +6,17 @@ enum FiringStyle {
 }
 
 var firing_style = FiringStyle.STRAIGHT
-var fire_speed: int = 20
+var fire_speed: int = 200
+const LIFESPAN = 5
+
+func _ready():
+	var lifespan_timer = Timer.new()
+	lifespan_timer.connect("timeout", _on_lifespan_timeout)
+	add_child(lifespan_timer)
+	lifespan_timer.start(LIFESPAN)
+
+func _on_lifespan_timeout():
+	queue_free()
 
 func _process(delta):
 	_move_forward(delta)
