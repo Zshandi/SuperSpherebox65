@@ -93,9 +93,10 @@ func _check_outside():
 		global_position.x = 0
 		
 func _fire_laser():
-	var laser_instantiation = laser.instantiate()
-	laser_instantiation.fire_speed = fire_speed
-	laser_instantiation.global_position = global_position
-	laser_instantiation.global_position.y -= 100
-	laser_container.add_child(laser_instantiation)
-	shoot_audio.play()
+	if not is_dead:
+		var laser_instantiation = laser.instantiate()
+		laser_instantiation.fire_speed = fire_speed
+		laser_instantiation.global_position = global_position
+		laser_instantiation.global_position.y -= 100
+		laser_container.add_child(laser_instantiation)
+		shoot_audio.play()

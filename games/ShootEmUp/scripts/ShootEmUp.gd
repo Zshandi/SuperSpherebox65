@@ -23,7 +23,15 @@ var player_color: Color
 var player_speed: float
 var player_shoot_speed: float
 
+var enemies_killed = 0
+const ENEMY_KILLED_MULTIPLIER = 5
+@onready var combo_timer = %ComboTimer
+var curr_multiplier: int
+
+@onready var game_over = $UI/GameOver
+
 func _ready():
+	game_over.hide()
 	background_music.stream = music_arr.pick_random()
 	background_music.play()
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
@@ -35,7 +43,9 @@ func _ready():
 	player_color = Main.random_color()
 	player_speed = randi_range(100,600)
 	player_shoot_speed = randi_range(50,5000)
+	combo_timer.connect("timeout", _on_combo_timeout)
 	_spawn_player()
+	_update_multiplier()
 	
 func _spawn_player():
 	var player_instantiation = player.instantiate()
@@ -56,9 +66,27 @@ func _on_enemy_spawned(enemy):
 	enemy.connect("enemy_died", _on_enemy_died)
 
 func _on_enemy_died(score_to_add):
-	score += score_to_add
-	print("Score: " + str(score))
+	_update_multiplier()
+	_update_score(score_to_add)
+
+func _update_multiplier():
+	combo_timer.stop()
+	enemies_killed += 1
+	curr_multiplier = ceil(float(enemies_killed) / ENEMY_KILLED_MULTIPLIER)
+	hud.update_multiplier(curr_multiplier)
+	combo_timer.start()
+	
+func _on_combo_timeout():
+	enemies_killed = 0
+	_update_multiplier()
+	
+	
+func _update_score(score_to_add):
+	var new_score_to_add = score_to_add * curr_multiplier
+	score += new_score_to_add
 	hud.update_score(score)
+	game_over.update_score(score)
+	
 
 func _process(delta):
 	pass
@@ -81,9 +109,11 @@ func _on_player_player_take_damage(curr_health):
 
 func _on_player_died():
 	print("Player died")
+	combo_timer.stop()
+	_on_combo_timeout()
 	lives -= 1
 	if lives <= 0:
 		print("Game Over")
+		game_over.show()
 	else:
-		#await get_tree().create_timer(1.5).timeout
 		_spawn_player()
