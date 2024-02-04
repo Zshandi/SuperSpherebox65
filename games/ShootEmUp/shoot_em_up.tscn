@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0pbkub12bfbv"]
+[gd_scene load_steps=11 format=3 uid="uid://d0pbkub12bfbv"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/ShootEmUp.gd" id="1_lvec5"]
 [ext_resource type="PackedScene" uid="uid://btjju6ilduuli" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://doo6uwi2fw4b3" path="res://games/ShootEmUp/enemy_spawner.tscn" id="8_11fcr"]
 [ext_resource type="PackedScene" uid="uid://ddrr0ju33gmco" path="res://games/ShootEmUp/hud.tscn" id="9_63q6s"]
 [ext_resource type="PackedScene" uid="uid://cxxlbilj8fve6" path="res://games/ShootEmUp/EnemyLaser.tscn" id="10_7kl5l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wbb4"]
+bg_color = Color(0, 0.772549, 0.337255, 1)
 
 [node name="Game1" type="Node2D"]
 script = ExtResource("1_lvec5")
@@ -45,6 +48,7 @@ offset_top = 292.0
 offset_right = 287.0
 offset_bottom = 330.0
 rotation = -1.57079
+theme_override_styles/fill = SubResource("StyleBoxFlat_8wbb4")
 max_value = 3.0
 value = 3.0
 show_percentage = false

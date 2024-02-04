@@ -21,8 +21,8 @@ var fire_speed: int = 20
 var laser = preload("res://games/ShootEmUp/Laser.tscn")
 @onready var laser_container = $LaserContainer
 @onready var shoot_audio = $ShootAudio
-
 @onready var invulnerable_timer = %InvulnerableTimer
+@onready var animation_player = %AnimationPlayer
 
 func _ready():
 	#player_sprite.texture = player_sprite_arr.pick_random()
@@ -53,12 +53,18 @@ func _on_invulnerable_timeout():
 	
 func take_damage():
 	if not is_invulnerable:
-		_set_invulnerable()
+		animation_player.set_assigned_animation("damage")
+		animation_player.play()
 		health -= 1
 		emit_signal("player_take_damage", health)
-		print(health)
 		if health <= 0:
 			die()
+		else:
+			_set_invulnerable()
+			_hurt_animation()
+
+func _hurt_animation():
+	pass
 
 func die():
 	emit_signal("player_died")
