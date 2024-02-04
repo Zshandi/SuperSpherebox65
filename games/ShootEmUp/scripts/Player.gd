@@ -53,6 +53,7 @@ func _on_invulnerable_timeout():
 	
 func take_damage():
 	if not is_invulnerable:
+		_set_invulnerable()
 		health -= 1
 		emit_signal("player_take_damage", health)
 		print(health)
