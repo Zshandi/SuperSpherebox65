@@ -1,4 +1,8 @@
+class_name Player
 extends CharacterBody2D
+
+signal player_take_damage(curr_health)
+signal player_died
 
 var health: int = 3
 
@@ -31,6 +35,17 @@ func _process(delta):
 func _physics_process(delta):
 	_check_for_movement(delta)
 	_check_outside()
+	
+func take_damage():
+	health -= 1
+	emit_signal("player_take_damage", health)
+	print(health)
+	if health <= 0:
+		die()
+
+func die():
+	emit_signal("player_died")
+	queue_free()
 
 func _check_for_movement(delta):
 	velocity = Vector2(0,0)

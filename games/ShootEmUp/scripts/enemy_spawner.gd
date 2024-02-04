@@ -6,6 +6,7 @@ var enemy = preload("res://games/ShootEmUp/enemy.tscn")
 var enemy_sprite: Texture2D
 var enemy_modulation
 var enemy_death_sound: AudioStreamWAV
+var enemy_shoot_sound: AudioStreamWAV
 var pitch_scale: float
 
 signal enemy_spawned(enemy)
@@ -14,9 +15,11 @@ func _ready():
 	var enemy_instantiation = enemy.instantiate()
 	var enemy_sprites = enemy_instantiation.enemy_sprites
 	var enemy_death_sounds = enemy_instantiation.death_sounds
+	var enemy_shoot_sounds = enemy_instantiation.shoot_sounds
 	enemy_sprite = enemy_sprites.pick_random()
 	enemy_modulation = Main.random_color()
 	enemy_death_sound = enemy_death_sounds.pick_random()
+	enemy_shoot_sound = enemy_shoot_sounds.pick_random()
 	pitch_scale = randf_range(.5, 3)
 	
 func _process(delta):
@@ -37,6 +40,7 @@ func _spawn_enemies():
 		this_enemy.enemy_sprite.texture = enemy_sprite
 		this_enemy.enemy_sprite.modulate = enemy_modulation
 		this_enemy.death_audio.stream = enemy_death_sound
+		this_enemy.shoot_audio.stream = enemy_shoot_sound
 		this_enemy.death_audio.set_pitch_scale(pitch_scale)
 		this_enemy.global_position = spawn_pos.global_position
 		emit_signal("enemy_spawned", this_enemy)

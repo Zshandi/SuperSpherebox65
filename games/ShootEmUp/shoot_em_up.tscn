@@ -35,3 +35,5 @@ offset_bottom = 15.0
 
 [node name="Area2D" parent="." instance=ExtResource("10_7kl5l")]
 position = Vector2(708, 553)
+
+[connection signal="player_take_damage" from="Player" to="." method="_on_player_player_take_damage"]

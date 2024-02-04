@@ -39,3 +39,7 @@ func game_pause():
 
 func game_exit():
 	super.game_exit()
+
+
+func _on_player_player_take_damage(curr_health):
+	print("Updating GUI")
