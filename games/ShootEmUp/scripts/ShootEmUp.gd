@@ -11,11 +11,22 @@ var music_arr: Array[AudioStreamWAV] = []
 @onready var background_music = $BackgroundMusic
 @onready var enemy_spawner = $EnemySpawner
 @onready var hud = $HUD
+@onready var player_spawn_position = %PlayerSpawnPosition
+
+var player = preload("res://games/ShootEmUp/Player.tscn")
 
 func _ready():
 	background_music.stream = music_arr.pick_random()
 	background_music.play()
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
+	_spawn_player()
+	
+func _spawn_player():
+	var player_instantiation = player.instantiate()
+	player_instantiation.global_position = player_spawn_position.global_position
+	player_instantiation.connect("player_take_damage", _on_player_player_take_damage)
+	player_instantiation.connect("player_died", _on_player_died)
+	add_child(player_instantiation)
 
 func _on_enemy_spawned(enemy):
 	enemy.connect("enemy_died", _on_enemy_died)
@@ -40,6 +51,14 @@ func game_pause():
 func game_exit():
 	super.game_exit()
 
-
 func _on_player_player_take_damage(curr_health):
 	print("Updating GUI")
+
+func _on_player_died():
+	print("Player died")
+	lives -= 1
+	if lives <= 0:
+		print("Game Over")
+	else:
+		await get_tree().create_timer(1.5).timeout
+		_spawn_player()

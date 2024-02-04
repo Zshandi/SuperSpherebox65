@@ -5,6 +5,7 @@ signal player_take_damage(curr_health)
 signal player_died
 
 var health: int = 3
+var is_invulnerable: bool = false
 
 @export
 var player_sprite_arr: Array[Texture2D] = []
@@ -21,12 +22,17 @@ var laser = preload("res://games/ShootEmUp/Laser.tscn")
 @onready var laser_container = $LaserContainer
 @onready var shoot_audio = $ShootAudio
 
+@onready var invulnerable_timer = %InvulnerableTimer
+
 func _ready():
 	player_sprite.texture = player_sprite_arr.pick_random()
 	player_sprite.modulate = Main.random_color()
 	speed = randi_range(100,600)
 	fire_speed = randi_range(50,5000)
 	shoot_audio.stream = shoot_audio_arr.pick_random()
+	invulnerable_timer.connect("timeout", _on_invulnerable_timeout)
+	_set_invulnerable()
+	
 
 func _process(delta):
 	if Input.is_action_just_pressed("six"):
@@ -36,12 +42,22 @@ func _physics_process(delta):
 	_check_for_movement(delta)
 	_check_outside()
 	
+func _set_invulnerable():
+	is_invulnerable = true
+	print("Player is invulnerable")
+	invulnerable_timer.start()
+
+func _on_invulnerable_timeout():
+	is_invulnerable = false
+	print("Player is no longer invulnerable")
+	
 func take_damage():
-	health -= 1
-	emit_signal("player_take_damage", health)
-	print(health)
-	if health <= 0:
-		die()
+	if not is_invulnerable:
+		health -= 1
+		emit_signal("player_take_damage", health)
+		print(health)
+		if health <= 0:
+			die()
 
 func die():
 	emit_signal("player_died")

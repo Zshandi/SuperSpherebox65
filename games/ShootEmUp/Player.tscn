@@ -30,3 +30,8 @@ shape = SubResource("CapsuleShape2D_b75rk")
 
 [node name="ShootAudio" type="AudioStreamPlayer" parent="."]
 volume_db = -7.083
+
+[node name="InvulnerableTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
