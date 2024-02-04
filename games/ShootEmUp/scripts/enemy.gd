@@ -25,7 +25,9 @@ func _on_area_entered(area):
 func die():
 	is_dead = true
 	emit_signal("enemy_died", 100)
-	explosion.emitting = true 
+	explosion.emitting = true
+	var pitch_variance = randf_range(0,1.5)
+	death_audio.set_pitch_scale(death_audio.get_pitch_scale() + pitch_variance)
 	death_audio.play()
 	enemy_sprite.hide()
 	await get_tree().create_timer(.5).timeout
