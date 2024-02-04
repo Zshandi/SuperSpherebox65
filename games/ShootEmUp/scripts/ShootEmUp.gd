@@ -18,7 +18,6 @@ func _ready():
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
 
 func _on_enemy_spawned(enemy):
-	print("connecting")
 	enemy.connect("enemy_died", _on_enemy_died)
 
 func _on_enemy_died(score_to_add):

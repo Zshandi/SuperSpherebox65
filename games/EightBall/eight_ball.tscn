@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://clykvm5ylgwgx"]
 
 [ext_resource type="Script" path="res://games/EightBall/scripts/eight_ball.gd" id="1_3f1j1"]
-[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="2_1rklr"]
+[ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="2_1rklr"]
 [ext_resource type="Texture2D" uid="uid://ccuuc3vcxessr" path="res://assets/gfx/EightBall/block_square.png" id="3_06jil"]
 [ext_resource type="Texture2D" uid="uid://dhm024lfc8ytn" path="res://assets/gfx/EightBall/genie.png" id="3_l3xjl"]
 [ext_resource type="Texture2D" uid="uid://ckj464ow37iij" path="res://assets/gfx/EightBall/eight_ball.png" id="4_tewm2"]
 [ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="5_rf1ga"]
-[ext_resource type="Texture2D" uid="uid://c6c4gm0ogk1gj" path="res://assets/gfx/buttons/green_btn.png" id="6_elcdk"]
+[ext_resource type="Texture2D" uid="uid://8m6j00xpjcu4" path="res://assets/gfx/buttons/green_btn.png" id="6_elcdk"]
 [ext_resource type="PackedScene" uid="uid://sup41n3fxc46" path="res://games/EightBall/game_over_panel.tscn" id="7_1xik3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pxft2"]

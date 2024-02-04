@@ -23,7 +23,7 @@ func _ready():
 	player_sprite.texture = player_sprite_arr.pick_random()
 	player_sprite.modulate = Main.random_color()
 	speed = randi_range(100,600)
-	fire_speed = randi_range(1,30)
+	fire_speed = randi_range(50,5000)
 	shoot_audio.stream = shoot_audio_arr.pick_random()
 
 func _process(delta):
