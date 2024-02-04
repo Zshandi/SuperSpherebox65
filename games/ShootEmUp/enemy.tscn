@@ -59,7 +59,4 @@ volume_db = -4.685
 [node name="ShootAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 
-[node name="LaserContainer" type="Node" parent="."]
-unique_name_in_owner = true
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

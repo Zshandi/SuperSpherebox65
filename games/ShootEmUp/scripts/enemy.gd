@@ -10,7 +10,6 @@ var death_sounds: Array[AudioStreamWAV] = []
 @onready var death_audio = $DeathAudio
 
 @onready var laser = preload("res://games/ShootEmUp/EnemyLaser.tscn")
-@onready var laserContainer = %LaserContainer
 @onready var shootAudio = %ShootAudio
 
 signal enemy_died(score)
@@ -27,12 +26,12 @@ func _ready():
 	_set_shoot_timer()
 
 func _set_shoot_timer():
-	shoot_timer.start(randf_range(0,2))
+	shoot_timer.start(randf_range(0,5))
 
 func _on_shoot_timer_timeout():
 	var enemy_laser = laser.instantiate()
 	enemy_laser.global_position = global_position
-	laserContainer.add_child(enemy_laser)
+	get_node("../../EnemyLaserContainer").add_child(enemy_laser)
 	_set_shoot_timer()
 
 func _on_area_entered(area):
