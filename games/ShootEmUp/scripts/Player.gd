@@ -68,12 +68,13 @@ func _hurt_animation():
 	animation_player.play()
 
 func die():
-	is_dead = true
-	hide()
-	death_audio.play()
-	await get_tree().create_timer(2).timeout
-	emit_signal("player_died")
-	queue_free()
+	if not is_dead:
+		is_dead = true
+		hide()
+		death_audio.play()
+		await get_tree().create_timer(2).timeout
+		emit_signal("player_died")
+		queue_free()
 
 func _check_for_movement(delta):
 	velocity = Vector2(0,0)

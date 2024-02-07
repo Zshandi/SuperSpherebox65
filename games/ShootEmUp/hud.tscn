@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddrr0ju33gmco"]
+[gd_scene load_steps=7 format=3 uid="uid://ddrr0ju33gmco"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/hud.gd" id="1_ghvjg"]
 [ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="1_ycn1d"]
@@ -8,10 +8,14 @@ font = ExtResource("1_ycn1d")
 font_size = 52
 
 [sub_resource type="SystemFont" id="SystemFont_ttgi2"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ok1k1"]
 font = SubResource("SystemFont_ttgi2")
 font_size = 68
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_134af"]
+bg_color = Color(0, 0.772549, 0.337255, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -24,16 +28,30 @@ script = ExtResource("1_ghvjg")
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 79.0
+offset_top = 19.0
+offset_right = 303.0
+offset_bottom = 84.0
 text = "SCORE: 0"
 label_settings = SubResource("LabelSettings_v4ora")
 
 [node name="Multiplier" type="Label" parent="."]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 52.0
-offset_right = 197.0
-offset_bottom = 145.0
+offset_left = 84.0
+offset_top = 71.0
+offset_right = 276.0
+offset_bottom = 164.0
 text = "x1"
 label_settings = SubResource("LabelSettings_ok1k1")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 25.0
+offset_top = 292.0
+offset_right = 287.0
+offset_bottom = 330.0
+rotation = -1.57079
+theme_override_styles/fill = SubResource("StyleBoxFlat_134af")
+max_value = 3.0
+value = 3.0
+show_percentage = false

@@ -12,7 +12,6 @@ var music_arr: Array[AudioStreamWAV] = []
 @onready var enemy_spawner = $EnemySpawner
 @onready var hud = $HUD
 @onready var player_spawn_position = %PlayerSpawnPosition
-@onready var player_health_bar = %PlayerHealthBar
 
 var player = preload("res://games/ShootEmUp/Player.tscn")
 var player_sprite: Texture2D
@@ -52,7 +51,7 @@ func _spawn_player():
 	player_instantiation.global_position = player_spawn_position.global_position
 	player_instantiation.connect("player_take_damage", _on_player_player_take_damage)
 	player_instantiation.connect("player_died", _on_player_died)
-	player_health_bar.value = player_instantiation.health
+	hud.update_player_health(player_instantiation.health)
 	add_child(player_instantiation)
 	player_instantiation.player_sprite.texture = player_sprite
 	player_instantiation.player_sprite.modulate = player_color
@@ -105,7 +104,8 @@ func game_exit():
 
 func _on_player_player_take_damage(curr_health):
 	print("Updating GUI")
-	player_health_bar.value = curr_health
+	hud.update_player_health(curr_health)
+	#hud.player_health_bar.value = curr_health
 
 func _on_player_died():
 	print("Player died")
