@@ -50,8 +50,9 @@ func _init():
 		dir.change_dir(subdir)
 		if dir.file_exists(game_data_filename):
 			var path_to_data := dir.get_current_dir() + "/" + game_data_filename
-			var data := load(path_to_data)
-			all_game_data.push_back(data)
+			var data:GameData = load(path_to_data)
+			if data.include_in_menu:
+				all_game_data.push_back(data)
 
 func _process(delta):
 	if $GameLoader.current_game != null:
