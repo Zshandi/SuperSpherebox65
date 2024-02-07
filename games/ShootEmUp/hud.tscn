@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddrr0ju33gmco"]
+[gd_scene load_steps=9 format=3 uid="uid://ddrr0ju33gmco"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/hud.gd" id="1_ghvjg"]
 [ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="1_ycn1d"]
+[ext_resource type="PackedScene" uid="uid://j58r5pycjjoe" path="res://games/ShootEmUp/life.tscn" id="3_sanub"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v4ora"]
 font = ExtResource("1_ycn1d")
@@ -17,6 +18,9 @@ font_size = 68
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_134af"]
 bg_color = Color(0, 0.772549, 0.337255, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_segmv"]
+bg_color = Color(0.639216, 0.203922, 0.341176, 0)
+
 [node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -28,24 +32,25 @@ script = ExtResource("1_ghvjg")
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 79.0
+offset_left = 90.0
 offset_top = 19.0
-offset_right = 303.0
+offset_right = 314.0
 offset_bottom = 84.0
 text = "SCORE: 0"
 label_settings = SubResource("LabelSettings_v4ora")
 
 [node name="Multiplier" type="Label" parent="."]
 layout_mode = 0
-offset_left = 84.0
+offset_left = 95.0
 offset_top = 71.0
-offset_right = 276.0
+offset_right = 287.0
 offset_bottom = 164.0
 text = "x1"
 label_settings = SubResource("LabelSettings_ok1k1")
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 25.0
 offset_top = 292.0
 offset_right = 287.0
@@ -55,3 +60,24 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_134af")
 max_value = 3.0
 value = 3.0
 show_percentage = false
+
+[node name="LivesContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -84.0
+offset_right = -10.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_segmv")
+
+[node name="HBoxLivesContainer" type="HBoxContainer" parent="LivesContainer"]
+layout_mode = 2
+
+[node name="Life" parent="LivesContainer/HBoxLivesContainer" instance=ExtResource("3_sanub")]
+layout_mode = 2

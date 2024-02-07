@@ -10,7 +10,7 @@ var music_arr: Array[AudioStreamWAV] = []
 
 @onready var background_music = $BackgroundMusic
 @onready var enemy_spawner = $EnemySpawner
-@onready var hud = $HUD
+@onready var hud = $UI/HUD
 @onready var player_spawn_position = %PlayerSpawnPosition
 
 var player = preload("res://games/ShootEmUp/Player.tscn")
@@ -45,6 +45,9 @@ func _ready():
 	combo_timer.connect("timeout", _on_combo_timeout)
 	_spawn_player()
 	_update_multiplier()
+	hud.player_sprite = player_sprite
+	hud.player_color = player_color
+	hud.update_lives(lives)
 	
 func _spawn_player():
 	var player_instantiation = player.instantiate()
@@ -87,9 +90,6 @@ func _update_score(score_to_add):
 	game_over.update_score(score)
 	
 
-func _process(delta):
-	pass
-
 func game_init():
 	super.game_init()
 
@@ -105,13 +105,13 @@ func game_exit():
 func _on_player_player_take_damage(curr_health):
 	print("Updating GUI")
 	hud.update_player_health(curr_health)
-	#hud.player_health_bar.value = curr_health
 
 func _on_player_died():
 	print("Player died")
 	combo_timer.stop()
 	_on_combo_timeout()
 	lives -= 1
+	hud.update_lives(lives)
 	if lives <= 0:
 		print("Game Over")
 		game_over.show()
