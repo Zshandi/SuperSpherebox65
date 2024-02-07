@@ -4,6 +4,8 @@ class_name Main
 const game_data_filename := "game_data.tres"
 const games_path := "res://games/"
 
+const user_env_variables:Array[String] = ["USERNAME", "USER", "COMPUTERNAME"]
+
 var player_name := ""
 
 var loaded_instance_data:Dictionary = {}
@@ -32,14 +34,12 @@ func get_game_instance_data_for(menu_pos:Vector2i) -> GameInstanceData:
 	return data
 
 func _init():
-	if OS.has_environment("USERNAME"):
-		player_name = OS.get_environment("USERNAME")
-	elif OS.has_environment("USER"):
-		player_name = OS.get_environment("USER")
-	elif OS.has_environment("COMPUTERNAME"):
-		player_name = OS.get_environment("COMPUTERNAME")
-	else:
-		player_name = "Player"
+	player_name = "Player"
+	
+	for env_var in user_env_variables:
+		if OS.has_environment(env_var):
+			player_name = OS.get_environment(env_var)
+			break
 	
 	print_debug("player_name: ", player_name)
 	
@@ -50,8 +50,9 @@ func _init():
 		dir.change_dir(subdir)
 		if dir.file_exists(game_data_filename):
 			var path_to_data := dir.get_current_dir() + "/" + game_data_filename
-			var data := load(path_to_data)
-			all_game_data.push_back(data)
+			var data:GameData = load(path_to_data)
+			if data.include_in_menu:
+				all_game_data.push_back(data)
 
 func _process(delta):
 	if $GameLoader.current_game != null:
