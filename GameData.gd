@@ -4,6 +4,9 @@ class_name GameData
 # Game Global values
 
 @export
+var include_in_menu:bool = true
+
+@export
 var possible_names_1:Array[String] = []
 
 @export
