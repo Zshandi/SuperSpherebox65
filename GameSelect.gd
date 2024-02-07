@@ -30,7 +30,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):
 		move_selection(Vector2i.UP)
 	
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") || Input.is_action_just_pressed("power"):
 		play_current_selection()
 
 func _on_button_right_pressed():
