@@ -102,17 +102,19 @@ texture = ExtResource("15_nicrg")
 process_mode = 1
 script = ExtResource("1_0isc4")
 
-[node name="PauseMenu" type="Node2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" type="Node2D" parent="CanvasLayer"]
 process_mode = 2
 visible = false
 z_index = 999
 script = ExtResource("11_uu1qh")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="PauseMenu"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/PauseMenu"]
 modulate = Color(0.227451, 0.227451, 0.227451, 0.854902)
 mesh = SubResource("QuadMesh_17vmu")
 
-[node name="PauseText" type="Label" parent="PauseMenu"]
+[node name="PauseText" type="Label" parent="CanvasLayer/PauseMenu"]
 offset_left = 551.0
 offset_top = 127.0
 offset_right = 1079.0
@@ -120,7 +122,7 @@ offset_bottom = 237.0
 text = "Game Paused"
 label_settings = SubResource("LabelSettings_tstpv")
 
-[node name="ResumeButton" type="Button" parent="PauseMenu"]
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu"]
 offset_left = 602.0
 offset_top = 337.0
 offset_right = 1036.0
@@ -133,7 +135,7 @@ theme_override_font_sizes/font_size = 60
 text = "Resume
 "
 
-[node name="ExitButton" type="Button" parent="PauseMenu"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/PauseMenu"]
 offset_left = 602.0
 offset_top = 494.0
 offset_right = 1036.0
@@ -160,5 +162,5 @@ stream = ExtResource("42_xy017")
 [connection signal="pressed" from="GameSelect/DownButton" to="GameSelect" method="_on_button_down_pressed"]
 [connection signal="pressed" from="GameSelect/GameSelectWindow" to="GameSelect" method="_on_button_select_pressed"]
 [connection signal="start_menu_music" from="GameLoader" to="GameSelect" method="_on_game_loader_start_menu_music"]
-[connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu" method="toggle_pause"]
-[connection signal="pressed" from="PauseMenu/ExitButton" to="PauseMenu" method="quit_game"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="toggle_pause"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/ExitButton" to="CanvasLayer/PauseMenu" method="quit_game"]

@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/life.gd" id="1_rya54"]
 
 [node name="Life" type="MarginContainer"]
+offset_right = 37.72
+offset_bottom = 20.0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 script = ExtResource("1_rya54")
@@ -11,3 +13,4 @@ script = ExtResource("1_rya54")
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("1_7j3ja")
+flip_h = true

@@ -68,16 +68,26 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -119.0
-offset_top = -84.0
-offset_right = -10.0
-offset_bottom = -9.0
+offset_left = -121.0
+offset_top = -83.0
+offset_right = -12.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_segmv")
 
-[node name="HBoxLivesContainer" type="HBoxContainer" parent="LivesContainer"]
-layout_mode = 2
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Life" parent="LivesContainer/HBoxLivesContainer" instance=ExtResource("3_sanub")]
+[node name="HBoxLivesContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 1590.0
+offset_top = 852.0
+offset_right = 1699.0
+offset_bottom = 927.0
+scale = Vector2(-0.5, 0.5)
+
+[node name="Life" parent="Control/HBoxLivesContainer" instance=ExtResource("3_sanub")]
 layout_mode = 2
