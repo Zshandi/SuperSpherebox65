@@ -7,15 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://dwjexu8f7ao8y" path="res://games/EightBall/thumbnails/back/back_2.png" id="3_ilsgo"]
 [ext_resource type="Texture2D" uid="uid://bsy4uoi53i0u3" path="res://games/EightBall/thumbnails/back/back_3.png" id="4_wrdp3"]
 [ext_resource type="Texture2D" uid="uid://bo503dhm5a08h" path="res://games/EightBall/thumbnails/back/back_4.png" id="5_v1vjm"]
-[ext_resource type="Script" path="res://games/EightBall/scripts/eight_ball_game_data.gd" id="17_50e7i"]
+[ext_resource type="Script" path="res://games/EightBall/scripts/eight_ball_game_data.gd" id="8_fhu8e"]
 
 [resource]
-script = ExtResource("17_50e7i")
+script = ExtResource("8_fhu8e")
 eight_ball_images = Array[Texture2D]([ExtResource("1_lkjvc"), ExtResource("2_jhfk8")])
 rotation_chance = 0.2
 scale_chance = 0.5
 min_scale = 0.8
 max_scale = 2.0
+multiple_chance = 0.2
+multiple_max = 4
 include_in_menu = true
 possible_names_1 = Array[String](["Eight", "Nine", "Fortune", "Super", "Magic", "Incredible", "Amazing", "Mystical"])
 possible_names_2 = Array[String](["Ball", "Cube", "Thing", "Object", "Toy", "Knick Knack"])
