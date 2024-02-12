@@ -47,6 +47,8 @@ func _set_invulnerable():
 	is_invulnerable = true
 	print("Player is invulnerable")
 	invulnerable_timer.start()
+	animation_player.set_assigned_animation("invulnerable")
+	animation_player.play()
 
 func _on_invulnerable_timeout():
 	is_invulnerable = false
