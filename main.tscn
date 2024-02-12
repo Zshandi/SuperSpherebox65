@@ -102,6 +102,7 @@ offset_right = -81.0
 offset_bottom = -221.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="GameLoader" type="Node2D" parent="."]
 process_mode = 1
