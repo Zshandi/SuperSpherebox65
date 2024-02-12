@@ -1,29 +1,27 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=17 format=3 uid="uid://gfgvqm07kggw"]
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://gfgvqm07kggw"]
 
-[ext_resource type="PackedScene" uid="uid://clykvm5ylgwgx" path="res://games/EightBall/eight_ball.tscn" id="1_ji2cc"]
-[ext_resource type="Script" path="res://GameData.gd" id="1_mcjvt"]
+[ext_resource type="Texture2D" uid="uid://ckj464ow37iij" path="res://assets/gfx/EightBall/eight_ball.png" id="1_lkjvc"]
+[ext_resource type="Texture2D" uid="uid://dhm024lfc8ytn" path="res://assets/gfx/EightBall/genie.png" id="2_jhfk8"]
 [ext_resource type="Texture2D" uid="uid://bq1t0vbl002n1" path="res://games/EightBall/thumbnails/back/back_1.png" id="2_ji2k0"]
+[ext_resource type="PackedScene" uid="uid://clykvm5ylgwgx" path="res://games/EightBall/eight_ball.tscn" id="3_efkca"]
 [ext_resource type="Texture2D" uid="uid://dwjexu8f7ao8y" path="res://games/EightBall/thumbnails/back/back_2.png" id="3_ilsgo"]
 [ext_resource type="Texture2D" uid="uid://bsy4uoi53i0u3" path="res://games/EightBall/thumbnails/back/back_3.png" id="4_wrdp3"]
 [ext_resource type="Texture2D" uid="uid://bo503dhm5a08h" path="res://games/EightBall/thumbnails/back/back_4.png" id="5_v1vjm"]
-[ext_resource type="Texture2D" uid="uid://41l2qvoykljc" path="res://games/EightBall/thumbnails/front/front_1.png" id="6_mu4au"]
-[ext_resource type="Texture2D" uid="uid://c55rc2s71eqpk" path="res://games/EightBall/thumbnails/front/front_2.png" id="7_o4bue"]
-[ext_resource type="Texture2D" uid="uid://cucovwi0fgexd" path="res://games/EightBall/thumbnails/front/front_3.png" id="8_r8nkx"]
-[ext_resource type="Texture2D" uid="uid://coqcmlq5rve3r" path="res://games/EightBall/thumbnails/front/front_4.png" id="9_r16yr"]
-[ext_resource type="Texture2D" uid="uid://c5urc2ifdcpg5" path="res://games/EightBall/thumbnails/front/front_5.png" id="10_n10fq"]
-[ext_resource type="Texture2D" uid="uid://cdfc8bptlkgb1" path="res://games/EightBall/thumbnails/front/front_6.png" id="11_hip0m"]
-[ext_resource type="Texture2D" uid="uid://cqbiywk1knke1" path="res://games/EightBall/thumbnails/front/front_7.png" id="12_6ox6j"]
-[ext_resource type="Texture2D" uid="uid://b61ta84bu2yql" path="res://games/EightBall/thumbnails/front/front_8.png" id="13_7qmx6"]
-[ext_resource type="Texture2D" uid="uid://dp7vsngdv6pmy" path="res://games/EightBall/thumbnails/front/front_9.png" id="14_nqljb"]
-[ext_resource type="Texture2D" uid="uid://c0v6pc8y2so3y" path="res://games/EightBall/thumbnails/front/front_10.png" id="15_ei610"]
+[ext_resource type="Script" path="res://games/EightBall/eight_ball_game_data.gd" id="17_50e7i"]
 
 [resource]
-script = ExtResource("1_mcjvt")
+script = ExtResource("17_50e7i")
+eight_ball_images = Array[Texture2D]([ExtResource("1_lkjvc"), ExtResource("2_jhfk8")])
+rotation_chance = 0.2
+scale_chance = 0.5
+min_scale = 0.8
+max_scale = 2.0
+include_in_menu = true
 possible_names_1 = Array[String](["Eight", "Nine", "Fortune", "Super", "Magic", "Incredible", "Amazing", "Mystical"])
 possible_names_2 = Array[String](["Ball", "Cube", "Thing", "Object", "Toy", "Knick Knack"])
 possible_name_sequels = Array[String](["2", "3", "13", "65", "42", "II", "III", "IV", "XI", "Plus", "Extra", "Deluxe"])
 name_sequel_chance = 0.4
 name_swap_chance = 0.4
 possible_game_images = Array[Texture2D]([ExtResource("2_ji2k0"), ExtResource("3_ilsgo"), ExtResource("4_wrdp3"), ExtResource("5_v1vjm")])
-possible_game_images_2 = Array[Texture2D]([ExtResource("6_mu4au"), ExtResource("7_o4bue"), ExtResource("8_r8nkx"), ExtResource("9_r16yr"), ExtResource("10_n10fq"), ExtResource("11_hip0m"), ExtResource("12_6ox6j"), ExtResource("13_7qmx6"), ExtResource("14_nqljb"), ExtResource("15_ei610")])
-game_scene = ExtResource("1_ji2cc")
+possible_game_images_2 = Array[Texture2D]([])
+game_scene = ExtResource("3_efkca")

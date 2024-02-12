@@ -41,9 +41,12 @@ func _pre_draw_card_image(parent_control:Control, instance_date:GameInstanceData
 func _post_draw_card_image(parent_control:Control, instance_date:GameInstanceData) -> void:
 	pass
 
+func draw_texture_random(texture:Texture2D, on_control:Control) -> Sprite2D:
+	var offset := Vector2(randf(), randf())
+	return draw_texture(texture, on_control, offset)
+
 func draw_texture(texture:Texture2D, on_control:Control,
-		offset_percent:Vector2 = Vector2.ONE/2, scale:Vector2 = Vector2.ONE,
-		rotation:float = 0) -> Sprite2D:
+		offset_percent:Vector2 = Vector2.ONE/2) -> Sprite2D:
 	
 	var x_pos := offset_percent.x * on_control.size.x
 	var y_pos := offset_percent.y * on_control.size.y
@@ -54,17 +57,15 @@ func draw_texture(texture:Texture2D, on_control:Control,
 	
 	sprite.texture = texture
 	sprite.position = position
-	sprite.scale = scale
 	
 	on_control.add_child(sprite)
 	
 	return sprite
 
 func draw_texture_with_color(texture:Texture2D, on_control:Control, color:Color,
-		offset_percent:Vector2 = Vector2.ONE/2, scale:Vector2 = Vector2.ONE,
-		rotation:float = 0) -> Sprite2D:
+		offset_percent:Vector2 = Vector2.ONE/2) -> Sprite2D:
 	
-	var sprite = draw_texture(texture, on_control, offset_percent, scale, rotation)
+	var sprite = draw_texture(texture, on_control, offset_percent)
 	
 	if color != null:
 		sprite.modulate = color
