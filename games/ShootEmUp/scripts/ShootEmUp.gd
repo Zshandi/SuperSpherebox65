@@ -114,6 +114,22 @@ func _on_player_died():
 	hud.update_lives(lives)
 	if lives <= 0:
 		print("Game Over")
-		game_over.show()
+		game_over.show_game_over()
 	else:
 		_spawn_player()
+
+
+func _on_game_over_restart_game():
+	game_over.hide()
+	_update_score(0)
+	enemies_killed = 0
+	_update_multiplier()
+	lives = 3
+	hud.update_lives(lives)
+	%EnemySpawner.clear_enemies()
+	_spawn_player()
+	
+
+
+func _on_game_over_quit_game():
+	game_exit()

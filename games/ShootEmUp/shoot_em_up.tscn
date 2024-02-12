@@ -20,6 +20,7 @@ music_arr = Array[AudioStreamWAV]([ExtResource("2_kcdpw"), ExtResource("3_oiaq2"
 volume_db = -20.664
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_11fcr")]
+unique_name_in_owner = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -48,3 +49,6 @@ gizmo_extents = 0.5
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
+
+[connection signal="quit_game" from="UI/GameOver" to="." method="_on_game_over_quit_game"]
+[connection signal="restart_game" from="UI/GameOver" to="." method="_on_game_over_restart_game"]

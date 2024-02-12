@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://di2tet8q28wtb"]
+[gd_scene load_steps=8 format=3 uid="uid://di2tet8q28wtb"]
 
 [ext_resource type="FontFile" uid="uid://bt0kpyypoksmt" path="res://games/ShootEmUp/fonts/Kenney Future.ttf" id="1_stel3"]
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/game_over.gd" id="1_vgdbo"]
+[ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="3_ol5li"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n20h"]
 bg_color = Color(0.34902, 0.686275, 0.443137, 1)
@@ -17,6 +18,10 @@ font_size = 100
 [sub_resource type="LabelSettings" id="LabelSettings_cxbn6"]
 font = ExtResource("1_stel3")
 font_size = 56
+
+[sub_resource type="FontVariation" id="FontVariation_4msgx"]
+fallbacks = Array[Font]([null, null])
+base_font = ExtResource("3_ol5li")
 
 [node name="GameOver" type="Panel"]
 anchors_preset = 8
@@ -61,3 +66,27 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Youre Score: 0"
 label_settings = SubResource("LabelSettings_cxbn6")
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.5
+offset_top = 432.0
+offset_right = 666.5
+offset_bottom = 532.0
+theme_override_fonts/font = SubResource("FontVariation_4msgx")
+theme_override_font_sizes/font_size = 45
+text = "Retry"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 449.5
+offset_top = 548.0
+offset_right = 667.5
+offset_bottom = 648.0
+theme_override_fonts/font = SubResource("FontVariation_4msgx")
+theme_override_font_sizes/font_size = 45
+text = "Quit
+"
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

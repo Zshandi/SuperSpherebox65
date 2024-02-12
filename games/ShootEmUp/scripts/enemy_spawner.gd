@@ -45,3 +45,9 @@ func _spawn_enemies():
 		this_enemy.global_position = spawn_pos.global_position
 		emit_signal("enemy_spawned", this_enemy)
 		
+func clear_enemies():
+	for enemy in curr_enemies.get_children():
+		curr_enemies.remove_child(enemy)
+	for laser in $EnemyLaserContainer.get_children():
+		$EnemyLaserContainer.remove_child(laser)
+		
