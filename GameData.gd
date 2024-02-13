@@ -104,8 +104,14 @@ func generate_instance_data(random_seed:int) -> GameInstanceData:
 		if is_sequel && sequel != null:
 			game_name += " " + sequel
 	
-	var image:Texture2D = possible_game_images.pick_random()
-	var image_2:Texture2D = possible_game_images_2.pick_random()
+	var image:Texture2D = null
+	if !possible_game_images.is_empty():
+		image = possible_game_images.pick_random()
+	
+	var image_2:Texture2D = null
+	if !possible_game_images_2.is_empty():
+		image_2 = possible_game_images_2.pick_random()
+	
 	var image_color := Main.random_color()
 	var image_color_2 := Main.random_color()
 	
