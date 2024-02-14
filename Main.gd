@@ -53,7 +53,6 @@ func _process(delta):
 	if $GameLoader.current_game != null:
 		if Input.is_action_just_pressed("power"):
 			$CanvasLayer/PauseMenu.toggle_pause()
-			#$PauseMenu.toggle_pause()
 
 static func get_random_index(array:Array, random_generator:RandomNumberGenerator) -> int:
 	return random_generator.randi_range(0, array.size()-1)
