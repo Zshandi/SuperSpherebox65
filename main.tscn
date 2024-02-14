@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://s5f8sfj3v8bg"]
+[gd_scene load_steps=18 format=3 uid="uid://s5f8sfj3v8bg"]
 
 [ext_resource type="Script" path="res://GameLoader.gd" id="1_0isc4"]
 [ext_resource type="Script" path="res://Main.gd" id="1_a0i0y"]
@@ -90,13 +90,20 @@ text = "<Game Name>"
 label_settings = SubResource("LabelSettings_o0d8u")
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="GameSelect/GameSelectWindow"]
-position = Vector2(500.061, 284.518)
-texture = ExtResource("15_nicrg")
-
-[node name="Sprite2D2" type="Sprite2D" parent="GameSelect/GameSelectWindow"]
-position = Vector2(500.061, 284.518)
-texture = ExtResource("15_nicrg")
+[node name="SpriteContainer" type="Control" parent="GameSelect/GameSelectWindow"]
+clip_children = 2
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 81.0
+offset_top = 69.0
+offset_right = -81.0
+offset_bottom = -221.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="GameLoader" type="Node2D" parent="."]
 process_mode = 1

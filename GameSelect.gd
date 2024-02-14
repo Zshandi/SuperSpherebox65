@@ -54,10 +54,13 @@ func move_selection(direction:Vector2i):
 func sync_game_info():
 	current_game_data = main.get_game_instance_data_for(current_position)
 	$GameSelectWindow/GameName.text = current_game_data.game_name
-	$GameSelectWindow/Sprite2D.texture = current_game_data.game_image
-	$GameSelectWindow/Sprite2D.modulate = current_game_data.game_image_color
-	$GameSelectWindow/Sprite2D2.texture = current_game_data.game_image_2
-	$GameSelectWindow/Sprite2D2.modulate = current_game_data.game_image_color_2
+	
+	var sprite_container:Control = $GameSelectWindow/SpriteContainer
+	
+	for child in sprite_container.get_children():
+		child.queue_free()
+	
+	current_game_data.draw_card_image(sprite_container)
 
 func play_current_selection():
 	game_loader.load_game(current_game_data)

@@ -20,7 +20,10 @@ var game_scene:PackedScene
 
 var random_seed:int
 
-func get_new_random_generator() -> RandomNumberGenerator:
-	var rand := RandomNumberGenerator.new()
-	rand.seed = random_seed
-	return rand
+var owning_game_data:GameData
+
+func draw_card_image(parent_control:Control) -> void:
+	owning_game_data.draw_card_image(parent_control, self)
+
+func _init(owner:GameData):
+	owning_game_data = owner

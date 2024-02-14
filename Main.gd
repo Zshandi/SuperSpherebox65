@@ -8,8 +8,6 @@ const user_env_variables:Array[String] = ["USERNAME", "USER", "COMPUTERNAME"]
 
 var player_name := ""
 
-var loaded_instance_data:Dictionary = {}
-
 var all_game_data:Array[GameData] = []
 
 func get_seed_for(menu_pos:Vector2i) -> int:
@@ -17,8 +15,6 @@ func get_seed_for(menu_pos:Vector2i) -> int:
 	return seed_string.hash()
 
 func get_game_instance_data_for(menu_pos:Vector2i) -> GameInstanceData:
-	if loaded_instance_data.has(menu_pos):
-		return loaded_instance_data[menu_pos]
 	
 	var seed:int = get_seed_for(menu_pos)
 	
@@ -30,7 +26,6 @@ func get_game_instance_data_for(menu_pos:Vector2i) -> GameInstanceData:
 	
 	var data := game_data_at_pos.generate_instance_data(seed)
 	
-	loaded_instance_data[menu_pos] = data
 	return data
 
 func _init():

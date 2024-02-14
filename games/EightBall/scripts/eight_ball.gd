@@ -12,10 +12,6 @@ var bad_fortune_to_use: String
 var possible_uncertain_fortunes: Array[String] = []
 var uncertain_fortune_to_use: String
 
-
-@export
-var eight_ball_images: Array[Texture2D] = []
-
 @onready var background = $ScrollingBackground
 @onready var color_rect = $ColorRect
 @onready var eight_ball_sprite = $Sprite2D
@@ -30,7 +26,8 @@ func _ready():
 	uncertain_fortune_to_use = possible_uncertain_fortunes.pick_random()
 	
 	# grab image to use
-	eight_ball_sprite.texture = eight_ball_images.pick_random()
+	eight_ball_sprite.texture = game_instance_data.game_image_2
+	eight_ball_sprite.modulate = game_instance_data.game_image_color_2
 	
 	_randomize_fortune()
 	
