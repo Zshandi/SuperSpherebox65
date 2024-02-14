@@ -12,7 +12,6 @@
 [ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="10_xafrm"]
 [ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="11_a7jyk"]
 [ext_resource type="Script" path="res://PauseMenu.gd" id="11_uu1qh"]
-[ext_resource type="Texture2D" uid="uid://23gdhv68etet" path="res://games/ShootEmUp/thumbnails/back/space.png" id="15_nicrg"]
 [ext_resource type="AudioStream" uid="uid://b5xjkmgtaaliu" path="res://assets/music/Circus Theme Song - Boosted.wav" id="41_68xfp"]
 [ext_resource type="AudioStream" uid="uid://mq1fkvqe04tm" path="res://assets/music/Menu_Navigate_00.wav" id="42_xy017"]
 

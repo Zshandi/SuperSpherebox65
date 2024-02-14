@@ -128,8 +128,6 @@ func _on_game_over_restart_game():
 	hud.update_lives(lives)
 	%EnemySpawner.clear_enemies()
 	_spawn_player()
-	
-
 
 func _on_game_over_quit_game():
-	game_exit()
+	pass
