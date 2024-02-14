@@ -29,8 +29,60 @@ var possible_game_images_2:Array[Texture2D] = []
 @export
 var game_scene:PackedScene
 
-func get_random_index(random_generator:RandomNumberGenerator, array:Array) -> int:
-	return random_generator.randi_range(0, array.size()-1)
+func _internal_generate_game_instance_data(game_instance:GameInstanceData) -> void:
+	pass
+
+func _create_new_instance_data() -> GameInstanceData:
+	return GameInstanceData.new(self)
+
+func _pre_draw_card_image(parent_control:Control, instance_date:GameInstanceData) -> void:
+	pass
+
+func _post_draw_card_image(parent_control:Control, instance_date:GameInstanceData) -> void:
+	pass
+
+func draw_texture_random(texture:Texture2D, on_control:Control) -> Sprite2D:
+	var offset := Vector2(randf(), randf())
+	return draw_texture(texture, on_control, offset)
+
+func draw_texture(texture:Texture2D, on_control:Control,
+		offset_percent:Vector2 = Vector2.ONE/2) -> Sprite2D:
+	
+	var x_pos := offset_percent.x * on_control.size.x
+	var y_pos := offset_percent.y * on_control.size.y
+	
+	var position := Vector2(x_pos, y_pos)
+	
+	var sprite := Sprite2D.new()
+	
+	sprite.texture = texture
+	sprite.position = position
+	
+	on_control.add_child(sprite)
+	
+	return sprite
+
+func draw_texture_with_color(texture:Texture2D, on_control:Control, color:Color,
+		offset_percent:Vector2 = Vector2.ONE/2) -> Sprite2D:
+	
+	var sprite = draw_texture(texture, on_control, offset_percent)
+	
+	if color != null:
+		sprite.modulate = color
+	
+	return sprite
+
+
+func draw_card_image(parent_control:Control, instance_data:GameInstanceData):
+	_pre_draw_card_image(parent_control, instance_data)
+	
+	if instance_data.game_image != null:
+		draw_texture_with_color(instance_data.game_image, parent_control, instance_data.game_image_color)
+	
+	if instance_data.game_image_2 != null:
+		draw_texture_with_color(instance_data.game_image_2, parent_control, instance_data.game_image_color_2)
+	
+	_post_draw_card_image(parent_control, instance_data)
 
 func generate_instance_data(random_seed:int) -> GameInstanceData:
 	seed(random_seed)
@@ -52,12 +104,18 @@ func generate_instance_data(random_seed:int) -> GameInstanceData:
 		if is_sequel && sequel != null:
 			game_name += " " + sequel
 	
-	var image:Texture2D = possible_game_images.pick_random()
-	var image_2:Texture2D = possible_game_images_2.pick_random()
+	var image:Texture2D = null
+	if !possible_game_images.is_empty():
+		image = possible_game_images.pick_random()
+	
+	var image_2:Texture2D = null
+	if !possible_game_images_2.is_empty():
+		image_2 = possible_game_images_2.pick_random()
+	
 	var image_color := Main.random_color()
 	var image_color_2 := Main.random_color()
 	
-	var game_instance := GameInstanceData.new()
+	var game_instance := _create_new_instance_data()
 	
 	game_instance.game_name = game_name
 	
@@ -68,5 +126,7 @@ func generate_instance_data(random_seed:int) -> GameInstanceData:
 	
 	game_instance.random_seed = random_seed
 	game_instance.game_scene = game_scene
+	
+	_internal_generate_game_instance_data(game_instance)
 	
 	return game_instance
