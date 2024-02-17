@@ -65,18 +65,15 @@ func sync_game_info():
 func play_current_selection():
 	game_loader.load_game(current_game_data)
 	close_menu()
-	menu_music.stop()
 
 func close_menu():
 	hide()
+	menu_music.stop()
 	$"../ScrollingBackground".hide()
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func open_menu():
 	show()
+	menu_music.play()
 	$"../ScrollingBackground".show()
 	process_mode = Node.PROCESS_MODE_INHERIT
-
-
-func _on_game_loader_start_menu_music():
-	menu_music.play()
