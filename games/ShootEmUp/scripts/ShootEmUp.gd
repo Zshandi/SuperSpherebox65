@@ -29,14 +29,11 @@ func _on_enemy_died(score_to_add):
 func _process(delta):
 	pass
 
-func game_init():
-	super.game_init()
+func _on_game_initialized():
+	super._on_game_initialized()
 
-func game_start():
-	super.game_start()
+func _on_game_paused():
+	super._on_game_paused()
 
-func game_pause():
-	super.game_pause()
-
-func game_exit():
-	super.game_exit()
+func _on_game_quit():
+	super._on_game_quit()
