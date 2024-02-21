@@ -154,7 +154,7 @@ theme_override_font_sizes/font_size = 60
 text = "Exit Game
 "
 
-[node name="RestartButton" type="Button" parent="PauseMenu"]
+[node name="PauseMenu#RestartButton" type="Button" parent="."]
 offset_left = 602.0
 offset_top = 651.0
 offset_right = 1036.0
@@ -180,7 +180,3 @@ stream = ExtResource("42_xy017")
 [connection signal="pressed" from="GameSelect/UpButton" to="GameSelect" method="_on_button_up_pressed"]
 [connection signal="pressed" from="GameSelect/DownButton" to="GameSelect" method="_on_button_down_pressed"]
 [connection signal="pressed" from="GameSelect/GameSelectWindow" to="GameSelect" method="_on_button_select_pressed"]
-[connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu" method="toggle_pause"]
-[connection signal="pressed" from="PauseMenu/ExitButton" to="PauseMenu" method="quit_game"]
-[connection signal="pressed" from="PauseMenu/RestartButton" to="GameLoader" method="reload_current_game" flags=3]
-[connection signal="pressed" from="PauseMenu/RestartButton" to="PauseMenu" method="toggle_pause"]
