@@ -1,7 +1,7 @@
 extends Control
 
 var life = preload("res://games/ShootEmUp/life.tscn")
-@onready var lives_container = $Control/HBoxLivesContainer
+@onready var lives_container: HBoxContainer = $Control/HBoxLivesContainer
 var player_color: Color
 var player_sprite: Texture2D
 
