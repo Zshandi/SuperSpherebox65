@@ -1,6 +1,6 @@
 extends Laser
 	
-func _move_forward(delta: int) -> void:
+func _move(delta: float) -> void:
 	global_position.y += fire_speed * delta
 
 
