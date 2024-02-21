@@ -90,18 +90,6 @@ func _update_score(score_to_add) -> void:
 	game_over.update_score(score)
 	
 
-func game_init() -> void:
-	super.game_init()
-
-func game_start() -> void:
-	super.game_start()
-
-func game_pause() -> void:
-	super.game_pause()
-
-func game_exit() -> void:
-	super.game_exit()
-
 func _on_player_player_take_damage(curr_health) -> void:
 	print("Updating GUI")
 	hud.update_player_health(curr_health)
@@ -129,5 +117,14 @@ func _on_game_over_restart_game() -> void:
 	%EnemySpawner.clear_enemies()
 	_spawn_player()
 
-func _on_game_over_quit_game() -> void:
+func _process(delta):
 	pass
+
+func _on_game_initialized():
+	super._on_game_initialized()
+
+func _on_game_paused():
+	super._on_game_paused()
+
+func _on_game_quit():
+	super._on_game_quit()

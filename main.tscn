@@ -154,6 +154,19 @@ theme_override_font_sizes/font_size = 60
 text = "Exit Game
 "
 
+[node name="RestartButton" type="Button" parent="PauseMenu"]
+offset_left = 602.0
+offset_top = 651.0
+offset_right = 1036.0
+offset_bottom = 753.0
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../ResumeButton")
+theme_override_fonts/font = ExtResource("10_xafrm")
+theme_override_font_sizes/font_size = 60
+text = "Restart
+"
+
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("41_68xfp")
 
@@ -167,6 +180,7 @@ stream = ExtResource("42_xy017")
 [connection signal="pressed" from="GameSelect/UpButton" to="GameSelect" method="_on_button_up_pressed"]
 [connection signal="pressed" from="GameSelect/DownButton" to="GameSelect" method="_on_button_down_pressed"]
 [connection signal="pressed" from="GameSelect/GameSelectWindow" to="GameSelect" method="_on_button_select_pressed"]
-[connection signal="start_menu_music" from="GameLoader" to="GameSelect" method="_on_game_loader_start_menu_music"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/ResumeButton" to="CanvasLayer/PauseMenu" method="toggle_pause"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/ExitButton" to="CanvasLayer/PauseMenu" method="quit_game"]
+[connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu" method="toggle_pause"]
+[connection signal="pressed" from="PauseMenu/ExitButton" to="PauseMenu" method="quit_game"]
+[connection signal="pressed" from="PauseMenu/RestartButton" to="GameLoader" method="reload_current_game" flags=3]
+[connection signal="pressed" from="PauseMenu/RestartButton" to="PauseMenu" method="toggle_pause"]

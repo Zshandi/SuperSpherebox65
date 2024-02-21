@@ -11,6 +11,7 @@ func toggle_pause():
 		get_tree().paused = true
 		$ResumeButton.grab_focus()
 		show()
+		game_loader.current_game._on_game_paused()
 	else:
 		get_tree().paused = false
 		hide()
