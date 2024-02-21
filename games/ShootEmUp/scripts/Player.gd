@@ -43,18 +43,18 @@ func _physics_process(delta):
 	_check_for_movement(delta)
 	_check_outside()
 	
-func _set_invulnerable():
+func _set_invulnerable() -> void:
 	is_invulnerable = true
 	print("Player is invulnerable")
 	invulnerable_timer.start()
 	animation_player.set_assigned_animation("invulnerable")
 	animation_player.play()
 
-func _on_invulnerable_timeout():
+func _on_invulnerable_timeout() -> void:
 	is_invulnerable = false
 	print("Player is no longer invulnerable")
 	
-func take_damage():
+func take_damage() -> void:
 	if not is_invulnerable:
 		health -= 1
 		emit_signal("player_take_damage", health)
@@ -65,11 +65,11 @@ func take_damage():
 			_hurt_animation()
 			hurt_audio.play()
 
-func _hurt_animation():
+func _hurt_animation() -> void:
 	animation_player.set_assigned_animation("damage")
 	animation_player.play()
 
-func die():
+func die() -> void:
 	if not is_dead:
 		is_dead = true
 		hide()
@@ -78,7 +78,7 @@ func die():
 		emit_signal("player_died")
 		queue_free()
 
-func _check_for_movement(delta):
+func _check_for_movement(delta: float) -> void:
 	velocity = Vector2(0,0)
 	# move left
 	if Input.is_action_pressed("left"):
@@ -88,14 +88,14 @@ func _check_for_movement(delta):
 	move_and_slide()
 	
 	
-func _check_outside():
+func _check_outside() -> void:
 	var viewport = get_viewport_rect()
 	if global_position.x > viewport.size.x:
 		global_position.x = viewport.size.x
 	elif global_position.x < 0:
 		global_position.x = 0
 		
-func _fire_laser():
+func _fire_laser() -> void:
 	if not is_dead:
 		var laser_instantiation = laser.instantiate()
 		laser_instantiation.fire_speed = fire_speed

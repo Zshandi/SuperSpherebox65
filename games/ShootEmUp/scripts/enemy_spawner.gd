@@ -27,7 +27,7 @@ func _process(delta):
 		print("Spawning enemies")
 		_spawn_enemies()
 	
-func _spawn_enemies():
+func _spawn_enemies() -> void:
 	var num_enemies = randi_range(3, 10)
 	var positions = $SpawnPositions
 	var pos_children = positions.get_children()
@@ -45,7 +45,7 @@ func _spawn_enemies():
 		this_enemy.global_position = spawn_pos.global_position
 		emit_signal("enemy_spawned", this_enemy)
 		
-func clear_enemies():
+func clear_enemies() -> void:
 	for enemy in curr_enemies.get_children():
 		curr_enemies.remove_child(enemy)
 	for laser in $EnemyLaserContainer.get_children():

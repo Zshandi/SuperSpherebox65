@@ -15,11 +15,11 @@ func _ready():
 	add_child(lifespan_timer)
 	lifespan_timer.start(LIFESPAN)
 
-func _on_lifespan_timeout():
+func _on_lifespan_timeout() -> void:
 	queue_free()
 
-func _process(delta):
+func _process(delta) -> void:
 	_move_forward(delta)
 	
-func _move_forward(delta):
+func _move_forward(delta) -> void:
 	global_position.y -= fire_speed * delta

@@ -49,7 +49,7 @@ func _ready():
 	hud.player_color = player_color
 	hud.update_lives(lives)
 	
-func _spawn_player():
+func _spawn_player() -> void:
 	var player_instantiation = player.instantiate()
 	player_instantiation.global_position = player_spawn_position.global_position
 	player_instantiation.connect("player_take_damage", _on_player_player_take_damage)
@@ -64,49 +64,49 @@ func _spawn_player():
 	player_instantiation.hurt_audio.stream = player_hurt_audio
 	player_instantiation.death_audio.stream = player_death_audio
 
-func _on_enemy_spawned(enemy):
+func _on_enemy_spawned(enemy) -> void:
 	enemy.connect("enemy_died", _on_enemy_died)
 
-func _on_enemy_died(score_to_add):
+func _on_enemy_died(score_to_add) -> void:
 	_update_multiplier()
 	_update_score(score_to_add)
 
-func _update_multiplier():
+func _update_multiplier() -> void:
 	combo_timer.stop()
 	enemies_killed += 1
 	curr_multiplier = ceil(float(enemies_killed) / ENEMY_KILLED_MULTIPLIER)
 	hud.update_multiplier(curr_multiplier)
 	combo_timer.start()
 	
-func _on_combo_timeout():
+func _on_combo_timeout() -> void:
 	enemies_killed = 0
 	_update_multiplier()
 	
 	
-func _update_score(score_to_add):
+func _update_score(score_to_add) -> void:
 	var new_score_to_add = score_to_add * curr_multiplier
 	score += new_score_to_add
 	hud.update_score(score)
 	game_over.update_score(score)
 	
 
-func game_init():
+func game_init() -> void:
 	super.game_init()
 
-func game_start():
+func game_start() -> void:
 	super.game_start()
 
-func game_pause():
+func game_pause() -> void:
 	super.game_pause()
 
-func game_exit():
+func game_exit() -> void:
 	super.game_exit()
 
-func _on_player_player_take_damage(curr_health):
+func _on_player_player_take_damage(curr_health) -> void:
 	print("Updating GUI")
 	hud.update_player_health(curr_health)
 
-func _on_player_died():
+func _on_player_died() -> void:
 	print("Player died")
 	combo_timer.stop()
 	_on_combo_timeout()
@@ -119,7 +119,7 @@ func _on_player_died():
 		_spawn_player()
 
 
-func _on_game_over_restart_game():
+func _on_game_over_restart_game() -> void:
 	game_over.hide()
 	_update_score(0)
 	enemies_killed = 0
@@ -129,5 +129,5 @@ func _on_game_over_restart_game():
 	%EnemySpawner.clear_enemies()
 	_spawn_player()
 
-func _on_game_over_quit_game():
+func _on_game_over_quit_game() -> void:
 	pass

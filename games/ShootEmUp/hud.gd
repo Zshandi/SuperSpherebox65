@@ -5,22 +5,22 @@ var life = preload("res://games/ShootEmUp/life.tscn")
 var player_color: Color
 var player_sprite: Texture2D
 
-func update_score(score):
+func update_score(score: int) -> void:
 	var score_label = $Score
 	score_label.text = "SCORE: " + str(score)
 	
-func update_multiplier(multiplier: int):
+func update_multiplier(multiplier: int) -> void:
 	var multiplier_label = $Multiplier
 	if multiplier <= 1:
 		multiplier_label.text = ""
 		return
 	multiplier_label.text = "x" + str(multiplier)
 	
-func update_player_health(curr_health: int):
+func update_player_health(curr_health: int) -> void:
 	var player_health_bar = $PlayerHealthBar
 	player_health_bar.value = curr_health
 	
-func update_lives(num_lives: int):
+func update_lives(num_lives: int) -> void:
 	# remove all the children
 	var children = lives_container.get_children()
 	for child in children:
