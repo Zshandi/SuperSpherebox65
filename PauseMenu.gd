@@ -1,10 +1,10 @@
 extends Node2D
 
 @onready
-var game_loader:GameLoader = $"../../GameLoader"
+var game_loader:GameLoader = $"../GameLoader"
 
 @onready
-var game_select:GameSelect = $"../../GameSelect"
+var game_select:GameSelect = $"../GameSelect"
 
 func toggle_pause():
 	if !get_tree().paused:

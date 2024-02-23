@@ -14,8 +14,7 @@ func load_game(game_instance_data):
 	
 	current_game = game_instance_data.game_scene.instantiate()
 	current_game.game_instance_data = game_instance_data
-	#current_game.quit_game.connect($"../PauseMenu".quit_game)
-	current_game.quit_game.connect($"../CanvasLayer/PauseMenu".quit_game)
+	current_game.quit_game.connect($"../PauseMenu".quit_game)
 	current_game.restart_game.connect(reload_current_game)
 	# TODO [#5]: Add save_game method to connect here
 	#current_game.save_game.connect(%Main.save_gave)
