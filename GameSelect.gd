@@ -2,17 +2,11 @@ extends Node2D
 class_name GameSelect
 
 @onready
-var main:Main = $".."
-
-@onready
-var game_loader:GameLoader = $"../GameLoader"
-
-@onready
 var move_sound:AudioStreamPlayer = $"../Sounds/move"
 
-var current_position:Vector2i = Vector2i.ZERO
-
-var current_game_data:GameInstanceData
+#var current_position:Vector2i = Vector2i.ZERO
+#
+#var current_game_data:GameInstanceData
 
 @onready var menu_music: AudioStreamPlayer = $"../MenuMusic"
 
@@ -47,23 +41,21 @@ func _on_button_select_pressed():
 
 func move_selection(direction:Vector2i):
 	move_sound.play()
-	current_position += direction
+	Main.move_selection(direction)
 	sync_game_info()
-	
 
 func sync_game_info():
-	current_game_data = main.get_game_instance_data_for(current_position)
-	$GameSelectWindow/GameName.text = current_game_data.game_name
+	$GameSelectWindow/GameName.text = Main.current_game_data.game_name
 	
 	var sprite_container:Control = $GameSelectWindow/SpriteContainer
 	
 	for child in sprite_container.get_children():
 		child.queue_free()
 	
-	current_game_data.draw_card_image(sprite_container)
+	Main.current_game_data.draw_card_image(sprite_container)
 
 func play_current_selection():
-	game_loader.load_game(current_game_data)
+	Main.game_loader.load_game(Main.current_game_data)
 	close_menu()
 
 func close_menu():
