@@ -28,7 +28,8 @@ var laser = preload("res://games/ShootEmUp/Laser.tscn")
 @onready var invulnerable_timer = %InvulnerableTimer
 @onready var animation_player = %AnimationPlayer
 @onready var hurt_audio = %HurtAudio
-@onready var death_audio = %DeathAudio
+#@onready var death_audio = %DeathAudio
+var death_audio_source: AudioStreamWAV
 
 func _ready():
 	invulnerable_timer.connect("timeout", _on_invulnerable_timeout)
@@ -70,6 +71,16 @@ func _hurt_animation() -> void:
 	animation_player.play()
 
 func die() -> void:
+	# spawn an audio player to play death sound
+	var death_audio = AudioStreamPlayer.new()
+	death_audio.stream = death_audio_source
+	get_tree().add_child(death_audio)
+	death_audio.play()
+	emit_signal("player_died")
+	queue_free()
+	await get_tree().create_timer(2).timeout
+	print("Fart")
+	'''
 	if not is_dead:
 		is_dead = true
 		hide()
@@ -77,6 +88,7 @@ func die() -> void:
 		await get_tree().create_timer(2).timeout
 		emit_signal("player_died")
 		queue_free()
+	'''
 
 func _check_for_movement(delta: float) -> void:
 	velocity = Vector2(0,0)
