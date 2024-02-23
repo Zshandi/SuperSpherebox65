@@ -20,7 +20,7 @@ var hurt_audio_arr: Array[AudioStreamWAV] = []
 @onready var player_sprite = $Sprite2D
 
 var speed: int = 300
-var fire_speed: int = 20
+var movement_speed: int = 20
 
 var laser = preload("res://games/ShootEmUp/Laser.tscn")
 @onready var laser_container = $LaserContainer
@@ -98,7 +98,7 @@ func _check_outside() -> void:
 func _fire_laser() -> void:
 	if not is_dead:
 		var laser_instantiation = laser.instantiate()
-		laser_instantiation.fire_speed = fire_speed
+		laser_instantiation.movement_speed = movement_speed
 		laser_instantiation.global_position = global_position
 		laser_instantiation.global_position.y -= 100
 		laser_container.add_child(laser_instantiation)

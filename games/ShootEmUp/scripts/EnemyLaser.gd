@@ -1,7 +1,7 @@
 extends Laser
 	
 func _move(delta: float) -> void:
-	global_position.y += fire_speed * delta
+	global_position.y += movement_speed * delta
 
 
 

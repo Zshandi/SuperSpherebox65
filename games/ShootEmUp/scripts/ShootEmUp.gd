@@ -59,7 +59,7 @@ func _spawn_player() -> void:
 	player_instantiation.player_sprite.texture = player_sprite
 	player_instantiation.player_sprite.modulate = player_color
 	player_instantiation.speed = player_speed
-	player_instantiation.fire_speed = player_shoot_speed
+	player_instantiation.movement_speed = player_shoot_speed
 	player_instantiation.shoot_audio.stream = player_shoot_audio
 	player_instantiation.hurt_audio.stream = player_hurt_audio
 	player_instantiation.death_audio.stream = player_death_audio

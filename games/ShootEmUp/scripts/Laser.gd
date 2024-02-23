@@ -6,7 +6,7 @@ enum FiringStyle {
 }
 
 var firing_style = FiringStyle.STRAIGHT
-var fire_speed: int = 200
+var movement_speed: int = 200
 const LIFESPAN = 5
 
 func _ready():
@@ -17,7 +17,7 @@ func _process(delta):
 	_move(delta)
 	
 func _move(delta: float) -> void:
-	global_position.y -= fire_speed * delta
+	global_position.y -= movement_speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	print("Exiting screen")
