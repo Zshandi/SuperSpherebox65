@@ -5,6 +5,9 @@ enum FiringStyle {
 	STRAIGHT, WAVY
 }
 
+@export
+var firing_direction: Vector2 = Vector2(0,-1)
+
 var firing_style = FiringStyle.STRAIGHT
 var movement_speed: int = 200
 const LIFESPAN = 5
@@ -17,7 +20,7 @@ func _process(delta):
 	_move(delta)
 	
 func _move(delta: float) -> void:
-	global_position.y -= movement_speed * delta
+	global_position += firing_direction * movement_speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	print("Exiting screen")
