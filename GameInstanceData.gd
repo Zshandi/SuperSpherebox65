@@ -14,6 +14,8 @@ var game_scene:PackedScene
 
 var random_seed:int
 
+var menu_position:Vector2i
+
 var owning_game_data:GameData
 
 func draw_card_image(parent_control:Control) -> void:

@@ -38,7 +38,7 @@ func _init():
 	# Load save data, if available
 	load_save_data()
 	
-	# Set the player name for the random seed. if not loaded
+	# Set the player name for the random seed, if not loaded
 	if player_name == "":
 		player_name = "Player"
 		
@@ -74,13 +74,23 @@ func _process(delta):
 static func move_selection(direction:Vector2i):
 	current_position += direction
 
+static func get_save_index_for(instance_data:GameInstanceData) -> String:
+	var pos_string := str(instance_data.menu_position)
+	var seed_string := str(instance_data.random_seed)
+	var name_string := str(instance_data.game_name)
+	return str(pos_string, ":", seed_string, ":", name_string)
+
+static func get_current_save_index() -> String:
+	return get_save_index_for(current_game_data)
+
 static func save_current_game(save_data:Dictionary):
-	all_game_save_data[current_position] = save_data
+	all_game_save_data[get_current_save_index()] = save_data
 	persist_save_data()
 
 static func load_current_game() -> Dictionary:
-	if all_game_save_data.has(current_position):
-		return all_game_save_data[current_position]
+	var current_index := get_current_save_index()
+	if all_game_save_data.has(current_index):
+		return all_game_save_data[current_index]
 	else:
 		# No data for the current game instance has been saved,
 		#  so return an empty Dictionary
@@ -121,6 +131,8 @@ static func get_game_instance_data_for(menu_pos:Vector2i) -> GameInstanceData:
 	var game_data_at_pos:GameData = pick_random(all_game_data, game_data_rng)
 	
 	var data := game_data_at_pos.generate_instance_data(seed)
+	
+	data.menu_position = menu_pos
 	
 	return data
 
