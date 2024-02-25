@@ -12,17 +12,23 @@ func unload_current_game():
 func load_game(game_instance_data):
 	unload_current_game()
 	
+	# Instantiate the game
 	current_game = game_instance_data.game_scene.instantiate()
+	
+	# Initialize values & connect signals
 	current_game.game_instance_data = game_instance_data
-	current_game.quit_game.connect($"../PauseMenu".quit_game)
+	current_game.quit_game.connect(%PauseMenu.quit_game)
 	current_game.restart_game.connect(reload_current_game)
-	# TODO [#5]: Add save_game method to connect here
-	#current_game.save_game.connect(%Main.save_gave)
+	current_game.save_game.connect(Main.save_current_game)
+	
 	current_game._on_game_initialized()
+	
+	# Load the save data
+	current_game._load_save_data(Main.load_current_game())
+	
+	# Add it to the scene
 	add_child(current_game)
 
 func reload_current_game():
 	if current_game != null:
-		var current_instance_data := current_game.game_instance_data
-		unload_current_game()
-		load_game(current_instance_data)
+		load_game(current_game.game_instance_data)

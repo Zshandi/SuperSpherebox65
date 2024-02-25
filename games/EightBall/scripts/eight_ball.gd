@@ -16,6 +16,17 @@ var uncertain_fortune_to_use: String
 @onready var color_rect = $ColorRect
 @onready var eight_ball_sprite = $Sprite2D
 
+var num_fortunes:int = 0
+
+func _load_save_data(save_data:Dictionary):
+	if save_data.has("num_fortunes"):
+		num_fortunes = save_data["num_fortunes"]
+
+func save_game_data():
+	var save_dict := {}
+	save_dict["num_fortunes"] = num_fortunes
+	save_game.emit(save_dict)
+
 func _ready():
 	background.sprite.modulate = Color(randf(),randf(),randf(),1)
 	background.color_rect.color = Color(randf(),randf(),randf(),1)
@@ -29,13 +40,20 @@ func _ready():
 	eight_ball_sprite.texture = game_instance_data.game_image_2
 	eight_ball_sprite.modulate = game_instance_data.game_image_color_2
 	
+	# Get the rng back to state the game was last played
+	for i in range(num_fortunes):
+		_randomize_fortune()
+	
 	_randomize_fortune()
-	
-	
+
+
 func _process(delta):
 	var game_over = $GameOver
 	if Input.is_action_just_pressed("six") and not game_over.is_visible():
 		game_over.show()
+		num_fortunes += 1
+		print_debug("num_fortunes: ", num_fortunes)
+		save_game_data()
 	elif Input.is_action_just_pressed("six") and game_over.is_visible():
 		game_over.hide()
 		_randomize_fortune()
