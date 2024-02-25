@@ -50,20 +50,19 @@ func _ready():
 	hud.update_lives(lives)
 	
 func _spawn_player() -> void:
-	var player_instantiation = player.instantiate()
-	player_instantiation.global_position = player_spawn_position.global_position
-	player_instantiation.connect("player_take_damage", _on_player_player_take_damage)
-	player_instantiation.connect("player_died", _on_player_died)
-	hud.update_player_health(player_instantiation.health)
-	add_child(player_instantiation)
-	player_instantiation.player_sprite.texture = player_sprite
-	player_instantiation.player_sprite.modulate = player_color
-	player_instantiation.speed = player_speed
-	player_instantiation.movement_speed = player_shoot_speed
-	player_instantiation.shoot_audio.stream = player_shoot_audio
-	player_instantiation.hurt_audio.stream = player_hurt_audio
-	player_instantiation.death_audio.stream = player_death_audio
-	#player_instantiation.death_audio_source = player_death_audio
+	var player_instance = player.instantiate()
+	player_instance.global_position = player_spawn_position.global_position
+	player_instance.connect("player_take_damage", _on_player_player_take_damage)
+	player_instance.connect("player_died", _on_player_died)
+	hud.update_player_health(player_instance.health)
+	add_child(player_instance)
+	player_instance.player_sprite.texture = player_sprite
+	player_instance.player_sprite.modulate = player_color
+	player_instance.speed = player_speed
+	player_instance.movement_speed = player_shoot_speed
+	player_instance.shoot_audio.stream = player_shoot_audio
+	player_instance.hurt_audio.stream = player_hurt_audio
+	player_instance.death_audio.stream = player_death_audio
 
 func _on_enemy_spawned(enemy) -> void:
 	enemy.connect("enemy_died", _on_enemy_died)
