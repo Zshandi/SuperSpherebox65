@@ -5,6 +5,7 @@ var lives:int = 3
 
 const ONE_UP_SCORE = 5000
 
+# --- Export Arrays ---
 # store the music that plays in the background
 @export
 var music_arr: Array[AudioStreamWAV] = []
@@ -15,11 +16,23 @@ var player_sprite_arr: Array[Texture2D] = []
 
 # store the different shooting sounds
 @export
-var shoot_audio_arr: Array[AudioStreamWAV] = []
+var player_shoot_audio_arr: Array[AudioStreamWAV] = []
 
 # store the different enemy and player hurt sounds
 @export
 var hurt_audio_arr: Array[AudioStreamWAV] = []
+
+# store the different sprites the enemy can be 
+@export
+var enemy_sprite_arr: Array[Texture2D] = []
+
+# store the different death sounds the enemies can have
+@export
+var enemy_death_sounds: Array[AudioStreamWAV] = []
+
+# store the different enemy shoot sounds
+@export
+var enemy_shoot_sounds: Array[AudioStreamWAV] = []
 
 @onready var background_music = $BackgroundMusic
 @onready var enemy_spawner = $EnemySpawner
@@ -49,7 +62,7 @@ func _ready():
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
 	var player_instance = player.instantiate()
 	player_sprite = player_sprite_arr.pick_random()
-	player_shoot_audio = shoot_audio_arr.pick_random()
+	player_shoot_audio = player_shoot_audio_arr.pick_random()
 	player_hurt_audio = hurt_audio_arr.pick_random()
 	player_death_audio = hurt_audio_arr.pick_random()
 	player_color = Main.random_color()
