@@ -12,7 +12,7 @@ func show_game_over() -> void:
 	$RetryButton.grab_focus()
 
 func _on_retry_button_pressed() -> void:
-	emit_signal("restart_game")
+	restart_game.emit()
 	
 func _on_quit_button_pressed() -> void:
-	emit_signal("quit_game")
+	quit_game.emit()
