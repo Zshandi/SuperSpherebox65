@@ -53,7 +53,7 @@ func _set_invulnerable() -> void:
 func take_damage(damage_amount: float = 1) -> void:
 	if not is_invulnerable:
 		health -= damage_amount
-		emit_signal("player_take_damage", health)
+		player_take_damage.emit(health)
 		if health <= 0:
 			die()
 		else:
