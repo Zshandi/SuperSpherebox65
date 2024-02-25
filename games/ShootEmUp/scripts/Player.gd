@@ -4,7 +4,7 @@ extends CharacterBody2D
 signal player_take_damage(curr_health)
 signal player_died
 
-var health: int = 3
+var health: float = 3
 var is_invulnerable: bool = false
 var is_dead: bool = false
 
@@ -22,7 +22,7 @@ var hurt_audio_arr: Array[AudioStreamWAV] = []
 var speed: int = 300
 var movement_speed: int = 20
 
-var laser = preload("res://games/ShootEmUp/Laser.tscn")
+var laser = preload("res://games/ShootEmUp/player_laser.tscn")
 @onready var laser_container = $LaserContainer
 @onready var shoot_audio = $ShootAudio
 @onready var invulnerable_timer = %InvulnerableTimer
@@ -55,9 +55,9 @@ func _on_invulnerable_timeout() -> void:
 	is_invulnerable = false
 	print("Player is no longer invulnerable")
 	
-func take_damage() -> void:
+func take_damage(damage_amount: float = 1) -> void:
 	if not is_invulnerable:
-		health -= 1
+		health -= damage_amount
 		emit_signal("player_take_damage", health)
 		if health <= 0:
 			die()

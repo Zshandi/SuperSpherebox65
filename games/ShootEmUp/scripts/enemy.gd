@@ -7,11 +7,14 @@ var death_sounds: Array[AudioStreamWAV] = []
 @export
 var shoot_sounds: Array[AudioStreamWAV] = []
 
+@export
+var health: float = 1
+
 @onready var enemy_sprite = $Sprite2D
 @onready var explosion = $ExplosionParticles
 @onready var death_audio = $DeathAudio
 
-@onready var laser = preload("res://games/ShootEmUp/EnemyLaser.tscn")
+@onready var laser = preload("res://games/ShootEmUp/enemy_laser.tscn")
 @onready var shoot_audio = %ShootAudio
 
 signal enemy_died(score)
@@ -39,18 +42,20 @@ func _on_shoot_timer_timeout():
 		shoot_audio.play()
 		_set_shoot_timer()
 
-func _on_area_entered(area):
+func take_damage(damage_amount: float = 1) -> void:
 	if not is_dead:
-		area.queue_free()
-		die()
+		health -= damage_amount
+		var pitch_variance = randf_range(0,1.5)
+		death_audio.set_pitch_scale(death_audio.get_pitch_scale() + pitch_variance)
+		death_audio.play()
+		if health <= 0:
+			die()
 
-func die():
+
+func die() -> void:
 	is_dead = true
 	emit_signal("enemy_died", 100)
 	explosion.emitting = true
-	var pitch_variance = randf_range(0,1.5)
-	death_audio.set_pitch_scale(death_audio.get_pitch_scale() + pitch_variance)
-	death_audio.play()
 	enemy_sprite.hide()
 	await get_tree().create_timer(.5).timeout
 	explosion.emitting = false
