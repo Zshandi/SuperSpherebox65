@@ -25,9 +25,8 @@ var shoot_timer: Timer
 
 func _ready():
 	explosion.emitting = false
-	
 	shoot_timer = Timer.new()
-	shoot_timer.connect("timeout",  _on_shoot_timer_timeout)
+	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 	add_child(shoot_timer)
 	_set_shoot_timer()
 
