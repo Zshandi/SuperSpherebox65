@@ -25,14 +25,12 @@ var movement_speed: int = 20
 var laser = preload("res://games/ShootEmUp/player_laser.tscn")
 @onready var laser_container = $LaserContainer
 @onready var shoot_audio = $ShootAudio
-@onready var invulnerable_timer = %InvulnerableTimer
 @onready var animation_player = %AnimationPlayer
 @onready var hurt_audio = %HurtAudio
 @onready var death_audio = %DeathAudio
 #var death_audio_source: AudioStreamWAV
 
 func _ready():
-	invulnerable_timer.connect("timeout", _on_invulnerable_timeout)
 	_set_invulnerable()
 	
 
@@ -47,13 +45,10 @@ func _physics_process(delta):
 func _set_invulnerable() -> void:
 	is_invulnerable = true
 	print("Player is invulnerable")
-	invulnerable_timer.start()
 	animation_player.set_assigned_animation("invulnerable")
 	animation_player.play()
-
-func _on_invulnerable_timeout() -> void:
+	await animation_player.animation_finished
 	is_invulnerable = false
-	print("Player is no longer invulnerable")
 	
 func take_damage(damage_amount: float = 1) -> void:
 	if not is_invulnerable:

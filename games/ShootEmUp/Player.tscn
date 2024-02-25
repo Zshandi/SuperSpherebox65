@@ -100,10 +100,6 @@ process_mode = 1
 [node name="ShootAudio" type="AudioStreamPlayer" parent="."]
 volume_db = -7.083
 
-[node name="InvulnerableTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-one_shot = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {

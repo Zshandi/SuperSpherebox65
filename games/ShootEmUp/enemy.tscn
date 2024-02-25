@@ -54,11 +54,13 @@ position = Vector2(-1, -2)
 shape = SubResource("CapsuleShape2D_1a03b")
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
+process_mode = 1
 amount = 7
 process_material = SubResource("ParticleProcessMaterial_v05hv")
 texture = ExtResource("7_wyex1")
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 volume_db = -4.685
 
 [node name="ShootAudio" type="AudioStreamPlayer" parent="."]

@@ -55,6 +55,7 @@ func take_damage(damage_amount: float = 1) -> void:
 func die() -> void:
 	is_dead = true
 	emit_signal("enemy_died", 100)
+	process_mode = Node.PROCESS_MODE_DISABLED
 	explosion.emitting = true
 	enemy_sprite.hide()
 	await get_tree().create_timer(.5).timeout
