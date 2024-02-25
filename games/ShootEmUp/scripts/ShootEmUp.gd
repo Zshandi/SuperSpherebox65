@@ -52,7 +52,7 @@ func _ready():
 func _spawn_player() -> void:
 	var player_instance = player.instantiate()
 	player_instance.global_position = player_spawn_position.global_position
-	player_instance.player_take_damage.connect(_on_player_player_take_damage)
+	player_instance.player_take_damage.connect(_on_player_take_damage)
 	player_instance.player_died.connect(_on_player_died)
 	hud.update_player_health(player_instance.health)
 	add_child(player_instance)
@@ -90,7 +90,7 @@ func _update_score(score_to_add) -> void:
 	game_over.update_score(score)
 	
 
-func _on_player_player_take_damage(curr_health) -> void:
+func _on_player_take_damage(curr_health) -> void:
 	print("Updating GUI")
 	hud.update_player_health(curr_health)
 
