@@ -26,7 +26,6 @@ func _move(delta: float) -> void:
 	global_position += firing_direction * movement_speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	print("Exiting screen")
 	queue_free()
 
 
