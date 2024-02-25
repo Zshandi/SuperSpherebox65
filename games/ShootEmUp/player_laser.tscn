@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsle7uveco2m0"]
+
+[ext_resource type="PackedScene" uid="uid://6pq8docpkmiw" path="res://games/ShootEmUp/Laser.tscn" id="1_hdnr3"]
+
+[node name="PlayerLaser" instance=ExtResource("1_hdnr3")]

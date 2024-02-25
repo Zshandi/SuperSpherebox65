@@ -68,3 +68,5 @@ position = Vector2(1128.6, 243.3)
 gizmo_extents = 29.3
 
 [node name="CurrEnemies" type="Node" parent="."]
+
+[node name="EnemyLaserContainer" type="Node" parent="."]
