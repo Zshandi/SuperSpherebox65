@@ -72,7 +72,7 @@ func die() -> void:
 		death_audio.play()
 		process_mode = Node.PROCESS_MODE_DISABLED
 		await get_tree().create_timer(2).timeout
-		emit_signal("player_died")
+		player_died.emit()
 		queue_free()
 
 func _check_for_movement(delta: float) -> void:
