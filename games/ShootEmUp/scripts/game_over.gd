@@ -5,7 +5,7 @@ signal quit_game
 
 func update_score(score: int) -> void:
 	var score_label = $ScoreLabel
-	score_label.text = "Youre score: " + str(score)
+	score_label.text = "Youre score: %d" % score
 	
 func show_game_over() -> void:
 	show()
