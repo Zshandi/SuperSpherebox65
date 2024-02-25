@@ -17,7 +17,7 @@ func load_game(game_instance_data):
 	
 	# Initialize values & connect signals
 	current_game.game_instance_data = game_instance_data
-	current_game.quit_game.connect(Main.pause_menu.quit_game)
+	current_game.quit_game.connect(%PauseMenu.quit_game)
 	current_game.restart_game.connect(reload_current_game)
 	current_game.save_game.connect(Main.save_current_game)
 	

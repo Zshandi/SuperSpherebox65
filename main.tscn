@@ -31,13 +31,14 @@ font_size = 80
 process_mode = 3
 script = ExtResource("1_a0i0y")
 
-[node name="ScrollingBackground" parent="." instance=ExtResource("11_a7jyk")]
-background = ExtResource("3_cakvg")
-
 [node name="OpeningMenu" type="Node2D" parent="."]
 
 [node name="GameSelect" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_ocg6g")
+
+[node name="ScrollingBackground" parent="GameSelect" instance=ExtResource("11_a7jyk")]
+background = ExtResource("3_cakvg")
 
 [node name="RightButton" type="TextureButton" parent="GameSelect"]
 offset_left = 1170.0
@@ -105,10 +106,12 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="GameLoader" type="Node2D" parent="."]
+unique_name_in_owner = true
 process_mode = 1
 script = ExtResource("1_0isc4")
 
 [node name="PauseMenu" type="Node2D" parent="."]
+unique_name_in_owner = true
 process_mode = 2
 visible = false
 z_index = 999

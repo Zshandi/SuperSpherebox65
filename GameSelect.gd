@@ -55,17 +55,15 @@ func sync_game_info():
 	Main.current_game_data.draw_card_image(sprite_container)
 
 func play_current_selection():
-	Main.game_loader.load_game(Main.current_game_data)
+	%GameLoader.load_game(Main.current_game_data)
 	close_menu()
 
 func close_menu():
 	hide()
 	menu_music.stop()
-	$"../ScrollingBackground".hide()
-	process_mode = Node.PROCESS_MODE_DISABLED
+	process_mode = PROCESS_MODE_DISABLED
 
 func open_menu():
 	show()
 	menu_music.play()
-	$"../ScrollingBackground".show()
-	process_mode = Node.PROCESS_MODE_INHERIT
+	process_mode = PROCESS_MODE_INHERIT

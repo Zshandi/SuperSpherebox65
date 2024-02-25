@@ -21,18 +21,6 @@ static var current_position:Vector2i = Vector2i.ZERO :
 ## Instance data for the currently selected game in the menu
 static var current_game_data:GameInstanceData
 
-## Static reference to the GameSelect node
-static var game_select:GameSelect
-## Static reference to the GameLoader node
-static var game_loader:GameLoader
-## Static reference to the GameLoader node
-static var pause_menu:PauseMenu
-
-func _ready():
-	game_select = $GameSelect
-	game_loader = $GameLoader
-	pause_menu = $PauseMenu
-
 func _init():
 	
 	# Load save data, if available
@@ -67,7 +55,7 @@ func _init():
 	current_game_data = get_game_instance_data_for(current_position)
 
 func _process(delta):
-	if game_loader.current_game != null:
+	if %GameLoader.current_game != null:
 		if Input.is_action_just_pressed("power"):
 			$PauseMenu.toggle_pause()
 
