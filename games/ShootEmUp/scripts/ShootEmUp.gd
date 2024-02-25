@@ -52,8 +52,8 @@ func _ready():
 func _spawn_player() -> void:
 	var player_instance = player.instantiate()
 	player_instance.global_position = player_spawn_position.global_position
-	player_instance.connect("player_take_damage", _on_player_player_take_damage)
-	player_instance.connect("player_died", _on_player_died)
+	player_instance.player_take_damage.connect(_on_player_player_take_damage)
+	player_instance.player_died.connect(_on_player_died)
 	hud.update_player_health(player_instance.health)
 	add_child(player_instance)
 	player_instance.player_sprite.texture = player_sprite
