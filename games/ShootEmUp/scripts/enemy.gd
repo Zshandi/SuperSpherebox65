@@ -1,14 +1,5 @@
 extends Area2D
 
-'''
-@export
-var enemy_sprites: Array[Texture2D] = []
-@export
-var death_sounds: Array[AudioStreamWAV] = []
-@export
-var shoot_sounds: Array[AudioStreamWAV] = []
-'''
-
 @export
 var health: float = 1
 
