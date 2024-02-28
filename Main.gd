@@ -1,6 +1,8 @@
 extends Node2D
 class_name Main
 
+const INT_MAX = (1 << 63) - 1
+
 const game_data_filename := "game_data.tres"
 const games_path := "res://games/"
 
