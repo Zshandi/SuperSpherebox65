@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d0pbkub12bfbv"]
+[gd_scene load_steps=31 format=3 uid="uid://d0pbkub12bfbv"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/ShootEmUp.gd" id="1_lvec5"]
 [ext_resource type="PackedScene" uid="uid://btjju6ilduuli" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
@@ -23,6 +23,13 @@
 [ext_resource type="AudioStream" uid="uid://cub1cykg15isg" path="res://games/ShootEmUp/sounds/laser3.wav" id="18_udhxb"]
 [ext_resource type="AudioStream" uid="uid://tt15rxglxlir" path="res://games/ShootEmUp/sounds/laser1.wav" id="19_h250j"]
 [ext_resource type="AudioStream" uid="uid://bwcrkl47hgmvu" path="res://games/ShootEmUp/sounds/enemy_dead_01.wav" id="19_ydisv"]
+[ext_resource type="Texture2D" uid="uid://j5i3ecpe4raj" path="res://assets/gfx/ShootEmUp/background/space_back.png" id="20_qo0fu"]
+[ext_resource type="Texture2D" uid="uid://baiw5ms3feg2g" path="res://assets/gfx/ShootEmUp/background/metalPanel.png" id="21_4dbrs"]
+[ext_resource type="Texture2D" uid="uid://w0a7a3xycg4o" path="res://assets/gfx/ShootEmUp/background/gray_ocean.png" id="22_iyqtt"]
+[ext_resource type="Texture2D" uid="uid://bo6cl5ln4hsps" path="res://assets/gfx/ShootEmUp/background/deep_gray.png" id="23_8ok37"]
+[ext_resource type="Texture2D" uid="uid://k50eoc4icsp3" path="res://assets/gfx/ShootEmUp/background/dirt.png" id="24_01q5p"]
+[ext_resource type="Texture2D" uid="uid://ygt76c5m0rup" path="res://assets/gfx/ShootEmUp/background/space_front.png" id="25_pdlys"]
+[ext_resource type="Texture2D" uid="uid://dbcou8y2bin30" path="res://assets/gfx/ShootEmUp/background/glassPanel.png" id="26_tu5gg"]
 
 [node name="Game1" type="Node2D"]
 script = ExtResource("1_lvec5")
@@ -33,8 +40,11 @@ hurt_audio_arr = Array[AudioStreamWAV]([ExtResource("16_glbo1"), ExtResource("11
 enemy_sprite_arr = Array[Texture2D]([ExtResource("6_rl6qk"), ExtResource("7_d4fa0"), ExtResource("8_qyxe3"), ExtResource("9_62xmo"), ExtResource("10_lc2em")])
 enemy_death_sounds = Array[AudioStreamWAV]([ExtResource("19_ydisv"), ExtResource("18_jkfvw"), ExtResource("17_gjvlb"), ExtResource("11_5q5nf"), ExtResource("16_glbo1")])
 enemy_shoot_sounds = Array[AudioStreamWAV]([ExtResource("16_g1df8"), ExtResource("17_4wcd5"), ExtResource("18_udhxb"), ExtResource("19_h250j"), ExtResource("11_5q5nf"), ExtResource("19_ydisv")])
+back_images = Array[Texture2D]([ExtResource("20_qo0fu"), ExtResource("21_4dbrs"), ExtResource("22_iyqtt"), ExtResource("23_8ok37"), ExtResource("24_01q5p")])
+front_images = Array[Texture2D]([ExtResource("25_pdlys"), ExtResource("26_tu5gg")])
 
 [node name="ScrollingBackground" parent="." instance=ExtResource("2_ghebx")]
+unique_name_in_owner = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 volume_db = -20.664

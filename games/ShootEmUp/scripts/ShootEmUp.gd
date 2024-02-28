@@ -34,10 +34,20 @@ var enemy_death_sounds: Array[AudioStreamWAV] = []
 @export
 var enemy_shoot_sounds: Array[AudioStreamWAV] = []
 
+# the different types of background images
+@export
+var back_images: Array[Texture2D] = []
+
+# the different types of foreground images
+@export
+var front_images: Array[Texture2D] = []
+
+# grab nodes when ready
 @onready var background_music = $BackgroundMusic
 @onready var enemy_spawner = $EnemySpawner
 @onready var hud = $UI/HUD
 @onready var player_spawn_position = %PlayerSpawnPosition
+@onready var scrolling_background = %ScrollingBackground
 
 var player = preload("res://games/ShootEmUp/Player.tscn")
 var player_sprite: Texture2D
@@ -61,6 +71,16 @@ func _ready():
 	# set up the background music
 	background_music.stream = music_arr.pick_random()
 	background_music.play()
+	
+	# set up the backdrop
+	scrolling_background.set_front_layer(
+		front_images.pick_random(),
+		Main.random_color_a()
+	)
+	scrolling_background.set_back_layer(
+		back_images.pick_random(),
+		Main.random_color_a()
+	)
 	
 	# set up the enemy spawner
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
