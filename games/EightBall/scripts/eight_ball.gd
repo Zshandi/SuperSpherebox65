@@ -69,6 +69,8 @@ func _ready():
 		leave_fortune_num = randi_range(min_max_leave_time[0], min_max_leave_time[1])
 		leaving_phrase = possible_leaving_phrases.pick_random()
 		gone_phrase = possible_gone_phrases.pick_random()
+		print_debug("\nleaving fortune: ", [leaving_phrase, gone_phrase])
+		print_debug("leaving fortune num: ", leave_fortune_num)
 	
 	# determine if we should have a weird fortune, and which one we should use
 	if randf() < weird_fortune_chance:
@@ -83,6 +85,8 @@ func _ready():
 				break
 			total_weight += fortune.fortune_chance_weight
 		weird_fortune_num = randi_range(weird_fortune.num_fortune_min_max[0], weird_fortune.num_fortune_min_max[1])
+		print_debug("\nweird fortune: ", weird_fortune.fortune_sequence)
+		print_debug("weird fortune num: ", weird_fortune_num)
 	
 	# grab image to use
 	eight_ball_sprite.texture = game_instance_data.game_image_2
@@ -101,18 +105,19 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("six") and not game_over.is_visible():
-		game_over.show()
-		num_fortunes += 1
-		print_debug("num_fortunes: ", num_fortunes)
-		save_game_data()
-	elif Input.is_action_just_pressed("six") and game_over.is_visible():
-		if is_gone && eight_ball_sprite.is_visible() && !$AnimationPlayer.is_playing():
-			$AnimationPlayer.play("leave")
-			$AnimationPlayer.animation_finished.connect( func(_n):
-				eight_ball_sprite.hide() )
-		game_over.hide()
-		_randomize_fortune()
+	if Input.is_action_just_pressed("six"):
+		if not game_over.is_visible():
+			game_over.show()
+			print_debug("num_fortunes: ", num_fortunes)
+			num_fortunes += 1
+			save_game_data()
+		else:
+			if is_gone && eight_ball_sprite.is_visible() && !$AnimationPlayer.is_playing():
+				$AnimationPlayer.play("leave")
+				$AnimationPlayer.animation_finished.connect( func(_n):
+					eight_ball_sprite.hide() )
+			game_over.hide()
+			_randomize_fortune()
 
 func _randomize_fortune():
 	if generate_leaving_fortune(): return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clykvm5ylgwgx"]
+[gd_scene load_steps=16 format=3 uid="uid://clykvm5ylgwgx"]
 
 [ext_resource type="Script" path="res://games/EightBall/scripts/eight_ball.gd" id="1_3f1j1"]
 [ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="2_1rklr"]
@@ -12,8 +12,20 @@
 [sub_resource type="Resource" id="Resource_lmf8y"]
 script = ExtResource("2_5wcun")
 fortune_chance_weight = 1.0
-num_fortune_min_max = Vector2i(5, 5)
+num_fortune_min_max = Vector2i(10, 50)
 fortune_sequence = Array[String](["I love you!", "I mean... you'll find love soon..."])
+
+[sub_resource type="Resource" id="Resource_37ot8"]
+script = ExtResource("2_5wcun")
+fortune_chance_weight = 1.0
+num_fortune_min_max = Vector2i(10, 50)
+fortune_sequence = Array[String](["Rizaeling you can raed this mepsislled fnurote wlil be hte hgihgliht fo yuor day"])
+
+[sub_resource type="Resource" id="Resource_sde7n"]
+script = ExtResource("2_5wcun")
+fortune_chance_weight = 1.0
+num_fortune_min_max = Vector2i(10, 50)
+fortune_sequence = Array[String](["You will soon perish ...", "... if you don't eat your veggies!"])
 
 [sub_resource type="Animation" id="Animation_rdj1n"]
 length = 0.001
@@ -62,9 +74,7 @@ possible_bad_fortunes = Array[String](["All signs point to no", "No", "Doesn't l
 possible_uncertain_fortunes = Array[String](["Maybe some day", "Perhaps", "I'm not sure", "Try asking again"])
 possible_leaving_phrases = Array[String](["I'm leaving!", "Bye!", "I must retire", "No more fortune for you!", "I'm all fortuned out", "My power grows week...", "I grow weary", "I must go", "No more!", "Sorry to jet, but I'm in a hurry!", "The fortune teller attempts to run away"])
 possible_gone_phrases = Array[String](["They left...", "But nobody came", "...", "[Just the wind blowing]", "You call, but nobody answers", "They gone", "You should just go...", "They said they're leaving, don't you listen??", "I don't think they're coming back...", "Maybe they'll return someday", "They got away safely"])
-min_max_leave_time = null
-weird_fortunes = Array[ExtResource("2_5wcun")]([SubResource("Resource_lmf8y")])
-weird_fortune_chance = null
+weird_fortunes = Array[ExtResource("2_5wcun")]([SubResource("Resource_lmf8y"), SubResource("Resource_37ot8"), SubResource("Resource_sde7n")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
