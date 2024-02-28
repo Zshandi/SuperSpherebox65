@@ -1,9 +1,11 @@
 extends ParallaxBackground
 
+'''
 @export
 var back_images: Array[Texture2D] = []
 @export
 var front_images: Array[Texture2D] = []
+'''
 
 
 @onready var back_sprite = $BackLayer/Sprite2D

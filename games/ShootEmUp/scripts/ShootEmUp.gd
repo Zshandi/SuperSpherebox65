@@ -57,10 +57,19 @@ var curr_multiplier: int
 
 func _ready():
 	game_over.hide()
+	
+	# set up the background music
 	background_music.stream = music_arr.pick_random()
 	background_music.play()
+	
+	# set up the enemy spawner
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
-	var player_instance = player.instantiate()
+	enemy_spawner.enemy_death_sound = enemy_death_sounds.pick_random()
+	enemy_spawner.enemy_shoot_sound = enemy_shoot_sounds.pick_random()
+	enemy_spawner.enemy_sprite = enemy_sprite_arr.pick_random()
+	enemy_spawner.enemy_modulation = Main.random_color()
+	
+	# set up the randomize enemy attributes and spawn the player
 	player_sprite = player_sprite_arr.pick_random()
 	player_shoot_audio = player_shoot_audio_arr.pick_random()
 	player_hurt_audio = hurt_audio_arr.pick_random()
@@ -68,9 +77,13 @@ func _ready():
 	player_color = Main.random_color()
 	player_speed = randi_range(100,600)
 	player_shoot_speed = randi_range(50,5000)
-	combo_timer.connect("timeout", _on_combo_timeout)
 	_spawn_player()
+	
+	# setup the combo multiplier
+	combo_timer.connect("timeout", _on_combo_timeout)
 	_update_multiplier()
+	
+	# set up the HUD of the game
 	hud.player_sprite = player_sprite
 	hud.player_color = player_color
 	hud.update_lives(lives)
