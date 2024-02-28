@@ -21,12 +21,20 @@ var chance_to_leave: float = 0.3
 @export
 var min_max_leave_time: Vector2i = Vector2i(10, 50)
 
+@export
+var weird_fortunes: Array[WeirdFortune] = []
+@export
+var weird_fortune_chance: float = 1
+
 @onready var background = $ScrollingBackground
 @onready var color_rect = $ColorRect
 @onready var eight_ball_sprite = $Sprite2D
 @onready var game_over = $GameOver
 
 var fortunes:Array[String]
+
+var weird_fortune:WeirdFortune
+var weird_fortune_num:int = Main.INT_MAX
 
 var leave_fortune_num:int = Main.INT_MAX
 var leaving_phrase:String
@@ -61,6 +69,20 @@ func _ready():
 		leave_fortune_num = randi_range(min_max_leave_time[0], min_max_leave_time[1])
 		leaving_phrase = possible_leaving_phrases.pick_random()
 		gone_phrase = possible_gone_phrases.pick_random()
+	
+	# determine if we should have a weird fortune, and which one we should use
+	if randf() < weird_fortune_chance:
+		var total_weight:float = 0
+		for fortune:WeirdFortune in weird_fortunes:
+			total_weight += fortune.fortune_chance_weight
+		var chance = randf_range(0, total_weight)
+		total_weight = 0
+		for fortune:WeirdFortune in weird_fortunes:
+			if chance - total_weight <= fortune.fortune_chance_weight:
+				weird_fortune = fortune
+				break
+			total_weight += fortune.fortune_chance_weight
+		weird_fortune_num = randi_range(weird_fortune.num_fortune_min_max[0], weird_fortune.num_fortune_min_max[1])
 	
 	# grab image to use
 	eight_ball_sprite.texture = game_instance_data.game_image_2
@@ -112,5 +134,13 @@ func generate_leaving_fortune() -> bool:
 	
 	return false
 
+func generate_weird_fortune() -> bool:
+	var index = num_fortunes - weird_fortune_num
 	
+	if index >= 0:
+		var fortune_seq = weird_fortune.fortune_sequence
+		if index < fortune_seq.size():
+			game_over.set_fortune(fortune_seq[index])
+			return true
 	
+	return false
