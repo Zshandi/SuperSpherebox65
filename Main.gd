@@ -63,6 +63,7 @@ func _process(delta):
 
 static func move_selection(direction:Vector2i):
 	current_position += direction
+	print_debug("current_position: ", current_position)
 
 static func get_save_index_for(instance_data:GameInstanceData) -> String:
 	var pos_string := str(instance_data.menu_position)
@@ -74,7 +75,9 @@ static func get_current_save_index() -> String:
 	return get_save_index_for(current_game_data)
 
 static func save_current_game(save_data:Dictionary):
-	all_game_save_data[get_current_save_index()] = save_data
+	var save_index := get_current_save_index()
+	print_debug("\nSaving game[", save_index, "], data:\n\n", save_data, "\n\n")
+	all_game_save_data[save_index] = save_data
 	persist_save_data()
 
 static func load_current_game() -> Dictionary:
