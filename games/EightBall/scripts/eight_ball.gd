@@ -45,8 +45,24 @@ var gone_phrase:String
 var is_gone:bool = false
 
 var num_fortunes:int = 0
+var loaded_num_fortunes:int = 0
 
-func _on_game_initialized():
+func _load_save_data(save_data:Dictionary):
+	super._load_save_data(save_data)
+	
+	if save_data.has("num_fortunes"):
+		loaded_num_fortunes = save_data["num_fortunes"]
+		print_debug("\n\nloaded_num_fortunes: ", loaded_num_fortunes)
+
+func save_game_data():
+	var save_dict := {}
+	save_dict["num_fortunes"] = num_fortunes
+	save_game.emit(save_dict)
+
+func _ready():
+	background.sprite.modulate = Color(randf(),randf(),randf(),1)
+	background.color_rect.color = Color(randf(),randf(),randf(),1)
+	
 	# grab fortunes
 	good_fortune_to_use = possible_good_fortunes.pick_random()
 	bad_fortune_to_use = possible_bad_fortunes.pick_random()
@@ -77,31 +93,17 @@ func _on_game_initialized():
 		weird_fortune_num = randi_range(weird_fortune.num_fortune_min_max[0], weird_fortune.num_fortune_min_max[1])
 		print_debug("\nweird fortune: ", weird_fortune.fortune_sequence)
 		print_debug("weird fortune num: ", weird_fortune_num)
-
-func _load_save_data(save_data:Dictionary):
-	if save_data.has("num_fortunes"):
-		var loaded_num_fortunes = save_data["num_fortunes"]
-		print_debug("\n\nloaded_num_fortunes: ", loaded_num_fortunes)
-		
-		# Get the rng back to state the game was last played,
-		#  and also the num_fortunes back to what it previously was
-		for i in range(loaded_num_fortunes):
-			randomize_fortune()
-		
-	print_debug("\n\nnum_fortunes: ", num_fortunes)
-
-func save_game_data():
-	var save_dict := {}
-	save_dict["num_fortunes"] = num_fortunes
-	save_game.emit(save_dict)
-
-func _ready():
-	background.sprite.modulate = Color(randf(),randf(),randf(),1)
-	background.color_rect.color = Color(randf(),randf(),randf(),1)
 	
 	# grab image to use
 	eight_ball_sprite.texture = game_instance_data.game_image_2
 	eight_ball_sprite.modulate = game_instance_data.game_image_color_2
+		
+	# Get the rng back to state the game was last played,
+	#  and also the num_fortunes back to what it previously was
+	for i in range(loaded_num_fortunes):
+		randomize_fortune()
+		
+	print_debug("\n\nnum_fortunes: ", num_fortunes)
 	
 	if is_gone:
 		# Don't play leaving animation,
