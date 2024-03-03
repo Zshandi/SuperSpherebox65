@@ -52,7 +52,7 @@ func _load_save_data(save_data:Dictionary):
 	
 	if save_data.has("num_fortunes"):
 		loaded_num_fortunes = save_data["num_fortunes"]
-		print_debug("\n\nloaded_num_fortunes: ", loaded_num_fortunes)
+		print_debug("\nloaded_num_fortunes: ", loaded_num_fortunes)
 
 func save_game_data():
 	var save_dict := {}
@@ -93,6 +93,13 @@ func _ready():
 		weird_fortune_num = randi_range(weird_fortune.num_fortune_min_max[0], weird_fortune.num_fortune_min_max[1])
 		print_debug("\nweird fortune: ", weird_fortune.fortune_sequence)
 		print_debug("weird fortune num: ", weird_fortune_num)
+		
+		# ensure the weird fortune comes before the leaving fortune
+		var weird_fotune_end = weird_fortune_num + weird_fortune.fortune_sequence.size()
+		if leave_fortune_num < weird_fotune_end:
+			leave_fortune_num = weird_fotune_end + randi_range(0, 7)
+			print_debug("bumped leave fortune num to: ", leave_fortune_num)
+		
 	
 	# grab image to use
 	eight_ball_sprite.texture = game_instance_data.game_image_2
