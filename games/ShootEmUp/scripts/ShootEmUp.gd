@@ -100,7 +100,7 @@ func _ready():
 	_spawn_player()
 	
 	# setup the combo multiplier
-	combo_timer.connect("timeout", _on_combo_timeout)
+	combo_timer.timeout.connect(_on_combo_timeout)
 	_update_multiplier()
 	
 	# set up the HUD of the game
