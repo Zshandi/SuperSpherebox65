@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://clykvm5ylgwgx"]
+[gd_scene load_steps=18 format=3 uid="uid://clykvm5ylgwgx"]
 
 [ext_resource type="Script" path="res://games/EightBall/scripts/eight_ball.gd" id="1_3f1j1"]
-[ext_resource type="PackedScene" path="res://scrolling_background.tscn" id="2_1rklr"]
+[ext_resource type="PackedScene" uid="uid://cgsyv55s3of86" path="res://scrolling_background.tscn" id="2_1rklr"]
 [ext_resource type="Script" path="res://games/EightBall/scripts/weird_fortune.gd" id="2_5wcun"]
 [ext_resource type="Texture2D" uid="uid://ccuuc3vcxessr" path="res://assets/gfx/EightBall/block_square.png" id="3_06jil"]
 [ext_resource type="Texture2D" uid="uid://ckj464ow37iij" path="res://assets/gfx/EightBall/eight_ball.png" id="4_tewm2"]
 [ext_resource type="FontFile" uid="uid://dmtwp1n7h2did" path="res://games/ShootEmUp/fonts/Kenney Mini Square.ttf" id="5_rf1ga"]
-[ext_resource type="Texture2D" uid="uid://c6c4gm0ogk1gj" path="res://assets/gfx/buttons/green_btn.png" id="6_elcdk"]
+[ext_resource type="Texture2D" uid="uid://8m6j00xpjcu4" path="res://assets/gfx/buttons/green_btn.png" id="6_elcdk"]
 [ext_resource type="PackedScene" uid="uid://sup41n3fxc46" path="res://games/EightBall/game_over_panel.tscn" id="7_1xik3"]
 
 [sub_resource type="Resource" id="Resource_lmf8y"]
@@ -26,6 +26,18 @@ script = ExtResource("2_5wcun")
 fortune_chance_weight = 1.0
 num_fortune_min_max = Vector2i(7, 25)
 fortune_sequence = Array[String](["You will soon perish ...", "... if you don't eat your veggies!"])
+
+[sub_resource type="Resource" id="Resource_f5gnh"]
+script = ExtResource("2_5wcun")
+fortune_chance_weight = 1.0
+num_fortune_min_max = Vector2i(7, 25)
+fortune_sequence = Array[String](["...", "Wait, are you still here?", "Why are you still doing this? You know you can be playing better games right now?", "I heard that space shooter game is really good!", "You know the one I'm talking about right? The one with the space lasers?", "Maybe I should apply to be in that game."])
+
+[sub_resource type="Resource" id="Resource_t1uok"]
+script = ExtResource("2_5wcun")
+fortune_chance_weight = 1.0
+num_fortune_min_max = Vector2i(7, 25)
+fortune_sequence = Array[String](["Hey listen, I don't really feel up for this right now.", "I've had a very tough week. My cat has a really bad cold.", "Fortunately, I had a good side hussle going. Have you heard of Non Fungusable Trinkets? ", "It's very state of the art. The chances of fungus growing on these trinkets are almost zero.", "Because you've been so kind to me, I'll give you a discount. I'm willing to sell you one of my trinkets for $50,000.", "I know, $50,000 may seem like a lot, but in actuality you can sell it later for even more money. The price just keeps going up! It's like infinite money.", "You'd be stupid not to invest in these babies."])
 
 [sub_resource type="Animation" id="Animation_rdj1n"]
 length = 0.001
@@ -72,10 +84,10 @@ script = ExtResource("1_3f1j1")
 possible_good_fortunes = Array[String](["Everything points to yes", "Absolutely", "I see no issues", "Yes"])
 possible_bad_fortunes = Array[String](["All signs point to no", "No", "Doesn't look likely", "I don't think so"])
 possible_uncertain_fortunes = Array[String](["Maybe some day", "Perhaps", "I'm not sure", "Try asking again"])
-possible_leaving_phrases = Array[String](["I'm leaving!", "Bye!", "I must retire", "No more fortune for you!", "I'm all fortuned out", "My power grows week...", "I grow weary", "I must go", "No more!", "Sorry to jet, but I'm in a hurry!", "The fortune teller attempts to run away"])
-possible_gone_phrases = Array[String](["They left...", "But nobody came", "...", "[Just the wind blowing]", "You call, but nobody answers", "They gone", "You should just go...", "They said they're leaving, don't you listen??", "I don't think they're coming back...", "Maybe they'll return someday", "They got away safely"])
+possible_leaving_phrases = Array[String](["I'm leaving!", "Bye!", "I must retire", "No more fortune for you!", "I'm all fortuned out", "My power grows week...", "I grow weary", "I must go", "No more!", "Sorry to jet, but I'm in a hurry!", "The fortune teller attempts to run away", "No food or movies? I'm out of here! I like running better!", "I must go now. My planet needs me.", "Why look at the time. I need to go shuck some corn.", "Why am I doing this? I could have been so much more. I could have started my own bakery, but instead I decided to listen to my parents and continue the family business. I'm quitting.", "I've had enough. I'm filing a complaint to the union."])
+possible_gone_phrases = Array[String](["They left...", "But nobody came", "...", "[Just the wind blowing]", "You call, but nobody answers", "They gone", "You should just go...", "They said they're leaving, don't you listen??", "I don't think they're coming back...", "Maybe they'll return someday", "They got away safely", "They died on their way back to their home planet.", "They got away unsafely.", "See ya.", "[Eerie silence]", "This shouldn't have happened.", "You broke the game."])
 chance_to_leave = 0.6
-weird_fortunes = Array[ExtResource("2_5wcun")]([SubResource("Resource_lmf8y"), SubResource("Resource_37ot8"), SubResource("Resource_sde7n")])
+weird_fortunes = Array[ExtResource("2_5wcun")]([SubResource("Resource_lmf8y"), SubResource("Resource_37ot8"), SubResource("Resource_sde7n"), SubResource("Resource_f5gnh"), SubResource("Resource_t1uok")])
 weird_fortune_chance = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
