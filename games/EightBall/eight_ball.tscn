@@ -37,7 +37,7 @@ fortune_sequence = Array[String](["...", "Wait, are you still here?", "Why are y
 script = ExtResource("2_5wcun")
 fortune_chance_weight = 1.0
 num_fortune_min_max = Vector2i(7, 25)
-fortune_sequence = Array[String](["Hey listen, I don't really feel up for this right now.", "I've had a very tough week. My cat has a really bad cold.", "Fortunately, I had a good side hussle going. Have you heard of Non Fungusable Trinkets? ", "It's very state of the art. The chances of fungus growing on these trinkets are almost zero.", "Because you've been so kind to me, I'll give you a discount. I'm willing to sell you one of my trinkets for $50,000.", "I know, $50,000 may seem like a lot, but in actuality you can sell it later for even more money. The price just keeps going up! It's like infinite money.", "You'd be stupid not to invest in these babies."])
+fortune_sequence = Array[String](["Hey listen, I don't really feel up for this right now.", "I've had a very tough week. My cat has a really bad cold.", "Fortunately, I had a good side hussle going. Have you heard of Non Fungusable Trinkets? ", "It's very state of the art. The chances of fungus growing on these trinkets are almost zero.", "Because you've been so kind to me, I'll give you a discount. I'm willing to sell you one of my trinkets for $50,000.", "I know,  Φ50,000 may seem like a lot, but in actuality you can sell it later for even more money. The price just keeps going up! It's like infinite money.", "You'd be stupid not to invest in these babies."])
 
 [sub_resource type="Animation" id="Animation_rdj1n"]
 length = 0.001
