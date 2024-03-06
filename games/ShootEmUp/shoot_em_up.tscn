@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0pbkub12bfbv"]
+[gd_scene load_steps=11 format=3 uid="uid://d0pbkub12bfbv"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/ShootEmUp.gd" id="1_lvec5"]
 [ext_resource type="PackedScene" uid="uid://btjju6ilduuli" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://doo6uwi2fw4b3" path="res://games/ShootEmUp/enemy_spawner.tscn" id="8_11fcr"]
 [ext_resource type="PackedScene" uid="uid://ddrr0ju33gmco" path="res://games/ShootEmUp/hud.tscn" id="9_63q6s"]
 [ext_resource type="PackedScene" uid="uid://di2tet8q28wtb" path="res://games/ShootEmUp/game_over.tscn" id="9_bp83e"]
+[ext_resource type="PackedScene" uid="uid://clx1ut6nikxsa" path="res://games/ShootEmUp/Explosion.tscn" id="10_2iy4s"]
 
 [node name="Game1" type="Node2D"]
 script = ExtResource("1_lvec5")
@@ -49,6 +50,9 @@ gizmo_extents = 0.5
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
+
+[node name="Explosion" parent="." instance=ExtResource("10_2iy4s")]
+position = Vector2(679, 581)
 
 [connection signal="quit_game" from="UI/GameOver" to="." method="_on_game_over_quit_game"]
 [connection signal="restart_game" from="UI/GameOver" to="." method="_on_game_over_restart_game"]
