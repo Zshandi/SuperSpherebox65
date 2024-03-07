@@ -5,13 +5,49 @@ var lives:int = 3
 
 const ONE_UP_SCORE = 5000
 
+# --- Export Arrays ---
+# store the music that plays in the background
 @export
 var music_arr: Array[AudioStreamWAV] = []
 
+# store the different sprites the player can be
+@export
+var player_sprite_arr: Array[Texture2D] = []
+
+# store the different shooting sounds
+@export
+var player_shoot_audio_arr: Array[AudioStreamWAV] = []
+
+# store the different enemy and player hurt sounds
+@export
+var hurt_audio_arr: Array[AudioStreamWAV] = []
+
+# store the different sprites the enemy can be 
+@export
+var enemy_sprite_arr: Array[Texture2D] = []
+
+# store the different death sounds the enemies can have
+@export
+var enemy_death_sounds: Array[AudioStreamWAV] = []
+
+# store the different enemy shoot sounds
+@export
+var enemy_shoot_sounds: Array[AudioStreamWAV] = []
+
+# the different types of background images
+@export
+var back_images: Array[Texture2D] = []
+
+# the different types of foreground images
+@export
+var front_images: Array[Texture2D] = []
+
+# grab nodes when ready
 @onready var background_music = $BackgroundMusic
 @onready var enemy_spawner = $EnemySpawner
 @onready var hud = $UI/HUD
 @onready var player_spawn_position = %PlayerSpawnPosition
+@onready var scrolling_background = %ScrollingBackground
 
 var player = preload("res://games/ShootEmUp/Player.tscn")
 var player_sprite: Texture2D
@@ -31,20 +67,43 @@ var curr_multiplier: int
 
 func _ready():
 	game_over.hide()
+	
+	# set up the background music
 	background_music.stream = music_arr.pick_random()
 	background_music.play()
+	
+	# set up the backdrop
+	scrolling_background.set_front_layer(
+		front_images.pick_random(),
+		Main.random_color_a()
+	)
+	scrolling_background.set_back_layer(
+		back_images.pick_random(),
+		Main.random_color_a()
+	)
+	
+	# set up the enemy spawner
 	enemy_spawner.connect("enemy_spawned", _on_enemy_spawned)
-	var player_instance = player.instantiate()
-	player_sprite = player_instance.player_sprite_arr.pick_random()
-	player_shoot_audio = player_instance.shoot_audio_arr.pick_random()
-	player_hurt_audio = player_instance.hurt_audio_arr.pick_random()
-	player_death_audio = player_instance.hurt_audio_arr.pick_random()
+	enemy_spawner.enemy_death_sound = enemy_death_sounds.pick_random()
+	enemy_spawner.enemy_shoot_sound = enemy_shoot_sounds.pick_random()
+	enemy_spawner.enemy_sprite = enemy_sprite_arr.pick_random()
+	enemy_spawner.enemy_modulation = Main.random_color()
+	
+	# set up the randomize enemy attributes and spawn the player
+	player_sprite = player_sprite_arr.pick_random()
+	player_shoot_audio = player_shoot_audio_arr.pick_random()
+	player_hurt_audio = hurt_audio_arr.pick_random()
+	player_death_audio = hurt_audio_arr.pick_random()
 	player_color = Main.random_color()
 	player_speed = randi_range(100,600)
 	player_shoot_speed = randi_range(50,5000)
-	combo_timer.connect("timeout", _on_combo_timeout)
 	_spawn_player()
+	
+	# setup the combo multiplier
+	combo_timer.timeout.connect(_on_combo_timeout)
 	_update_multiplier()
+	
+	# set up the HUD of the game
 	hud.player_sprite = player_sprite
 	hud.player_color = player_color
 	hud.update_lives(lives)
