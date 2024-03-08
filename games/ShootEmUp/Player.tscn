@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://qitjuelqnbtd"]
+[gd_scene load_steps=26 format=3 uid="uid://qitjuelqnbtd"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/Player.gd" id="1_jg1pr"]
 [ext_resource type="Texture2D" uid="uid://cbmshywfdhnie" path="res://assets/gfx/ShootEmUp/player/playerShip1_blue.png" id="1_uaigg"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://neidlwtyfiiv" path="res://games/ShootEmUp/sounds/enemy_dead_33.wav" id="13_dxe4b"]
 [ext_resource type="AudioStream" uid="uid://uhs68aqv7i60" path="res://games/ShootEmUp/sounds/Fart Sound Effect #3.wav" id="14_6sru2"]
 [ext_resource type="AudioStream" uid="uid://df7nqqs4iey8c" path="res://games/ShootEmUp/sounds/vgdeathsound.wav" id="15_tklfe"]
+[ext_resource type="Texture2D" uid="uid://l013xbcas1t8" path="res://assets/gfx/ShootEmUp/particles/explosion01.png" id="16_7k2ta"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b75rk"]
 radius = 25.0
@@ -82,6 +83,38 @@ _data = {
 "invulnerable": SubResource("Animation_jg0o1")
 }
 
+[sub_resource type="Gradient" id="Gradient_u7ofl"]
+offsets = PackedFloat32Array(0, 0.753086)
+colors = PackedColorArray(0.403922, 0.266667, 0.172549, 0.74902, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o30v0"]
+gradient = SubResource("Gradient_u7ofl")
+
+[sub_resource type="Curve" id="Curve_di4vp"]
+_data = [Vector2(0.00923787, 0.154148), 0.0, 0.343602, 0, 0, Vector2(1, 1), 2.03427, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5j8do"]
+curve = SubResource("Curve_di4vp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7igr5"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 1, 0)
+emission_shape = 1
+emission_sphere_radius = 21.61
+angle_max = 212.9
+direction = Vector3(0, -1, 0)
+spread = 37.388
+flatness = 0.6
+initial_velocity_max = 71.56
+gravity = Vector3(0, -30, 0)
+linear_accel_max = 100.0
+scale_min = 1.5
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_5j8do")
+color = Color(0.447059, 0.286275, 0.164706, 1)
+color_ramp = SubResource("GradientTexture1D_o30v0")
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jg1pr")
 player_sprite_arr = Array[Texture2D]([ExtResource("1_uaigg"), ExtResource("3_haxbn"), ExtResource("4_5f1nk"), ExtResource("5_n40t0"), ExtResource("6_5s0hn")])
@@ -116,3 +149,10 @@ volume_db = -6.559
 [node name="DeathAudio" type="AudioStreamPlayer" parent="SoundContainer"]
 unique_name_in_owner = true
 volume_db = -5.622
+
+[node name="Smoke" type="GPUParticles2D" parent="."]
+scale = Vector2(0.909728, 0.773185)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_7igr5")
+texture = ExtResource("16_7k2ta")
+lifetime = 5.0

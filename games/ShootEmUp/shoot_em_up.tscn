@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0pbkub12bfbv"]
+[gd_scene load_steps=12 format=3 uid="uid://d0pbkub12bfbv"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/ShootEmUp.gd" id="1_lvec5"]
 [ext_resource type="PackedScene" uid="uid://btjju6ilduuli" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
@@ -11,9 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://di2tet8q28wtb" path="res://games/ShootEmUp/game_over.tscn" id="9_bp83e"]
 [ext_resource type="PackedScene" uid="uid://clx1ut6nikxsa" path="res://games/ShootEmUp/Explosion.tscn" id="10_2iy4s"]
 
+[sub_resource type="Environment" id="Environment_3pcq2"]
+background_mode = 3
+background_energy_multiplier = 10.97
+glow_enabled = true
+glow_intensity = 5.82
+glow_strength = 1.13
+fog_enabled = true
+fog_light_energy = 5.71
+
 [node name="Game1" type="Node2D"]
 script = ExtResource("1_lvec5")
 music_arr = Array[AudioStreamWAV]([ExtResource("2_kcdpw"), ExtResource("3_oiaq2"), ExtResource("4_d5mlj"), ExtResource("5_pdi6d")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3pcq2")
 
 [node name="ScrollingBackground" parent="." instance=ExtResource("2_ghebx")]
 
