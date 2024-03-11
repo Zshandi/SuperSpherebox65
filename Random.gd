@@ -1,6 +1,7 @@
 extends RefCounted
 class_name Random
 
+@warning_ignore("shadowed_global_identifier")
 var seed:
 	get: return _internal_rng.seed
 	set(value): _internal_rng.seed = value
@@ -24,21 +25,21 @@ func f() -> float:
 func f_range(from:float, to:float) -> float:
 	return _internal_rng.randf_range(from, to)
 
-func pick(from:Array):
+func pick(from:Array) -> Variant:
 	if from == null || from.is_empty():
 		return null
 	var index = i_range(0, from.size())
 	return from[index]
 
-func color(min_alpha:float = 1):
-	return color_a(min_alpha)
-
-func color_a(min_alpha:float = 0):
+func color(min_alpha:float = 1) -> Color:
 	return Color(f(), f(), f(), f_range(min_alpha, 1))
+
+func color_alpha() -> Color:
+	return color(0)
 
 var _internal_rng:RandomNumberGenerator
 
-func _init(randomize:bool = false):
+func _init(should_randomize:bool = false):
 	_internal_rng = RandomNumberGenerator.new()
-	if randomize:
-		randomize()
+	if should_randomize:
+		self.randomize()
