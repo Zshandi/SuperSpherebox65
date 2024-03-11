@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://qitjuelqnbtd"]
+[gd_scene load_steps=23 format=3 uid="uid://qitjuelqnbtd"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/Player.gd" id="1_jg1pr"]
 [ext_resource type="Texture2D" uid="uid://cbmshywfdhnie" path="res://assets/gfx/ShootEmUp/player/playerShip1_blue.png" id="1_uaigg"]
@@ -15,7 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://neidlwtyfiiv" path="res://games/ShootEmUp/sounds/enemy_dead_33.wav" id="13_dxe4b"]
 [ext_resource type="AudioStream" uid="uid://uhs68aqv7i60" path="res://games/ShootEmUp/sounds/Fart Sound Effect #3.wav" id="14_6sru2"]
 [ext_resource type="AudioStream" uid="uid://df7nqqs4iey8c" path="res://games/ShootEmUp/sounds/vgdeathsound.wav" id="15_tklfe"]
-[ext_resource type="Texture2D" uid="uid://l013xbcas1t8" path="res://assets/gfx/ShootEmUp/particles/explosion01.png" id="16_7k2ta"]
+[ext_resource type="PackedScene" uid="uid://kqiee3i8oqi5" path="res://games/ShootEmUp/particles/Smoke.tscn" id="16_5bdsr"]
+[ext_resource type="PackedScene" uid="uid://clx1ut6nikxsa" path="res://games/ShootEmUp/particles/Explosion.tscn" id="17_inog0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b75rk"]
 radius = 25.0
@@ -23,7 +24,7 @@ height = 80.0
 
 [sub_resource type="Animation" id="Animation_tb2rw"]
 resource_name = "damage"
-length = 1.4
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -60,6 +61,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ParticleContainer/Smoke:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SoundContainer/HurtAudio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_jg0o1"]
 resource_name = "invulnerable"
@@ -77,43 +102,52 @@ tracks/0/keys = {
 "values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_dmw4f"]
+resource_name = "death"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticleContainer/Explosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundContainer/DeathAudio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28fmc"]
 _data = {
 "damage": SubResource("Animation_tb2rw"),
+"death": SubResource("Animation_dmw4f"),
 "invulnerable": SubResource("Animation_jg0o1")
 }
-
-[sub_resource type="Gradient" id="Gradient_u7ofl"]
-offsets = PackedFloat32Array(0, 0.753086)
-colors = PackedColorArray(0.403922, 0.266667, 0.172549, 0.74902, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_o30v0"]
-gradient = SubResource("Gradient_u7ofl")
-
-[sub_resource type="Curve" id="Curve_di4vp"]
-_data = [Vector2(0.00923787, 0.154148), 0.0, 0.343602, 0, 0, Vector2(1, 1), 2.03427, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_5j8do"]
-curve = SubResource("Curve_di4vp")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7igr5"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(0, 1, 0)
-emission_shape = 1
-emission_sphere_radius = 21.61
-angle_max = 212.9
-direction = Vector3(0, -1, 0)
-spread = 37.388
-flatness = 0.6
-initial_velocity_max = 71.56
-gravity = Vector3(0, -30, 0)
-linear_accel_max = 100.0
-scale_min = 1.5
-scale_max = 3.0
-scale_curve = SubResource("CurveTexture_5j8do")
-color = Color(0.447059, 0.286275, 0.164706, 1)
-color_ramp = SubResource("GradientTexture1D_o30v0")
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jg1pr")
@@ -135,6 +169,7 @@ volume_db = -7.083
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_28fmc")
 }
@@ -150,9 +185,10 @@ volume_db = -6.559
 unique_name_in_owner = true
 volume_db = -5.622
 
-[node name="Smoke" type="GPUParticles2D" parent="."]
+[node name="ParticleContainer" type="Node2D" parent="."]
+process_mode = 1
 scale = Vector2(0.909728, 0.773185)
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_7igr5")
-texture = ExtResource("16_7k2ta")
-lifetime = 5.0
+
+[node name="Smoke" parent="ParticleContainer" instance=ExtResource("16_5bdsr")]
+
+[node name="Explosion" parent="ParticleContainer" instance=ExtResource("17_inog0")]

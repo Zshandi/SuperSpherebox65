@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://clx1ut6nikxsa"]
+[gd_scene load_steps=12 format=3 uid="uid://clx1ut6nikxsa"]
 
 [ext_resource type="Texture2D" uid="uid://l013xbcas1t8" path="res://assets/gfx/ShootEmUp/particles/explosion01.png" id="1_o2jo7"]
+[ext_resource type="Script" path="res://games/ShootEmUp/particles/Explosion.gd" id="2_nracn"]
 
 [sub_resource type="Curve" id="Curve_sjnd8"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -55,9 +56,12 @@ emission_curve = SubResource("CurveTexture_8o4k6")
 
 [node name="Explosion" type="GPUParticles2D"]
 scale = Vector2(0.13455, 0.0959772)
+emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_ffoqk")
 texture = ExtResource("1_o2jo7")
 lifetime = 1.5
+one_shot = true
 explosiveness = 1.0
 randomness = 0.35
+script = ExtResource("2_nracn")

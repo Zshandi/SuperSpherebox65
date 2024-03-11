@@ -59,7 +59,6 @@ func take_damage(damage_amount: float = 1) -> void:
 		else:
 			_set_invulnerable()
 			_hurt_animation()
-			hurt_audio.play()
 
 func _hurt_animation() -> void:
 	animation_player.set_assigned_animation("damage")
@@ -68,8 +67,10 @@ func _hurt_animation() -> void:
 func die() -> void:
 	if not is_dead:
 		is_dead = true
-		hide()
-		death_audio.play()
+		#hide()
+		#death_audio.play()
+		animation_player.set_assigned_animation("death")
+		animation_player.play()
 		process_mode = Node.PROCESS_MODE_DISABLED
 		await get_tree().create_timer(2).timeout
 		player_died.emit()

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://doo6uwi2fw4b3" path="res://games/ShootEmUp/enemy_spawner.tscn" id="8_11fcr"]
 [ext_resource type="PackedScene" uid="uid://ddrr0ju33gmco" path="res://games/ShootEmUp/hud.tscn" id="9_63q6s"]
 [ext_resource type="PackedScene" uid="uid://di2tet8q28wtb" path="res://games/ShootEmUp/game_over.tscn" id="9_bp83e"]
-[ext_resource type="PackedScene" uid="uid://clx1ut6nikxsa" path="res://games/ShootEmUp/Explosion.tscn" id="10_2iy4s"]
+[ext_resource type="PackedScene" uid="uid://clx1ut6nikxsa" path="res://games/ShootEmUp/particles/Explosion.tscn" id="10_2iy4s"]
 
 [sub_resource type="Environment" id="Environment_3pcq2"]
 background_mode = 3
