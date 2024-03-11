@@ -68,10 +68,10 @@ tracks/3/path = NodePath("ParticleContainer/Smoke:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, true, false]
+"values": [false, true, true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
