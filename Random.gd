@@ -17,13 +17,15 @@ func i() -> int:
 	return _internal_rng.randi()
 
 func i_range(from:int, to:int) -> int:
-	return _internal_rng.randi_range(from, to)
+	return i() % (to - from) + from
 
 func f() -> float:
+	# TODO: Calculate f() from i(), so that all that needs implemented
+	#         in the random algorithm is the i method
 	return _internal_rng.randf()
 
 func f_range(from:float, to:float) -> float:
-	return _internal_rng.randf_range(from, to)
+	return f() * (to - from) + from
 
 func pick(from:Array) -> Variant:
 	if from == null || from.is_empty():
