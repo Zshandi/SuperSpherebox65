@@ -8,15 +8,6 @@ var health: float = 3
 var is_invulnerable: bool = false
 var is_dead: bool = false
 
-@export
-var player_sprite_arr: Array[Texture2D] = []
-
-@export
-var shoot_audio_arr: Array[AudioStreamWAV] = []
-
-@export
-var hurt_audio_arr: Array[AudioStreamWAV] = []
-
 @onready var player_sprite = $Sprite2D
 
 var speed: int = 300

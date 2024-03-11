@@ -12,6 +12,12 @@ func unload_current_game():
 func load_game(game_instance_data):
 	unload_current_game()
 	
+	# Call sequence:
+	# When loading:
+	#  _init > (setup important values) > _on_game_initialized > _load_save_data > _ready
+	# When quiting (or restarting):
+	#  _on_game_quit > (base game node is freed)
+	
 	# Instantiate the game
 	current_game = game_instance_data.game_scene.instantiate()
 	

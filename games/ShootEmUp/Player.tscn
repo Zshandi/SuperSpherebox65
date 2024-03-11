@@ -151,9 +151,6 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jg1pr")
-player_sprite_arr = Array[Texture2D]([ExtResource("1_uaigg"), ExtResource("3_haxbn"), ExtResource("4_5f1nk"), ExtResource("5_n40t0"), ExtResource("6_5s0hn")])
-shoot_audio_arr = Array[AudioStreamWAV]([ExtResource("7_emha6"), ExtResource("8_66uny"), ExtResource("9_hqjju"), ExtResource("10_6t3cn")])
-hurt_audio_arr = Array[AudioStreamWAV]([ExtResource("11_4tkl0"), ExtResource("12_requ6"), ExtResource("13_dxe4b"), ExtResource("14_6sru2"), ExtResource("15_tklfe")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_uaigg")

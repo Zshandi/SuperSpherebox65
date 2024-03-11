@@ -18,6 +18,14 @@ signal save_game(save_data:Dictionary)
 ## Instance data used for the game selection menu
 var game_instance_data:GameInstanceData
 
+
+# Call sequence:
+# When loading:
+#  _init > (setup important values) > _on_game_initialized
+#        > _load_save_data > _ready
+# When quiting (or restarting):
+#  _on_game_quit > (base game node is freed)
+
 ## Called after the game has all values set by GameLoader,
 ##  but before the Game is added to the scene tree.
 ## If the game must be in the scene tree, use _ready instead
@@ -25,6 +33,7 @@ func _on_game_initialized():
 	seed(game_instance_data.random_seed)
 
 ## Called to load the given save data, after initialization
+## If the game wasn't saved previously, then an empty dictionary is given
 func _load_save_data(save_data:Dictionary):
 	pass
 
