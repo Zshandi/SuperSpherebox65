@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d0pbkub12bfbv"]
+[gd_scene load_steps=32 format=3 uid="uid://d0pbkub12bfbv"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/ShootEmUp.gd" id="1_lvec5"]
 [ext_resource type="PackedScene" uid="uid://btjju6ilduuli" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://k50eoc4icsp3" path="res://assets/gfx/ShootEmUp/background/dirt.png" id="24_01q5p"]
 [ext_resource type="Texture2D" uid="uid://ygt76c5m0rup" path="res://assets/gfx/ShootEmUp/background/space_front.png" id="25_pdlys"]
 [ext_resource type="Texture2D" uid="uid://dbcou8y2bin30" path="res://assets/gfx/ShootEmUp/background/glassPanel.png" id="26_tu5gg"]
+[ext_resource type="Script" path="res://games/ShootEmUp/scripts/Camera2D.gd" id="31_t24bn"]
 
 [node name="Game1" type="Node2D"]
 script = ExtResource("1_lvec5")
@@ -79,6 +80,10 @@ gizmo_extents = 0.5
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(800, 450)
+script = ExtResource("31_t24bn")
 
 [connection signal="quit_game" from="UI/GameOver" to="." method="_on_game_over_quit_game"]
 [connection signal="restart_game" from="UI/GameOver" to="." method="_on_game_over_restart_game"]

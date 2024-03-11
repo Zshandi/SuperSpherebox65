@@ -64,6 +64,7 @@ const ENEMY_KILLED_MULTIPLIER = 5
 var curr_multiplier: int
 
 @onready var game_over = $UI/GameOver
+@onready var camera = $Camera2D
 
 func _ready():
 	game_over.hide()
@@ -152,6 +153,7 @@ func _update_score(score_to_add) -> void:
 func _on_player_take_damage(curr_health) -> void:
 	print("Updating GUI")
 	hud.update_player_health(curr_health)
+	camera.shake_screen()
 
 func _on_player_died() -> void:
 	print("Player died")
