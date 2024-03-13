@@ -38,4 +38,5 @@ func _on_area_entered(area):
 func _damage_object_entered(object) -> void:
 	if object.has_method("take_damage"):
 		object.take_damage(damage_amount)
+	await get_tree().create_timer(.05).timeout
 	queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://qitjuelqnbtd"]
+[gd_scene load_steps=11 format=3 uid="uid://qitjuelqnbtd"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/Player.gd" id="1_jg1pr"]
 [ext_resource type="Texture2D" uid="uid://cbmshywfdhnie" path="res://assets/gfx/ShootEmUp/player/playerShip1_blue.png" id="1_uaigg"]
+[ext_resource type="AudioStream" uid="uid://bgld13i8bg4t5" path="res://games/ShootEmUp/sounds/impact.wav" id="3_0ydmm"]
 [ext_resource type="PackedScene" uid="uid://kqiee3i8oqi5" path="res://games/ShootEmUp/particles/Smoke.tscn" id="16_5bdsr"]
 [ext_resource type="PackedScene" uid="uid://clx1ut6nikxsa" path="res://games/ShootEmUp/particles/Explosion.tscn" id="17_inog0"]
 
@@ -168,6 +169,10 @@ volume_db = -6.559
 [node name="DeathAudio" type="AudioStreamPlayer" parent="SoundContainer"]
 unique_name_in_owner = true
 volume_db = -5.622
+
+[node name="ImpactAudio" type="AudioStreamPlayer" parent="SoundContainer"]
+unique_name_in_owner = true
+stream = ExtResource("3_0ydmm")
 
 [node name="ParticleContainer" type="Node2D" parent="."]
 process_mode = 1

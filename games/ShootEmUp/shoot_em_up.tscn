@@ -52,6 +52,7 @@ front_images = Array[Texture2D]([ExtResource("25_pdlys"), ExtResource("26_tu5gg"
 unique_name_in_owner = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 volume_db = -20.664
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_11fcr")]

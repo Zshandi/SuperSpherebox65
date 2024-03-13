@@ -48,6 +48,7 @@ func die() -> void:
 	is_dead = true
 	emit_signal("enemy_died", 100)
 	process_mode = Node.PROCESS_MODE_DISABLED
+	explosion.show()
 	explosion.emitting = true
 	enemy_sprite.hide()
 	await get_tree().create_timer(.5).timeout

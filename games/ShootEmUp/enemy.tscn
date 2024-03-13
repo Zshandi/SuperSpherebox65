@@ -39,6 +39,7 @@ shape = SubResource("CapsuleShape2D_1a03b")
 
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
 process_mode = 1
+visible = false
 amount = 7
 process_material = SubResource("ParticleProcessMaterial_v05hv")
 texture = ExtResource("7_wyex1")
