@@ -60,6 +60,9 @@ var player_shoot_speed: float
 
 var enemies_killed = 0
 const ENEMY_KILLED_MULTIPLIER = 5
+
+const PLAYER_DAMAGE_SCREEN_SHAKE = 30
+const PLAYER_DEAD_SCREEN_SHAKE = 250
 @onready var combo_timer = %ComboTimer
 var curr_multiplier: int
 
@@ -153,7 +156,10 @@ func _update_score(score_to_add) -> void:
 func _on_player_take_damage(curr_health) -> void:
 	print("Updating GUI")
 	hud.update_player_health(curr_health)
-	camera.shake_screen()
+	if curr_health > 0:
+		camera.shake_screen(PLAYER_DAMAGE_SCREEN_SHAKE)
+	else:
+		camera.shake_screen(PLAYER_DEAD_SCREEN_SHAKE)
 
 func _on_player_died() -> void:
 	print("Player died")
