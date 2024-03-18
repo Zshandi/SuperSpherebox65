@@ -14,6 +14,7 @@ var speed: int = 300
 var movement_speed: int = 20
 
 var laser = preload("res://games/ShootEmUp/player_laser.tscn")
+@onready var explosion_audio: AudioStreamWAV = preload("res://games/ShootEmUp/sounds/death_explosion.wav")
 @onready var laser_container = $LaserContainer
 @onready var shoot_audio = $ShootAudio
 @onready var animation_player = %AnimationPlayer
@@ -68,8 +69,10 @@ func die() -> void:
 	if not is_dead:
 		is_dead = true
 		# set the explosion pitch scale
+		var explosion_audio: AudioStreamPlayer = AudioStreamPlayer.new()
+		explosion_audio.stream = explosion_audio
 		var explosion_pitch_scale = randf_range(0.7, 1.5)
-		explosion_death_audio.pitch_scale = explosion_pitch_scale
+		explosion_audio.pitch_scale = explosion_pitch_scale
 		
 		# play the death animation
 		animation_player.set_assigned_animation("death")
