@@ -20,6 +20,7 @@ var laser = preload("res://games/ShootEmUp/player_laser.tscn")
 @onready var hurt_audio = %HurtAudio
 @onready var death_audio = %DeathAudio
 @onready var impact_audio = %ImpactAudio
+@onready var explosion_death_audio = %DeathExplosionAudio
 
 func _ready():
 	_set_invulnerable()
@@ -54,7 +55,7 @@ func take_damage(damage_amount: float = 1) -> void:
 		player_take_damage.emit(health)
 
 func _hurt_animation() -> void:
-	await hit_stop(0.1, .4)
+	await hit_stop(0.01, 1.5)
 	animation_player.set_assigned_animation("damage")
 	animation_player.play()
 	
@@ -66,10 +67,15 @@ func hit_stop(time_scale: float, duration: float) -> void:
 func die() -> void:
 	if not is_dead:
 		is_dead = true
+		# set the explosion pitch scale
+		var explosion_pitch_scale = randf_range(0.7, 1.5)
+		explosion_death_audio.pitch_scale = explosion_pitch_scale
+		
+		# play the death animation
 		animation_player.set_assigned_animation("death")
 		animation_player.play()
 		process_mode = Node.PROCESS_MODE_DISABLED
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(4).timeout
 		player_died.emit()
 		queue_free()
 

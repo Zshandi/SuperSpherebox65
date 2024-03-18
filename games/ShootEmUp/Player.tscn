@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://qitjuelqnbtd"]
+[gd_scene load_steps=13 format=3 uid="uid://qitjuelqnbtd"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/Player.gd" id="1_jg1pr"]
 [ext_resource type="Texture2D" uid="uid://cbmshywfdhnie" path="res://assets/gfx/ShootEmUp/player/playerShip1_blue.png" id="1_uaigg"]
 [ext_resource type="AudioStream" uid="uid://bgld13i8bg4t5" path="res://games/ShootEmUp/sounds/impact.wav" id="3_0ydmm"]
 [ext_resource type="AudioStream" uid="uid://uhs68aqv7i60" path="res://games/ShootEmUp/sounds/Fart Sound Effect #3.wav" id="3_2l68l"]
+[ext_resource type="AudioStream" uid="uid://dvqosq41ueqx6" path="res://games/ShootEmUp/sounds/death_explosion.wav" id="5_sbm0p"]
 [ext_resource type="PackedScene" uid="uid://kqiee3i8oqi5" path="res://games/ShootEmUp/particles/Smoke.tscn" id="16_5bdsr"]
 [ext_resource type="PackedScene" uid="uid://clx1ut6nikxsa" path="res://games/ShootEmUp/particles/Explosion.tscn" id="17_inog0"]
 
@@ -77,7 +78,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_dmw4f"]
 resource_name = "death"
-length = 1.5
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,7 +86,7 @@ tracks/0/path = NodePath("ParticleContainer/Explosion:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0.3, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -97,7 +98,7 @@ tracks/1/path = NodePath("SoundContainer/DeathAudio:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0.5, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -109,10 +110,22 @@ tracks/2/path = NodePath("Sprite2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
+"times": PackedFloat32Array(0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SoundContainer/DeathExplosionAudio:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_jg0o1"]
@@ -142,6 +155,7 @@ _data = {
 script = ExtResource("1_jg1pr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_uaigg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -170,12 +184,18 @@ volume_db = -6.559
 [node name="DeathAudio" type="AudioStreamPlayer" parent="SoundContainer"]
 unique_name_in_owner = true
 stream = ExtResource("3_2l68l")
-volume_db = -5.622
+volume_db = -9.364
 bus = &"Echo"
 
 [node name="ImpactAudio" type="AudioStreamPlayer" parent="SoundContainer"]
 unique_name_in_owner = true
 stream = ExtResource("3_0ydmm")
+
+[node name="DeathExplosionAudio" type="AudioStreamPlayer" parent="SoundContainer"]
+unique_name_in_owner = true
+stream = ExtResource("5_sbm0p")
+volume_db = -7.746
+pitch_scale = 0.77
 
 [node name="ParticleContainer" type="Node2D" parent="."]
 process_mode = 1
