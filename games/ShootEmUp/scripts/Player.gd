@@ -8,13 +8,15 @@ var health: float = 3
 var is_invulnerable: bool = false
 var is_dead: bool = false
 
+@export
+var explosion_audio: AudioStreamWAV
+
 @onready var player_sprite = $Sprite2D
 
 var speed: int = 300
 var movement_speed: int = 20
 
 var laser = preload("res://games/ShootEmUp/player_laser.tscn")
-@onready var explosion_audio: AudioStreamWAV = preload("res://games/ShootEmUp/sounds/death_explosion.wav")
 @onready var laser_container = $LaserContainer
 @onready var shoot_audio = $ShootAudio
 @onready var animation_player = %AnimationPlayer
@@ -69,18 +71,16 @@ func die() -> void:
 	if not is_dead:
 		is_dead = true
 		# set the explosion pitch scale
-		var explosion_audio: AudioStreamPlayer = AudioStreamPlayer.new()
-		explosion_audio.stream = explosion_audio
 		var explosion_pitch_scale = randf_range(0.7, 1.5)
-		explosion_audio.pitch_scale = explosion_pitch_scale
+		explosion_death_audio.pitch_scale = explosion_pitch_scale
 		
 		# play the death animation
 		animation_player.set_assigned_animation("death")
 		animation_player.play()
 		process_mode = Node.PROCESS_MODE_DISABLED
-		await get_tree().create_timer(4).timeout
+		await get_tree().create_timer(2).timeout
 		player_died.emit()
-		queue_free()
+		#queue_free()
 
 func _check_for_movement(delta: float) -> void:
 	velocity = Vector2(0,0)
