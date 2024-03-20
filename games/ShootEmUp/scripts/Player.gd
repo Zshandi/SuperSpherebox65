@@ -80,7 +80,6 @@ func die() -> void:
 		process_mode = Node.PROCESS_MODE_DISABLED
 		await get_tree().create_timer(2).timeout
 		player_died.emit()
-		#queue_free()
 
 func _check_for_movement(delta: float) -> void:
 	velocity = Vector2(0,0)
