@@ -8,9 +8,6 @@ var health: float = 3
 var is_invulnerable: bool = false
 var is_dead: bool = false
 
-@export
-var explosion_audio: AudioStreamWAV
-
 @onready var player_sprite = $Sprite2D
 
 var speed: int = 300
@@ -49,9 +46,13 @@ func take_damage(damage_amount: float = 1) -> void:
 	if not is_invulnerable:
 		impact_audio.play()
 		health -= damage_amount
+		
+		# is the player dead?
 		if health <= 0:
-			await hit_stop(0.1, .8)
+			await hit_stop(0.01, 1.8)
 			die()
+			
+		# player is still alive
 		else:
 			_set_invulnerable()
 			await _hurt_animation()
