@@ -45,18 +45,29 @@ var gone_phrase:String
 var is_gone:bool = false
 
 var num_fortunes:int = 0
-var loaded_num_fortunes:int = 0
+var loaded_rng_state = null
 
 func _load_save_data(save_data:Dictionary):
 	super._load_save_data(save_data)
 	
-	if save_data.has("num_fortunes"):
-		loaded_num_fortunes = save_data["num_fortunes"]
-		print_debug("\nloaded_num_fortunes: ", loaded_num_fortunes)
+	print_debug("\nLoading save data...\n")
+	
+	num_fortunes = save_data.get("num_fortunes", num_fortunes)
+	Rand.seed = save_data.get("Rand.seed", Rand.seed)
+	loaded_rng_state = save_data.get("Rand.state", loaded_rng_state)
+	
+	print_debug(str("Loaded num_fortunes: ", num_fortunes,
+		"\nLoaded Rand.seed: ", Rand.seed, 
+		"\nLoaded Rand.state: ", loaded_rng_state)
+		if save_data.has("Rand.seed") else "")
 
 func save_game_data():
 	var save_dict := {}
+	
 	save_dict["num_fortunes"] = num_fortunes
+	save_dict["Rand.seed"] = Rand.seed
+	save_dict["Rand.state"] = Rand.state
+	
 	save_game.emit(save_dict)
 
 func _ready():
@@ -106,11 +117,8 @@ func _ready():
 	eight_ball_sprite.modulate = game_instance_data.game_image_color_2
 		
 	# Get the rng back to state the game was last played,
-	#  and also the num_fortunes back to what it previously was
-	for i in range(loaded_num_fortunes):
-		randomize_fortune()
-		
-	print_debug("\n\nnum_fortunes: ", num_fortunes)
+	if loaded_rng_state != null:
+		Rand.state = loaded_rng_state
 	
 	if is_gone:
 		# Don't play leaving animation,
@@ -122,7 +130,7 @@ func _ready():
 	game_over.set_fortune(next_fortune)
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("six"):
 		if not game_over.is_visible():
 			
