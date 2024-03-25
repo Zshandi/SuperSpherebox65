@@ -120,6 +120,7 @@ func _ready():
 	if loaded_rng_state != null:
 		Rand.state = loaded_rng_state
 	
+	is_gone = num_fortunes >= leave_fortune_num
 	if is_gone:
 		# Don't play leaving animation,
 		#  if already gone when started
