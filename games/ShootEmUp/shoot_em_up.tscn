@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d0pbkub12bfbv"]
+[gd_scene load_steps=36 format=3 uid="uid://d0pbkub12bfbv"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/ShootEmUp.gd" id="1_lvec5"]
 [ext_resource type="PackedScene" uid="uid://btjju6ilduuli" path="res://games/ShootEmUp/ScrollingBackground.tscn" id="2_ghebx"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://uhs68aqv7i60" path="res://games/ShootEmUp/sounds/Fart Sound Effect #3.wav" id="11_5q5nf"]
 [ext_resource type="AudioStream" uid="uid://bwumtx2jylg0e" path="res://games/ShootEmUp/sounds/laser13.wav" id="16_g1df8"]
 [ext_resource type="AudioStream" uid="uid://df7nqqs4iey8c" path="res://games/ShootEmUp/sounds/vgdeathsound.wav" id="16_glbo1"]
+[ext_resource type="AudioStream" uid="uid://bott04oh8i404" path="res://games/ShootEmUp/sounds/doit.wav" id="16_tvnby"]
 [ext_resource type="AudioStream" uid="uid://xqo7pgkyhjja" path="res://games/ShootEmUp/sounds/laser12.wav" id="17_4wcd5"]
 [ext_resource type="AudioStream" uid="uid://neidlwtyfiiv" path="res://games/ShootEmUp/sounds/enemy_dead_33.wav" id="17_gjvlb"]
 [ext_resource type="AudioStream" uid="uid://cxxvgtbmm6ms0" path="res://games/ShootEmUp/sounds/enemy_dead_20.wav" id="18_jkfvw"]
@@ -25,20 +26,24 @@
 [ext_resource type="AudioStream" uid="uid://bwcrkl47hgmvu" path="res://games/ShootEmUp/sounds/enemy_dead_01.wav" id="19_ydisv"]
 [ext_resource type="Texture2D" uid="uid://j5i3ecpe4raj" path="res://assets/gfx/ShootEmUp/background/space_back.png" id="20_qo0fu"]
 [ext_resource type="Texture2D" uid="uid://baiw5ms3feg2g" path="res://assets/gfx/ShootEmUp/background/metalPanel.png" id="21_4dbrs"]
+[ext_resource type="AudioStream" uid="uid://cprnim05yj0rw" path="res://games/ShootEmUp/sounds/hannabarbera2.wav" id="21_k1lns"]
+[ext_resource type="AudioStream" uid="uid://cvhnkll5ujph4" path="res://games/ShootEmUp/sounds/pancake.wav" id="22_dswho"]
 [ext_resource type="Texture2D" uid="uid://w0a7a3xycg4o" path="res://assets/gfx/ShootEmUp/background/gray_ocean.png" id="22_iyqtt"]
 [ext_resource type="Texture2D" uid="uid://bo6cl5ln4hsps" path="res://assets/gfx/ShootEmUp/background/deep_gray.png" id="23_8ok37"]
+[ext_resource type="AudioStream" uid="uid://cih53cmlcud4f" path="res://games/ShootEmUp/sounds/splat.wav" id="23_thiwc"]
 [ext_resource type="Texture2D" uid="uid://k50eoc4icsp3" path="res://assets/gfx/ShootEmUp/background/dirt.png" id="24_01q5p"]
 [ext_resource type="Texture2D" uid="uid://ygt76c5m0rup" path="res://assets/gfx/ShootEmUp/background/space_front.png" id="25_pdlys"]
 [ext_resource type="Texture2D" uid="uid://dbcou8y2bin30" path="res://assets/gfx/ShootEmUp/background/glassPanel.png" id="26_tu5gg"]
+[ext_resource type="Script" path="res://games/ShootEmUp/scripts/Camera2D.gd" id="31_t24bn"]
 
 [node name="Game1" type="Node2D"]
 script = ExtResource("1_lvec5")
 music_arr = Array[AudioStreamWAV]([ExtResource("2_kcdpw"), ExtResource("3_oiaq2"), ExtResource("4_d5mlj"), ExtResource("5_pdi6d")])
 player_sprite_arr = Array[Texture2D]([ExtResource("6_rl6qk"), ExtResource("7_d4fa0"), ExtResource("8_qyxe3"), ExtResource("9_62xmo"), ExtResource("10_lc2em")])
-player_shoot_audio_arr = Array[AudioStreamWAV]([ExtResource("11_5q5nf"), ExtResource("19_h250j"), ExtResource("18_udhxb"), ExtResource("17_4wcd5"), ExtResource("16_g1df8")])
-hurt_audio_arr = Array[AudioStreamWAV]([ExtResource("16_glbo1"), ExtResource("11_5q5nf"), ExtResource("17_gjvlb"), ExtResource("18_jkfvw"), ExtResource("19_ydisv")])
+player_shoot_audio_arr = Array[AudioStreamWAV]([ExtResource("11_5q5nf"), ExtResource("19_h250j"), ExtResource("18_udhxb"), ExtResource("17_4wcd5"), ExtResource("16_g1df8"), ExtResource("16_tvnby")])
+hurt_audio_arr = Array[AudioStreamWAV]([ExtResource("16_glbo1"), ExtResource("11_5q5nf"), ExtResource("17_gjvlb"), ExtResource("18_jkfvw"), ExtResource("19_ydisv"), ExtResource("16_tvnby"), ExtResource("21_k1lns"), ExtResource("22_dswho"), ExtResource("23_thiwc")])
 enemy_sprite_arr = Array[Texture2D]([ExtResource("6_rl6qk"), ExtResource("7_d4fa0"), ExtResource("8_qyxe3"), ExtResource("9_62xmo"), ExtResource("10_lc2em")])
-enemy_death_sounds = Array[AudioStreamWAV]([ExtResource("19_ydisv"), ExtResource("18_jkfvw"), ExtResource("17_gjvlb"), ExtResource("11_5q5nf"), ExtResource("16_glbo1")])
+enemy_death_sounds = Array[AudioStreamWAV]([ExtResource("19_ydisv"), ExtResource("18_jkfvw"), ExtResource("17_gjvlb"), ExtResource("11_5q5nf"), ExtResource("16_glbo1"), ExtResource("16_tvnby"), ExtResource("21_k1lns"), ExtResource("22_dswho"), ExtResource("23_thiwc")])
 enemy_shoot_sounds = Array[AudioStreamWAV]([ExtResource("16_g1df8"), ExtResource("17_4wcd5"), ExtResource("18_udhxb"), ExtResource("19_h250j"), ExtResource("11_5q5nf"), ExtResource("19_ydisv")])
 back_images = Array[Texture2D]([ExtResource("20_qo0fu"), ExtResource("21_4dbrs"), ExtResource("22_iyqtt"), ExtResource("23_8ok37"), ExtResource("24_01q5p")])
 front_images = Array[Texture2D]([ExtResource("25_pdlys"), ExtResource("26_tu5gg")])
@@ -47,6 +52,7 @@ front_images = Array[Texture2D]([ExtResource("25_pdlys"), ExtResource("26_tu5gg"
 unique_name_in_owner = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 volume_db = -20.664
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_11fcr")]
@@ -79,6 +85,10 @@ gizmo_extents = 0.5
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(800, 450)
+script = ExtResource("31_t24bn")
 
 [connection signal="quit_game" from="UI/GameOver" to="." method="_on_game_over_quit_game"]
 [connection signal="restart_game" from="UI/GameOver" to="." method="_on_game_over_restart_game"]

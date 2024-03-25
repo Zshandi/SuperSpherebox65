@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://kqiee3i8oqi5"]
+
+[ext_resource type="Texture2D" uid="uid://l013xbcas1t8" path="res://assets/gfx/ShootEmUp/particles/explosion01.png" id="1_634iy"]
+[ext_resource type="Script" path="res://games/ShootEmUp/particles/Smoke.gd" id="2_sqynv"]
+
+[sub_resource type="Gradient" id="Gradient_u7ofl"]
+offsets = PackedFloat32Array(0, 0.753086)
+colors = PackedColorArray(0.403922, 0.266667, 0.172549, 0.270588, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o30v0"]
+gradient = SubResource("Gradient_u7ofl")
+
+[sub_resource type="Curve" id="Curve_di4vp"]
+_data = [Vector2(0.00923787, 0.154148), 0.0, 0.343602, 0, 0, Vector2(1, 1), 2.03427, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5j8do"]
+curve = SubResource("Curve_di4vp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7igr5"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 1, 0)
+emission_shape = 1
+emission_sphere_radius = 21.61
+angle_max = 212.9
+direction = Vector3(0, -1, 0)
+spread = 37.388
+flatness = 0.6
+initial_velocity_max = 71.56
+gravity = Vector3(0, -30, 0)
+linear_accel_max = 100.0
+scale_min = 1.5
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_5j8do")
+color = Color(0.447059, 0.286275, 0.164706, 1)
+color_ramp = SubResource("GradientTexture1D_o30v0")
+
+[node name="Smoke" type="GPUParticles2D"]
+z_index = -1
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_7igr5")
+texture = ExtResource("1_634iy")
+lifetime = 2.0
+script = ExtResource("2_sqynv")

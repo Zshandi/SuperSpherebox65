@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://qitjuelqnbtd"]
+[gd_scene load_steps=13 format=3 uid="uid://qitjuelqnbtd"]
 
 [ext_resource type="Script" path="res://games/ShootEmUp/scripts/Player.gd" id="1_jg1pr"]
 [ext_resource type="Texture2D" uid="uid://cbmshywfdhnie" path="res://assets/gfx/ShootEmUp/player/playerShip1_blue.png" id="1_uaigg"]
+[ext_resource type="AudioStream" uid="uid://bgld13i8bg4t5" path="res://games/ShootEmUp/sounds/impact.wav" id="3_0ydmm"]
+[ext_resource type="AudioStream" uid="uid://uhs68aqv7i60" path="res://games/ShootEmUp/sounds/Fart Sound Effect #3.wav" id="3_2l68l"]
+[ext_resource type="AudioStream" uid="uid://dvqosq41ueqx6" path="res://games/ShootEmUp/sounds/death_explosion.wav" id="5_sbm0p"]
+[ext_resource type="PackedScene" uid="uid://kqiee3i8oqi5" path="res://games/ShootEmUp/particles/Smoke.tscn" id="16_5bdsr"]
+[ext_resource type="PackedScene" uid="uid://clx1ut6nikxsa" path="res://games/ShootEmUp/particles/Explosion.tscn" id="17_inog0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b75rk"]
 radius = 25.0
@@ -9,7 +14,7 @@ height = 80.0
 
 [sub_resource type="Animation" id="Animation_tb2rw"]
 resource_name = "damage"
-length = 1.4
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -46,6 +51,96 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ParticleContainer/Smoke:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SoundContainer/HurtAudio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dmw4f"]
+resource_name = "death"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticleContainer/Explosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SoundContainer/DeathAudio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SoundContainer/DeathExplosionAudio:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_jg0o1"]
 resource_name = "invulnerable"
@@ -66,6 +161,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_28fmc"]
 _data = {
 "damage": SubResource("Animation_tb2rw"),
+"death": SubResource("Animation_dmw4f"),
 "invulnerable": SubResource("Animation_jg0o1")
 }
 
@@ -73,6 +169,7 @@ _data = {
 script = ExtResource("1_jg1pr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_uaigg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -86,6 +183,7 @@ volume_db = -7.083
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_28fmc")
 }
@@ -99,4 +197,25 @@ volume_db = -6.559
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="SoundContainer"]
 unique_name_in_owner = true
-volume_db = -5.622
+stream = ExtResource("3_2l68l")
+volume_db = -9.364
+bus = &"Echo"
+
+[node name="ImpactAudio" type="AudioStreamPlayer" parent="SoundContainer"]
+unique_name_in_owner = true
+stream = ExtResource("3_0ydmm")
+
+[node name="DeathExplosionAudio" type="AudioStreamPlayer" parent="SoundContainer"]
+unique_name_in_owner = true
+stream = ExtResource("5_sbm0p")
+volume_db = -7.746
+pitch_scale = 0.77
+stream_paused = true
+
+[node name="ParticleContainer" type="Node2D" parent="."]
+process_mode = 1
+scale = Vector2(0.909728, 0.773185)
+
+[node name="Smoke" parent="ParticleContainer" instance=ExtResource("16_5bdsr")]
+
+[node name="Explosion" parent="ParticleContainer" instance=ExtResource("17_inog0")]
