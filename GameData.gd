@@ -42,7 +42,7 @@ func _post_draw_card_image(parent_control:Control, instance_date:GameInstanceDat
 	pass
 
 func draw_texture_random(texture:Texture2D, on_control:Control) -> Sprite2D:
-	var offset := Vector2(randf(), randf())
+	var offset := Vector2(Rand.f(), Rand.f())
 	return draw_texture(texture, on_control, offset)
 
 func draw_texture(texture:Texture2D, on_control:Control,
@@ -85,14 +85,14 @@ func draw_card_image(parent_control:Control, instance_data:GameInstanceData):
 	_post_draw_card_image(parent_control, instance_data)
 
 func generate_instance_data(random_seed:int) -> GameInstanceData:
-	seed(random_seed)
+	Rand.seed = random_seed
 	
-	var name1 = possible_names_1.pick_random()
-	var name2 = possible_names_2.pick_random()
-	var sequel = possible_name_sequels.pick_random()
+	var name1 = Rand.pick(possible_names_1)
+	var name2 = Rand.pick(possible_names_2)
+	var sequel = Rand.pick(possible_name_sequels)
 	
-	var is_sequel := randf() <= name_sequel_chance
-	var is_swapped := randf() <= name_swap_chance
+	var is_sequel := Rand.f() <= name_sequel_chance
+	var is_swapped := Rand.f() <= name_swap_chance
 	
 	var game_name := ""
 	if name1 != null && name2 != null:
@@ -104,16 +104,12 @@ func generate_instance_data(random_seed:int) -> GameInstanceData:
 		if is_sequel && sequel != null:
 			game_name += " " + sequel
 	
-	var image:Texture2D = null
-	if !possible_game_images.is_empty():
-		image = possible_game_images.pick_random()
+	var image:Texture2D = Rand.pick(possible_game_images)
 	
-	var image_2:Texture2D = null
-	if !possible_game_images_2.is_empty():
-		image_2 = possible_game_images_2.pick_random()
+	var image_2:Texture2D = Rand.pick(possible_game_images_2)
 	
-	var image_color := Main.random_color()
-	var image_color_2 := Main.random_color()
+	var image_color := Rand.color()
+	var image_color_2 := Rand.color()
 	
 	var game_instance := _create_new_instance_data()
 	

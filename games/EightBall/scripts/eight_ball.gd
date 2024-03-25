@@ -45,59 +45,70 @@ var gone_phrase:String
 var is_gone:bool = false
 
 var num_fortunes:int = 0
-var loaded_num_fortunes:int = 0
+var loaded_rng_state = null
 
 func _load_save_data(save_data:Dictionary):
 	super._load_save_data(save_data)
 	
-	if save_data.has("num_fortunes"):
-		loaded_num_fortunes = save_data["num_fortunes"]
-		print_debug("\nloaded_num_fortunes: ", loaded_num_fortunes)
+	print_debug("\nLoading save data...\n")
+	
+	num_fortunes = save_data.get("num_fortunes", num_fortunes)
+	Rand.seed = save_data.get("Rand.seed", Rand.seed)
+	loaded_rng_state = save_data.get("Rand.state", loaded_rng_state)
+	
+	print_debug(str("Loaded num_fortunes: ", num_fortunes,
+		"\nLoaded Rand.seed: ", Rand.seed, 
+		"\nLoaded Rand.state: ", loaded_rng_state)
+		if save_data.has("Rand.seed") else "")
 
 func save_game_data():
 	var save_dict := {}
+	
 	save_dict["num_fortunes"] = num_fortunes
+	save_dict["Rand.seed"] = Rand.seed
+	save_dict["Rand.state"] = Rand.state
+	
 	save_game.emit(save_dict)
 
 func _ready():
-	background.sprite.modulate = Color(randf(),randf(),randf(),1)
-	background.color_rect.color = Color(randf(),randf(),randf(),1)
+	background.sprite.modulate = Rand.color()
+	background.color_rect.color = Rand.color()
 	
 	# grab fortunes
-	good_fortune_to_use = possible_good_fortunes.pick_random()
-	bad_fortune_to_use = possible_bad_fortunes.pick_random()
-	uncertain_fortune_to_use = possible_uncertain_fortunes.pick_random()
+	good_fortune_to_use = Rand.pick(possible_good_fortunes)
+	bad_fortune_to_use = Rand.pick(possible_bad_fortunes)
+	uncertain_fortune_to_use = Rand.pick(possible_uncertain_fortunes)
 	
 	fortunes = [good_fortune_to_use, bad_fortune_to_use, uncertain_fortune_to_use]
 	
 	# determine if and when we will leave, and what to say
-	if randf() < chance_to_leave:
-		leave_fortune_num = randi_range(min_max_leave_time[0], min_max_leave_time[1])
-		leaving_phrase = possible_leaving_phrases.pick_random()
-		gone_phrase = possible_gone_phrases.pick_random()
+	if Rand.f() < chance_to_leave:
+		leave_fortune_num = Rand.i_range(min_max_leave_time[0], min_max_leave_time[1])
+		leaving_phrase = Rand.pick(possible_leaving_phrases)
+		gone_phrase = Rand.pick(possible_gone_phrases)
 		print_debug("\nleaving fortune: ", [leaving_phrase, gone_phrase])
 		print_debug("leaving fortune num: ", leave_fortune_num)
 	
 	# determine if we should have a weird fortune, and which one we should use
-	if randf() < weird_fortune_chance:
+	if Rand.f() < weird_fortune_chance:
 		var total_weight:float = 0
 		for fortune:WeirdFortune in weird_fortunes:
 			total_weight += fortune.fortune_chance_weight
-		var chance = randf_range(0, total_weight)
+		var chance = Rand.f_range(0, total_weight)
 		total_weight = 0
 		for fortune:WeirdFortune in weird_fortunes:
 			if chance - total_weight <= fortune.fortune_chance_weight:
 				weird_fortune = fortune
 				break
 			total_weight += fortune.fortune_chance_weight
-		weird_fortune_num = randi_range(weird_fortune.num_fortune_min_max[0], weird_fortune.num_fortune_min_max[1])
+		weird_fortune_num = Rand.i_range(weird_fortune.num_fortune_min_max[0], weird_fortune.num_fortune_min_max[1])
 		print_debug("\nweird fortune: ", weird_fortune.fortune_sequence)
 		print_debug("weird fortune num: ", weird_fortune_num)
 		
 		# ensure the weird fortune comes before the leaving fortune
 		var weird_fotune_end = weird_fortune_num + weird_fortune.fortune_sequence.size()
 		if leave_fortune_num < weird_fotune_end:
-			leave_fortune_num = weird_fotune_end + randi_range(0, 7)
+			leave_fortune_num = weird_fotune_end + Rand.i_range(0, 7)
 			print_debug("bumped leave fortune num to: ", leave_fortune_num)
 		
 	
@@ -106,12 +117,10 @@ func _ready():
 	eight_ball_sprite.modulate = game_instance_data.game_image_color_2
 		
 	# Get the rng back to state the game was last played,
-	#  and also the num_fortunes back to what it previously was
-	for i in range(loaded_num_fortunes):
-		randomize_fortune()
-		
-	print_debug("\n\nnum_fortunes: ", num_fortunes)
+	if loaded_rng_state != null:
+		Rand.state = loaded_rng_state
 	
+	is_gone = num_fortunes >= leave_fortune_num
 	if is_gone:
 		# Don't play leaving animation,
 		#  if already gone when started
@@ -122,7 +131,7 @@ func _ready():
 	game_over.set_fortune(next_fortune)
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("six"):
 		if not game_over.is_visible():
 			
@@ -156,7 +165,7 @@ func randomize_fortune():
 	
 	if generate_weird_fortune(): return
 	
-	next_fortune = fortunes.pick_random()
+	next_fortune = Rand.pick(fortunes)
 
 func generate_leaving_fortune() -> bool:
 	if num_fortunes == leave_fortune_num:
