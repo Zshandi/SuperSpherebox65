@@ -20,7 +20,7 @@ var laser = preload("res://games/ShootEmUp/player_laser.tscn")
 @onready var hurt_audio = %HurtAudio
 @onready var death_audio = %DeathAudio
 @onready var impact_audio = %ImpactAudio
-@onready var explosion_death_audio = %DeathExplosionAudio
+@onready var death_explosion_audio = %DeathExplosionAudio
 
 func _ready():
 	_set_invulnerable()
@@ -73,7 +73,7 @@ func die() -> void:
 		is_dead = true
 		# set the explosion pitch scale
 		var explosion_pitch_scale = randf_range(0.7, 1.5)
-		explosion_death_audio.pitch_scale = explosion_pitch_scale
+		death_explosion_audio.pitch_scale = explosion_pitch_scale
 		
 		# play the death animation
 		animation_player.set_assigned_animation("death")
