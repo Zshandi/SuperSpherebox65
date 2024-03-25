@@ -72,8 +72,7 @@ func die() -> void:
 	if not is_dead:
 		is_dead = true
 		# set the explosion pitch scale
-		var explosion_pitch_scale = randf_range(0.7, 1.5)
-		death_explosion_audio.pitch_scale = explosion_pitch_scale
+		death_explosion_audio.pitch_scale = randf_range(0.7, 1.5)
 		
 		# play the death animation
 		animation_player.set_assigned_animation("death")
